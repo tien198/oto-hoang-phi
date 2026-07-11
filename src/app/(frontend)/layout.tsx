@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 
+import { Montserrat } from 'next/font/google'
 import { cn } from '@/utilities/ui'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -18,28 +17,38 @@ import { getServerSideURL } from '@/utilities/getURL'
 import { Header } from '@/sections/Header'
 import { Footer } from '@/sections/Footer'
 
+const montserrat = Montserrat({
+  variable: '--font-montserrat',
+  subsets: ['vietnamese'],
+})
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html
+      className={cn(montserrat.variable, montserrat.className)}
+      lang="en"
+      data-theme="light"
+      suppressHydrationWarning
+    >
       <head>
-        <InitTheme />
+        {/* <InitTheme /> */}
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
-        <Providers>
-          <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          />
+        {/* <Providers> */}
+        <AdminBar
+          adminBarProps={{
+            preview: isEnabled,
+          }}
+        />
 
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
+        <Header />
+        {children}
+        <Footer />
+        {/* </Providers> */}
       </body>
     </html>
   )
