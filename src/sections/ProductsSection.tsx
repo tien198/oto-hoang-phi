@@ -4,19 +4,19 @@ export const ProductsSection = () => {
       sku: 'BN-2004',
       name: 'Bơm nước làm mát',
       price: '1,200,000đ',
-      image: '/api/media/file/generated-1783491561656.png',
+      image: '/generated-1783491561656.png',
     },
     {
       sku: 'LD-2001',
       name: 'Lọc dầu động cơ',
       price: '150,000đ',
-      image: '/api/media/file/generated-1783491561213.png',
+      image: '/generated-1783491561213.png',
     },
     {
       sku: 'MP-2002',
       name: 'Má phanh trước',
       price: '850,000đ',
-      image: '/api/media/file/generated-1783491561249.png',
+      image: '/generated-1783491561249.png',
     },
   ]
 

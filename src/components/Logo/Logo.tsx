@@ -24,7 +24,7 @@ export const Logo = (props: Props) => {
       decoding="async"
       className={clsx('max-w-[9.375rem] w-full max-h-[9.375rem]', className)}
       // src="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-logo-light.svg"
-      src="/api/media/file/logo.png"
+      src="/logo.png"
     />
   )
 }

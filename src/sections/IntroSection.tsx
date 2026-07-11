@@ -17,7 +17,7 @@ export const IntroSection = () => {
       <div className="flex-1 w-full rounded-xl overflow-hidden shadow-lg h-[400px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/api/media/file/generated-1783491206653.png"
+          src="/generated-1783491206653.png"
           alt="Intro Image"
           className="w-full h-full object-cover"
         />

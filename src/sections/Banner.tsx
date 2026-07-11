@@ -8,7 +8,7 @@ export const Banner = () => {
       <div
         className="absolute inset-0 z-0 bg-contain bg-no-repeat bg-center"
         style={{
-          backgroundImage: 'url("/api/media/file/banner-desktop.jpg")',
+          backgroundImage: 'url("/banner-desktop.jpg")',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
