@@ -1,4 +1,6 @@
 import { Logo } from '@/components/Logo/Logo'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
 export const Header = () => {
@@ -13,21 +15,25 @@ export const Header = () => {
       <nav className="flex items-center gap-4 lg:gap-8">
         <Link
           href="#"
-          className="text-[#a1a1a1] font-medium text-base hover:text-white transition-colors"
+          className="text-muted-foreground font-medium text-base hover:text-white transition-colors"
         >
           Về chúng tôi
         </Link>
         <Link
           href="#"
-          className="text-[#a1a1a1] font-medium text-base hover:text-white transition-colors"
+          className="text-muted-foreground font-medium text-base hover:text-white transition-colors"
         >
           Tài nguyên
         </Link>
-        <Link
-          href="#contact"
-          className="bg-[#9f0712] text-white px-6 py-3 rounded-full font-semibold hover:bg-red-800 transition-colors"
-        >
-          Liên hệ ngay!
+        <Link href="#contact">
+          <Button
+            className={cn(
+              'bg-primary text-white px-6 py-5 rounded-full font-semibold ',
+              'hover:bg-white hover:text-primary transition-colors',
+            )}
+          >
+            Liên hệ ngay!
+          </Button>
         </Link>
       </nav>
     </header>
