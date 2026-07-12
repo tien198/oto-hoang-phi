@@ -17,12 +17,12 @@ export const Logo = (props: Props) => {
     /* eslint-disable @next/next/no-img-element */
     <img
       alt="Payload Logo"
-      width={193}
-      height={193}
+      // width={193}
+      // height={193}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('max-w-[9.375rem] w-full max-h-[9.375rem]', className)}
+      className={clsx('w-full', 'max-w-24', 'md:max-w-[9.375rem] md:max-h-[9.375rem]', className)}
       // src="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-logo-light.svg"
       src="/logo.png"
     />
