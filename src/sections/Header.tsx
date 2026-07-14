@@ -37,10 +37,10 @@ export const Header = () => {
         )}
       >
         <div className="flex items-center gap-10 lg:gap-14">
-          <div className="w-[120px] h-[138px] flex items-center relative z-10">
+          <Link href="/" className="w-[120px] h-[138px] flex items-center relative z-10">
             <Logo loading="eager" priority="high" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-          </div>
+          </Link>
         </div>
         <nav className="hidden md:flex items-center gap-4 lg:gap-8 ">
           <Link
