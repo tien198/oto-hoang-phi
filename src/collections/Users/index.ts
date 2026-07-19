@@ -1,26 +1,70 @@
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
+import { adminOnly } from '@/access/adminOnly'
+import { adminOnlyFieldAccess } from '@/access/adminOnlyFieldAccess'
+import { publicAccess } from '@/access/publicAccess'
+import { adminOrSelf } from '@/access/adminOrSelf'
+import { checkRole } from '@/access/utilities'
+
+import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
+import { generateUUID7 } from '@/hooks/generateUUID7'
 
 export const Users: CollectionConfig = {
   slug: 'users',
   access: {
-    admin: authenticated,
-    create: authenticated,
-    delete: authenticated,
-    read: authenticated,
-    update: authenticated,
+    admin: ({ req: { user } }) => checkRole(['admin'], user),
+    create: publicAccess,
+    delete: adminOnly,
+    read: adminOrSelf,
+    unlock: adminOnly,
+    update: adminOrSelf,
   },
   admin: {
-    defaultColumns: ['name', 'email'],
+    group: 'Users',
+    defaultColumns: ['name', 'email', 'roles'],
     useAsTitle: 'name',
   },
-  auth: true,
+  auth: {
+    tokenExpiration: 1209600,
+  },
   fields: [
+    {
+      name: 'id',
+      type: 'text',
+      admin: {
+        hidden: true,
+      },
+      hooks: {
+        beforeChange: [generateUUID7],
+      },
+    },
     {
       name: 'name',
       type: 'text',
     },
+    {
+      name: 'roles',
+      type: 'select',
+      access: {
+        create: adminOnlyFieldAccess,
+        read: adminOnlyFieldAccess,
+        update: adminOnlyFieldAccess,
+      },
+      defaultValue: ['customer'],
+      hasMany: true,
+      hooks: {
+        beforeChange: [ensureFirstUserIsAdmin],
+      },
+      options: [
+        {
+          label: 'admin',
+          value: 'admin',
+        },
+        {
+          label: 'customer',
+          value: 'customer',
+        },
+      ],
+    },
   ],
-  timestamps: true,
 }
