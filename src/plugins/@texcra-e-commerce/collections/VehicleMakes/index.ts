@@ -3,8 +3,8 @@ import { adminOnly } from '@/access/adminOnly'
 import { anyone } from '@/access/anyone'
 import { generateUUID7 } from '@/hooks/generateUUID7'
 
-export const Brands: CollectionConfig = {
-  slug: 'brands',
+export const VehicleMakes: CollectionConfig = {
+  slug: 'vehicle-makes',
   access: {
     create: adminOnly,
     update: adminOnly,
@@ -12,8 +12,8 @@ export const Brands: CollectionConfig = {
     delete: adminOnly,
   },
   admin: {
-    group: 'Inventory',
-    defaultColumns: ['name', 'slug', 'updatedAt'],
+    group: '<Texcra> E-Commerce',
+    defaultColumns: ['name', 'updatedAt'],
     useAsTitle: 'name',
   },
   fields: [

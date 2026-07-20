@@ -1,0 +1,2933 @@
+{
+  "version": "2.13",
+  "children": [
+    {
+      "type": "frame",
+      "id": "hFDxb",
+      "x": 1368,
+      "y": 0,
+      "name": "Home Page - Light",
+      "theme": {
+        "Mode": "Light"
+      },
+      "clip": true,
+      "width": 1440,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "uTMxA",
+          "name": "Header",
+          "reusable": true,
+          "width": "fill_container",
+          "height": 99,
+          "fill": "#111111",
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "zTLgt",
+              "name": "Left",
+              "gap": 60,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kZ1dW",
+                  "name": "Logo",
+                  "width": 120,
+                  "height": 138,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "images/brand/logo.png",
+                    "mode": "fit"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "U3NZC",
+              "name": "Nav",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sDaGp",
+                  "name": "Label",
+                  "fill": "#a1a1a1",
+                  "content": "Về chúng tôi",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "fMONL",
+                  "name": "Resource",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XNx3J",
+                      "name": "Label",
+                      "fill": "#a1a1a1",
+                      "content": "Tài nguyên",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "id": "t2lfV",
+                  "type": "ref",
+                  "ref": "D:xPENL",
+                  "x": 257,
+                  "y": 0,
+                  "fill": "$--primary",
+                  "descendants": {
+                    "D:4wJMf": {
+                      "enabled": false
+                    },
+                    "D:HazGS": {
+                      "content": "Liên hệ ngay!"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Xm1L7",
+          "name": "Banner",
+          "reusable": true,
+          "width": "fill_container",
+          "height": 773,
+          "fill": [
+            {
+              "type": "image",
+              "enabled": true,
+              "url": "images/brand/banner-desktop.jpg",
+              "mode": "fill"
+            },
+            {
+              "type": "gradient",
+              "gradientType": "linear",
+              "enabled": true,
+              "rotation": 0,
+              "size": {
+                "height": 1
+              },
+              "colors": [
+                {
+                  "color": "#00000000",
+                  "position": 1
+                },
+                {
+                  "color": "#000000",
+                  "position": 0
+                },
+                {
+                  "color": "#0000002c",
+                  "position": 0.92
+                }
+              ]
+            }
+          ],
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_around",
+          "alignItems": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Uwf1S",
+              "name": "Content",
+              "width": 1030,
+              "height": 238,
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                25,
+                0
+              ],
+              "justifyContent": "space_around",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kE6xb",
+                  "name": "Heading",
+                  "fill": "#ffffff",
+                  "textGrowth": "fixed-width",
+                  "width": "fit_content(958)",
+                  "content": "SẢN PHẨM ĐA DẠNG",
+                  "lineHeight": 1.2,
+                  "textAlign": "center",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 48,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "mQ9dX",
+                  "name": "Banner Buttons",
+                  "width": 601,
+                  "gap": 16,
+                  "justifyContent": "space_around",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "clVXI",
+                      "name": "Banner Products Btn",
+                      "width": 264,
+                      "fill": "$--accent",
+                      "cornerRadius": 32,
+                      "gap": 8,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KvKQf",
+                          "name": "Label",
+                          "fill": "$--primary",
+                          "content": "Sản phẩm",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dubC8",
+                      "name": "Banner Contact Btn",
+                      "width": 249,
+                      "fill": "$--primary",
+                      "cornerRadius": 32,
+                      "gap": 8,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dBX1K",
+                          "name": "Label",
+                          "fill": "$--primary-foreground",
+                          "content": "Liên hệ ngay",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "icon",
+                          "id": "I9Hc3",
+                          "name": "Icon",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "message-circle",
+                          "library": "lucide",
+                          "fill": "$--primary-foreground"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YgEO6",
+          "name": "Intro Section",
+          "reusable": true,
+          "width": "fill_container",
+          "height": 678,
+          "fill": "$--background",
+          "gap": 64,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "a4jA2",
+              "name": "Intro Text",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZXDkY",
+                  "name": "Heading",
+                  "fill": "$--primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Đối tác đáng tin cậy trong nhập khẩu và cung cấp các sản phẩm phụ tùng ô tô ",
+                  "lineHeight": 1.2,
+                  "fontFamily": "Montserrat",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "G1Tn2N",
+                  "name": "Paragraph",
+                  "fill": "$--muted-foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Cửa hàng phụ tùng ô tô Hoàng Phi là đơn vị nhập khẩu trực tiếp và phân phối các sản phẩm chính hãng, chất lượng cao các hãng xe Toyota, Hyundai, Kia, Ford, Mazda, Honda, Mitsubishi, Nissan, Suzuki... Với nhiều năm kinh nghiệm kinh doanh mặt hàng phụ tùng ô tô. Chúng tôi cam kết cung cấp các giải pháp về phụ tùng ô tô chính hãng, cao cấp linh hoạt, đáp ứng tiêu chuẩn chất lượng khắt khe nhất để mang lại sự an toàn tuyệt đối trên mọi hành trình",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Montserrat",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m3EL0",
+              "name": "Intro Image",
+              "clip": true,
+              "width": "fill_container",
+              "height": 400,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "images/generated-1783491206653.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 12
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tb1pg",
+          "name": "Products Section",
+          "reusable": true,
+          "width": "fill_container",
+          "height": 676,
+          "fill": "$D:--muted-foreground",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "PYadS",
+              "name": "Header",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FukVT",
+                  "name": "Section Label",
+                  "fill": "$--primary",
+                  "content": "SẢN PHẨM",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "BF1Fo",
+                  "name": "Heading",
+                  "fill": "$--foreground",
+                  "content": "Phụ Tùng Nổi Bật",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Cc4zJ",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "LJ67i",
+                  "type": "ref",
+                  "ref": "D:JENPq",
+                  "width": "fill_container",
+                  "x": 0,
+                  "y": 0,
+                  "descendants": {
+                    "D:Jbgz8": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/generated-1783491561656.png",
+                        "mode": "fill"
+                      }
+                    },
+                    "D:FFlaK": {
+                      "content": "Bơm nước làm mát"
+                    },
+                    "D:4MqKz": {
+                      "content": "SKU: BN-2004"
+                    },
+                    "D:Jt3oM/D:zHpCv": {
+                      "content": "1,200,000đ"
+                    },
+                    "D:FNWmv/D:poRwU": {
+                      "content": "Thêm vào giỏ"
+                    }
+                  }
+                },
+                {
+                  "id": "wRLzY",
+                  "type": "ref",
+                  "ref": "D:JENPq",
+                  "width": "fill_container",
+                  "descendants": {
+                    "D:Jbgz8": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/generated-1783491561213.png",
+                        "mode": "fill"
+                      }
+                    },
+                    "D:FFlaK": {
+                      "content": "Lọc dầu động cơ"
+                    },
+                    "D:4MqKz": {
+                      "content": "SKU: LD-2001"
+                    },
+                    "D:Jt3oM/D:zHpCv": {
+                      "content": "150,000đ"
+                    },
+                    "D:FNWmv/D:poRwU": {
+                      "content": "Thêm vào giỏ"
+                    }
+                  }
+                },
+                {
+                  "id": "G1xkr",
+                  "type": "ref",
+                  "ref": "D:JENPq",
+                  "width": "fill_container",
+                  "descendants": {
+                    "D:Jbgz8": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/generated-1783491561249.png",
+                        "mode": "fill"
+                      }
+                    },
+                    "D:FFlaK": {
+                      "content": "Má phanh trước"
+                    },
+                    "D:4MqKz": {
+                      "content": "SKU: MP-2002"
+                    },
+                    "D:Jt3oM/D:zHpCv": {
+                      "content": "850,000đ"
+                    },
+                    "D:FNWmv/D:poRwU": {
+                      "content": "Thêm vào giỏ"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ETCGb",
+          "name": "Contact Section",
+          "reusable": true,
+          "width": "fill_container",
+          "fill": "$--background",
+          "gap": 64,
+          "padding": 80,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ae6K8",
+              "name": "Contact Info",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "cbxvm",
+                  "fill": "$--primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Kết nối với chúng tôi",
+                  "lineHeight": 1.2,
+                  "fontFamily": "Montserrat",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "jMPEl",
+                  "fill": "$--muted-foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Hãy để lại thông tin, đội ngũ tư vấn của Phụ tùng Ô tô Hoàng Phi sẽ liên hệ lại với quý khách trong thời gian sớm nhất.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Montserrat",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "FnhXi",
+                  "width": "fill_container",
+                  "height": 93,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n9INj",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "ekH3W",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "map-pin",
+                          "library": "lucide",
+                          "fill": "$--primary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "RnUSQ",
+                          "fill": "$--foreground",
+                          "content": "123 Đường Công Nghiệp, Quận 1, TP. HCM, Việt Nam",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "c0NTUS",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "lRfMz",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "phone",
+                          "library": "lucide",
+                          "fill": "$--primary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "fwHeQ",
+                          "fill": "$--foreground",
+                          "content": "+84 123 456 789",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "mWO7a",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "FKm4S",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "mail",
+                          "library": "lucide",
+                          "fill": "$--primary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "It6MN",
+                          "fill": "$--foreground",
+                          "content": "contact@hoangphi-autoparts.vn",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "q3WEZ",
+              "name": "Contact Form",
+              "width": "fill_container",
+              "fill": "$--card",
+              "cornerRadius": 12,
+              "stroke": "$--border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 40,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zhqgi",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "g9kMr",
+                      "fill": "$--foreground",
+                      "content": "Họ và tên",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tzbbl",
+                      "width": "fill_container",
+                      "height": 48,
+                      "fill": "$--background",
+                      "cornerRadius": 6,
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "t1CVe",
+                          "fill": "$--muted-foreground",
+                          "content": "Nhập họ và tên...",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LXMLh",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "eiyZV",
+                      "fill": "$--foreground",
+                      "content": "Email",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "A7hO7G",
+                      "width": "fill_container",
+                      "height": 48,
+                      "fill": "$--background",
+                      "cornerRadius": 6,
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "zDb7E",
+                          "fill": "$--muted-foreground",
+                          "content": "Nhập email...",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HdPRf",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w865zJ",
+                      "fill": "$--foreground",
+                      "content": "Số điện thoại",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dmK3I",
+                      "width": "fill_container",
+                      "height": 48,
+                      "fill": "$--background",
+                      "cornerRadius": 6,
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "cpGoy",
+                          "fill": "$--muted-foreground",
+                          "content": "Nhập số điện thoại...",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "c4K9fa",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Sy7Jd",
+                      "fill": "$--foreground",
+                      "content": "Quy khách đang cần những gì ?",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "y8noU",
+                      "width": "fill_container",
+                      "height": 120,
+                      "fill": "$--background",
+                      "cornerRadius": 6,
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "eRajp",
+                          "fill": "$--muted-foreground",
+                          "content": "Nhập nội dung tin nhắn...",
+                          "fontFamily": "Montserrat",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HzeQJ",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$--primary",
+                  "cornerRadius": 6,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FLson",
+                      "fill": "$--primary-foreground",
+                      "content": "Gửi Tin Nhắn",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "c8UHv",
+          "name": "Footer",
+          "reusable": true,
+          "width": "fill_container",
+          "fill": "$D:--accent-foreground",
+          "layout": "vertical",
+          "gap": 64,
+          "padding": [
+            64,
+            80,
+            24,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "g9l5vI",
+              "width": "fill_container",
+              "height": 149,
+              "gap": 48,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Rhp0R",
+                  "width": 360,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Ibizu",
+                      "width": 135,
+                      "height": 86,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/brand/logo.png",
+                        "mode": "fit"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "EZ1jJ",
+                      "fill": "$--muted-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": 420,
+                      "content": "Nhà cung cấp phụ tùng ô tô uy tín, chất lượng hàng đầu.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "l1S3GH",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "K8BgF",
+                      "fill": "$D:--accent",
+                      "content": "Về Hoàng Phi",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZpcMs",
+                      "fill": "$--muted-foreground",
+                      "content": "Trang chủ",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZrPtt",
+                      "fill": "$--muted-foreground",
+                      "content": "Sản phẩm",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "E04of",
+                      "fill": "$--muted-foreground",
+                      "content": "Về chúng tôi",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "a9482j",
+                      "fill": "$--muted-foreground",
+                      "content": "Liên hệ",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HK37o",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BPeBA",
+                      "fill": "$D:--accent",
+                      "content": "Chính sách",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jivfE",
+                      "fill": "$--muted-foreground",
+                      "content": "Chính sách đổi trả",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N9jCJ",
+                      "fill": "$--muted-foreground",
+                      "content": "Bảo hành",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "TOvz6",
+              "width": "fill_container",
+              "stroke": "$--border",
+              "strokeWidth": {
+                "top": 1
+              },
+              "strokeAlignment": "inner",
+              "padding": [
+                24,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "r3x5V",
+                  "fill": "$--muted-foreground",
+                  "content": "© 2026 Phụ tùng Ô tô Hoàng Phi. Tất cả các quyền được bảo lưu.",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "hkA7w",
+      "x": 3002,
+      "y": 0,
+      "name": "Products Search - Light 0",
+      "theme": {
+        "Mode": "Light"
+      },
+      "clip": true,
+      "width": 1440,
+      "height": 1240,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "EUrtn",
+          "type": "ref",
+          "ref": "uTMxA",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "type": "frame",
+          "id": "x0eE2U",
+          "name": "Searh Bar",
+          "reusable": true,
+          "width": 1439,
+          "fill": "$--card",
+          "stroke": "$--border",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "gap": 16,
+          "padding": [
+            16,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "XOQJF",
+              "name": "Title Group",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ENYhH",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "chevrons-right",
+                  "library": "lucide",
+                  "fill": "$--primary"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "neIqD",
+              "width": 612,
+              "fill": "$--background",
+              "cornerRadius": 6,
+              "stroke": "$--border",
+              "strokeWidth": 1,
+              "gap": 8,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ShevM",
+                  "fill": "$--destructive",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Nhập tên phụ tùng...",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "icon",
+                  "id": "Lcu05",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "$--muted-foreground"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Fdojc",
+              "width": 180,
+              "fill": "$--background",
+              "cornerRadius": 6,
+              "stroke": "$--border",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "W2lk9",
+                  "fill": "$--destructive",
+                  "content": "TOYOTA",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "icon",
+                  "id": "jGckR",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$--destructive"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aDZSm",
+              "width": 180,
+              "fill": "$--background",
+              "cornerRadius": 6,
+              "stroke": "$--border",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "E4q3V",
+                  "fill": "$--destructive",
+                  "content": "INNOVA",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "icon",
+                  "id": "XZzPR",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$--destructive"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ufsmB",
+              "width": 180,
+              "fill": "$--background",
+              "cornerRadius": 6,
+              "stroke": "$--border",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hBKSq",
+                  "fill": "$--destructive",
+                  "content": "2000",
+                  "fontFamily": "Montserrat",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "icon",
+                  "id": "FnVNY",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$--destructive"
+                }
+              ]
+            },
+            {
+              "id": "q7BOM",
+              "type": "ref",
+              "ref": "D:ghKmL",
+              "stroke": "$--primary",
+              "descendants": {
+                "D:vLff5": {
+                  "enabled": false
+                },
+                "D:ydXf3": {
+                  "content": "Tìm kiếm"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "o7AzIo",
+          "name": "Content Area",
+          "width": "fill_container",
+          "gap": 32,
+          "padding": [
+            32,
+            24
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "t3mMJ5",
+              "name": "Brand Sidebar",
+              "reusable": true,
+              "width": 300,
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "nykLe",
+                  "name": "Section 1",
+                  "width": "fill_container",
+                  "fill": "$--background",
+                  "stroke": "$--border",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "U1NEBT",
+                      "name": "Brand List",
+                      "width": "fill_container",
+                      "fill": "$--background",
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "IrFcp",
+                          "name": "Title Row",
+                          "width": "fill_container",
+                          "fill": "$--primary",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "DOkmd",
+                              "name": "Title",
+                              "fill": "$--primary-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "PHỤ TÙNG CHÍNH HÃNG",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 16,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "CNeQ7",
+                          "name": "Phụ Tùng Toyota",
+                          "width": "fill_container",
+                          "fill": "$--background",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "CP6W3",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng TOYOTA",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "KaoOP",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "UIZyc",
+                          "name": "Phụ Tùng Hyundai",
+                          "width": "fill_container",
+                          "fill": "$--muted",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "OQZXn",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng HYUNDAI",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "XpENT",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "rtnoz",
+                          "name": "Phụ Tùng Kia",
+                          "width": "fill_container",
+                          "fill": "$--background",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "w8qUml",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng KIA",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "teVF4",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "g56i2F",
+                          "name": "Phụ Tùng Ford",
+                          "width": "fill_container",
+                          "fill": "$--muted",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "SCkMe",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng FORD",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "rdgcV",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ZcrB5",
+                          "name": "Phụ Tùng Mazda",
+                          "width": "fill_container",
+                          "fill": "$--background",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "eTfT2",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng MAZDA",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "EMIcI",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "EKeva",
+                          "name": "Phụ Tùng Honda",
+                          "width": "fill_container",
+                          "fill": "$--muted",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "v4GZU",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng HONDA",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "N0Xbq",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "y27pyP",
+                          "name": "Phụ Tùng Mitsubishi",
+                          "width": "fill_container",
+                          "fill": "$--background",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "pcom7",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng MITSUBISHI",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "o23xAt",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "E90n2z",
+                          "name": "Phụ Tùng Nissan",
+                          "width": "fill_container",
+                          "fill": "$--muted",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qfLID",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng NISSAN",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "yAqjI",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "GLvOn",
+                          "name": "Phụ Tùng Suzuki",
+                          "width": "fill_container",
+                          "fill": "$--background",
+                          "padding": [
+                            16,
+                            24
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "hWgQJ",
+                              "name": "Label",
+                              "fill": "$--foreground",
+                              "content": "Phụ Tùng SUZUKI",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "J1nXFf",
+                              "name": "Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wtAyi",
+                  "width": "fill_container",
+                  "fill": "$D:--muted-foreground",
+                  "padding": [
+                    16,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vaUFV",
+                      "rotation": -0.0024313136116751186,
+                      "fill": "$--primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "PHỤ TÙNG OEM",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "V2z6WR",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "$--primary"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sJkqm",
+              "name": "Product NotFound",
+              "reusable": true,
+              "width": "fill_container",
+              "height": 81,
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "g00Eg",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "h03PvD",
+                      "fill": "$--primary",
+                      "content": "Không tìm thấy sản phẩm thỏa điều kiện !",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 22,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yu9WP",
+                      "width": 120,
+                      "height": 3,
+                      "fill": "$--primary"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "nWf1H",
+      "x": 6098,
+      "y": 0,
+      "name": "Products Search - Light 2",
+      "theme": {
+        "Mode": "Light"
+      },
+      "clip": true,
+      "width": 1440,
+      "height": 1228,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "FBrRc",
+          "type": "ref",
+          "ref": "uTMxA",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "W8f6A",
+          "type": "ref",
+          "ref": "x0eE2U",
+          "x": 0,
+          "y": 99
+        },
+        {
+          "type": "frame",
+          "id": "v0Fl9",
+          "name": "Content Area",
+          "width": "fill_container",
+          "height": 1070,
+          "gap": 32,
+          "padding": [
+            32,
+            24
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "id": "vApKW",
+              "type": "ref",
+              "ref": "t3mMJ5"
+            },
+            {
+              "type": "frame",
+              "id": "ghv16",
+              "name": "Product List",
+              "reusable": true,
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "taxMP",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w2gySJ",
+                      "fill": "$--primary",
+                      "content": "KẾT QUẢ TÌM KIẾM",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 22,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "toZv3",
+                      "width": 120,
+                      "height": 3,
+                      "fill": "$--primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "S605Cd",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hqZ8y",
+                      "width": "fill_container",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "id": "u9ZWy4",
+                          "type": "ref",
+                          "ref": "D:JENPq",
+                          "width": "fill_container",
+                          "x": 0,
+                          "y": 0,
+                          "descendants": {
+                            "D:Jbgz8": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/generated-1783491561656.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "D:FFlaK": {
+                              "content": "Bơm nước làm mát"
+                            },
+                            "D:4MqKz": {
+                              "content": "SKU: BN-2004"
+                            },
+                            "D:Jt3oM/D:zHpCv": {
+                              "content": "1,200,000đ"
+                            },
+                            "D:FNWmv/D:poRwU": {
+                              "content": "Thêm vào giỏ"
+                            }
+                          }
+                        },
+                        {
+                          "id": "Z5Ujzs",
+                          "type": "ref",
+                          "ref": "D:JENPq",
+                          "width": "fill_container",
+                          "descendants": {
+                            "D:Jbgz8": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/generated-1783491561213.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "D:FFlaK": {
+                              "content": "Lọc dầu động cơ"
+                            },
+                            "D:4MqKz": {
+                              "content": "SKU: LD-2001"
+                            },
+                            "D:Jt3oM/D:zHpCv": {
+                              "content": "150,000đ"
+                            },
+                            "D:FNWmv/D:poRwU": {
+                              "content": "Thêm vào giỏ"
+                            }
+                          }
+                        },
+                        {
+                          "id": "zh019",
+                          "type": "ref",
+                          "ref": "D:JENPq",
+                          "width": "fill_container",
+                          "descendants": {
+                            "D:Jbgz8": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/generated-1783491561249.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "D:FFlaK": {
+                              "content": "Má phanh trước"
+                            },
+                            "D:4MqKz": {
+                              "content": "SKU: MP-2002"
+                            },
+                            "D:Jt3oM/D:zHpCv": {
+                              "content": "850,000đ"
+                            },
+                            "D:FNWmv/D:poRwU": {
+                              "content": "Thêm vào giỏ"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LXKmi",
+                      "width": "fill_container",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "id": "WuyEW",
+                          "type": "ref",
+                          "ref": "D:JENPq",
+                          "width": "fill_container",
+                          "descendants": {
+                            "D:Jbgz8": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/generated-1783491561565.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "D:FFlaK": {
+                              "content": "Curoa cam"
+                            },
+                            "D:4MqKz": {
+                              "content": "SKU: CR-2003"
+                            },
+                            "D:Jt3oM/D:zHpCv": {
+                              "content": "450,000đ"
+                            },
+                            "D:FNWmv/D:poRwU": {
+                              "content": "Thêm vào giỏ"
+                            }
+                          }
+                        },
+                        {
+                          "id": "z2sUX",
+                          "type": "ref",
+                          "ref": "D:JENPq",
+                          "width": "fill_container",
+                          "x": 361.3333333333333,
+                          "y": 0,
+                          "descendants": {
+                            "D:Jbgz8": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/generated-1783491206653.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "D:FFlaK": {
+                              "content": "Bugi Toyota Innova"
+                            },
+                            "D:4MqKz": {
+                              "content": "SKU: BG-2000"
+                            },
+                            "D:Jt3oM/D:zHpCv": {
+                              "content": "250,000đ"
+                            },
+                            "D:FNWmv/D:poRwU": {
+                              "content": "Thêm vào giỏ"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "KjTgY",
+                          "width": "fill_container",
+                          "height": "fit_content(0)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WV1VM",
+                  "width": "fill_container",
+                  "padding": [
+                    32,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jPc7x",
+                      "name": "Pagination",
+                      "gap": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "EaKCC",
+                          "name": "Previous",
+                          "width": 40,
+                          "height": 40,
+                          "cornerRadius": 6,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "SHWTO",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-left",
+                              "library": "lucide",
+                              "fill": "$--muted-foreground"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "J24UX",
+                          "name": "Page 1",
+                          "width": 40,
+                          "height": 40,
+                          "fill": "$--card",
+                          "cornerRadius": 6,
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "uiCUt",
+                              "fill": "$--foreground",
+                              "content": "1",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "D83aR",
+                          "name": "Page 2",
+                          "width": 40,
+                          "height": 40,
+                          "cornerRadius": 6,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "s5IFx",
+                              "fill": "$--foreground",
+                              "content": "2",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "w2iWGv",
+                          "name": "Page 3",
+                          "width": 40,
+                          "height": 40,
+                          "cornerRadius": 6,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Q1MThn",
+                              "fill": "$--foreground",
+                              "content": "3",
+                              "fontFamily": "Montserrat",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "d7UJqq",
+                          "name": "Next",
+                          "width": 40,
+                          "height": 40,
+                          "cornerRadius": 6,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "L1WrDY",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$--foreground"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bFEvN",
+              "layoutPosition": "absolute",
+              "x": 324,
+              "y": 85,
+              "name": "Submenu",
+              "reusable": true,
+              "width": "fill_container(629)",
+              "height": "fill_container(500)",
+              "fill": "$--card",
+              "cornerRadius": 4,
+              "stroke": "$--primary",
+              "strokeWidth": 1,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000004d",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                },
+                "blur": 10
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "F1gphw",
+                  "name": "INNOVA",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DfmGF",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KhRPY",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "INNOVA",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "BDVfv",
+                  "name": "VIOS",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "O5ZbZj",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EPEQi",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "VIOS",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "uUu5R",
+                  "name": "FORTUNER",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "stroke": "$--primary",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GDvTZ",
+                      "name": "Prefix",
+                      "fill": "$--primary",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "yQD7E",
+                      "name": "Model",
+                      "fill": "$--primary",
+                      "content": "FORTUNER",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "h526wU",
+                  "name": "ALTIS",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w7HSjv",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SX7LN",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "ALTIS",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ItJFa",
+                  "name": "CAMRY",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Fbzb2",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JYxxx",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "CAMRY",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "uY0n0",
+                  "name": "YARIS",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uQUvA",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VMnfk",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "YARIS",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Shgzv",
+                  "name": "HILUX",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Vj81X",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "PcbPL",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "HILUX",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JQNkz",
+                  "name": "CROSS",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Nk8Nk",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EkZuS",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "CROSS",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AebhO",
+                  "name": "LAND CRUISER",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vCSK7",
+                      "name": "Prefix",
+                      "fill": "$--foreground",
+                      "content": "»",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VgmeW",
+                      "name": "Model",
+                      "fill": "$--foreground",
+                      "content": "LAND CRUISER",
+                      "fontFamily": "Montserrat",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Dkt9F",
+      "x": 4569,
+      "y": 0,
+      "name": "Products Search - Light 1",
+      "theme": {
+        "Mode": "Light"
+      },
+      "clip": true,
+      "width": 1440,
+      "height": 1228,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "wdt2q",
+          "type": "ref",
+          "ref": "uTMxA",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "HY2sf",
+          "type": "ref",
+          "ref": "x0eE2U",
+          "x": 0,
+          "y": 99
+        },
+        {
+          "type": "frame",
+          "id": "oCxEg",
+          "name": "Content Area",
+          "width": "fill_container",
+          "height": 1070,
+          "gap": 32,
+          "padding": [
+            32,
+            24
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "id": "r8ERU",
+              "type": "ref",
+              "ref": "t3mMJ5"
+            },
+            {
+              "id": "vuK5b",
+              "type": "ref",
+              "ref": "ghv16"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "themes": {
+    "Mode": [
+      "Dark",
+      "Light"
+    ]
+  },
+  "variables": {
+    "--chart-1": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#d4d4d4",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--chart-2": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#737373",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--accent": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#262626",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#f5f5f5",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--accent-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#171717",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--background": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#0a0a0a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--border": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff1a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#e5e5e5",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--card": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#171717",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--card-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#0a0a0a",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--chart-3": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#525252",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--chart-4": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#404040",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--chart-5": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#262626",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--destructive": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ff6467",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#e7000b",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#0a0a0a",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--input": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff26",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#e5e5e5",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--muted": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#262626",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#f5f5f5",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--muted-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#a1a1a1",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#737373",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--popover": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#171717",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--popover-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#0a0a0a",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--primary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#9f0712",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#9f0712",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--primary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fef2f2",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#fef2f2",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--radius": {
+      "type": "number",
+      "value": 10
+    },
+    "--ring": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#737373",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#a3a3a3",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--secondary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#27272a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#f5f5f5",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--secondary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        },
+        {
+          "value": "#171717",
+          "theme": {
+            "Mode": "Light"
+          }
+        }
+      ]
+    },
+    "--sidebar": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#171717",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-accent": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#262626",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-accent-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-border": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff1a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-primary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fb2c36",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-primary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fef2f2",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-ring": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#737373",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "D": "pencil:shadcn.lib.pen"
+  }
+}

@@ -30,7 +30,7 @@ export const Products: CollectionConfig = {
     delete: adminOnly,
   },
   admin: {
-    group: 'Commerce',
+    group: '<Texcra> E-Commerce',
     defaultColumns: ['name', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
@@ -129,6 +129,23 @@ export const Products: CollectionConfig = {
           ],
         },
       ],
+    },
+    {
+      name: 'vehicle-models',
+      type: 'relationship',
+      relationTo: 'vehicle-models',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'model-fitments',
+      type: 'relationship',
+      relationTo: 'vehicle-models',
+      hasMany: true,
+      admin: {
+        position: 'sidebar',
+      },
     },
     slugField({
       useAsSlug: 'name',

@@ -1,0 +1,37 @@
+// Database schema chuyển đổi từ bản phác thảo tay (đã cập nhật theo bút đỏ)
+
+Table makes {
+  id integer [primary key]
+  name varchar
+  logo_url varchar
+}
+
+Table products {
+  id integer [primary key]
+  name varchar
+  price numeric
+  type varchar
+  vehicle_models_id integer
+  slug varchar
+}
+
+Table vehicle_models {
+  id integer [primary key]
+  model_name varchar [note: 'draft']
+  name varchar
+  make_id integer
+  model_year integer
+}
+
+Table compatible {
+  prod_id integer
+  vehicle_models_id integer
+}
+
+// Các mối quan hệ (Relationships) dựa theo đường nối trong hình:
+Ref: products.vehicle_models_id > vehicle_models.id
+Ref: compatible.prod_id > products.id
+Ref: compatible.vehicle_models_id > vehicle_models.id
+
+// Quan hệ logic bổ sung (mặc dù không vẽ đường nối nhưng dựa trên tên trường)
+Ref: vehicle_models.make_id > makes.id

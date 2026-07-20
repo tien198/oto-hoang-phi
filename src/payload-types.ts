@@ -69,7 +69,6 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
-    products: Product;
     media: Media;
     categories: Category;
     users: User;
@@ -77,6 +76,9 @@ export interface Config {
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
+    products: Product;
+    'vehicle-makes': VehicleMake;
+    'vehicle-models': VehicleModel;
     'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-folders': FolderInterface;
@@ -92,7 +94,6 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
-    products: ProductsSelect<false> | ProductsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -100,6 +101,9 @@ export interface Config {
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
+    'vehicle-makes': VehicleMakesSelect<false> | VehicleMakesSelect<true>;
+    'vehicle-models': VehicleModelsSelect<false> | VehicleModelsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
@@ -786,52 +790,6 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "products".
- */
-export interface Product {
-  id: string;
-  name: string;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  gallery?:
-    | {
-        image: number | Media;
-        id?: string | null;
-      }[]
-    | null;
-  layouts?: (MediaBlock | ContentBlock | CallToActionBlock)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -901,6 +859,77 @@ export interface Search {
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: string;
+  name: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  gallery?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  layouts?: (MediaBlock | ContentBlock | CallToActionBlock)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  'vehicle-models'?: (string | null) | VehicleModel;
+  'model-fitments'?: (string | VehicleModel)[] | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vehicle-models".
+ */
+export interface VehicleModel {
+  id: string;
+  name: string;
+  make: string | VehicleMake;
+  'model-year': number;
+  'vehicle-specification'?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vehicle-makes".
+ */
+export interface VehicleMake {
+  id: string;
+  name: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1029,10 +1058,6 @@ export interface PayloadLockedDocument {
         value: number | Post;
       } | null)
     | ({
-        relationTo: 'products';
-        value: string | Product;
-      } | null)
-    | ({
         relationTo: 'media';
         value: number | Media;
       } | null)
@@ -1059,6 +1084,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: number | Search;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: string | Product;
+      } | null)
+    | ({
+        relationTo: 'vehicle-makes';
+        value: string | VehicleMake;
+      } | null)
+    | ({
+        relationTo: 'vehicle-models';
+        value: string | VehicleModel;
       } | null)
     | ({
         relationTo: 'payload-folders';
@@ -1265,40 +1302,6 @@ export interface PostsSelect<T extends boolean = true> {
     | {
         id?: T;
         name?: T;
-      };
-  generateSlug?: T;
-  slug?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "products_select".
- */
-export interface ProductsSelect<T extends boolean = true> {
-  id?: T;
-  name?: T;
-  description?: T;
-  gallery?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
-  layouts?:
-    | T
-    | {
-        mediaBlock?: T | MediaBlockSelect<T>;
-        content?: T | ContentBlockSelect<T>;
-        cta?: T | CallToActionBlockSelect<T>;
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
       };
   generateSlug?: T;
   slug?: T;
@@ -1634,6 +1637,65 @@ export interface SearchSelect<T extends boolean = true> {
         title?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  id?: T;
+  name?: T;
+  description?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  layouts?:
+    | T
+    | {
+        mediaBlock?: T | MediaBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        cta?: T | CallToActionBlockSelect<T>;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  'vehicle-models'?: T;
+  'model-fitments'?: T;
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vehicle-makes_select".
+ */
+export interface VehicleMakesSelect<T extends boolean = true> {
+  id?: T;
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vehicle-models_select".
+ */
+export interface VehicleModelsSelect<T extends boolean = true> {
+  id?: T;
+  name?: T;
+  make?: T;
+  'model-year'?: T;
+  'vehicle-specification'?: T;
   updatedAt?: T;
   createdAt?: T;
 }

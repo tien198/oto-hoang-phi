@@ -1,0 +1,139 @@
+{
+  "version": "2.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "currentViewName": null,
+  "defaultView": {
+    "detailLevel": "All",
+    "tablePositions": [
+      {
+        "name": "vehicle_models",
+        "schemaName": "public",
+        "x": 743.5288870148875,
+        "y": 441.3647176860894
+      },
+      {
+        "name": "makes",
+        "schemaName": "public",
+        "x": 362.90897799646484,
+        "y": 397.294279484089
+      },
+      {
+        "name": "products",
+        "schemaName": "public",
+        "x": 698.8542693616752,
+        "y": 39.26219404784905
+      },
+      {
+        "name": "compatible",
+        "schemaName": "public",
+        "x": 1151.9825341299716,
+        "y": 232.75832345293293
+      }
+    ],
+    "tableGroupCollapseStates": [],
+    "stickyNoteLayouts": [],
+    "referencePaths": [
+      {
+        "firstFieldNames": [
+          "make_id"
+        ],
+        "firstTableName": "vehicle_models",
+        "firstSchemaName": "public",
+        "firstRelation": "*",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "makes",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "vehicle_model_id"
+        ],
+        "firstTableName": "products",
+        "firstSchemaName": "public",
+        "firstRelation": "*",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "vehicle_models",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "prod_id"
+        ],
+        "firstTableName": "compatible",
+        "firstSchemaName": "public",
+        "firstRelation": "*",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "products",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "vehicle_model_id"
+        ],
+        "firstTableName": "compatible",
+        "firstSchemaName": "public",
+        "firstRelation": "*",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "vehicle_models",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": [
+          {
+            "x": 1088.8888747791264,
+            "y": 312.7583234529329
+          },
+          {
+            "x": 1088.8888747791264,
+            "y": 489.3647176860894
+          }
+        ]
+      },
+      {
+        "firstFieldNames": [
+          "vehicle_models_id"
+        ],
+        "firstTableName": "products",
+        "firstSchemaName": "public",
+        "firstRelation": "*",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "vehicle_models",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "vehicle_models_id"
+        ],
+        "firstTableName": "compatible",
+        "firstSchemaName": "public",
+        "firstRelation": "*",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "vehicle_models",
+        "secondSchemaName": "public",
+        "secondRelation": "1",
+        "checkPoints": []
+      }
+    ]
+  },
+  "views": {}
+}
