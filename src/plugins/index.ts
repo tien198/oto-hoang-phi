@@ -25,9 +25,14 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 }
 
 export const plugins: Plugin[] = [
+  // custom plugins
+  texCraECommercePlugin({}),
+
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {
+      admin: { group: 'Utilities' },
+
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
@@ -55,11 +60,13 @@ export const plugins: Plugin[] = [
     generateTitle,
     generateURL,
   }),
+
   formBuilderPlugin({
     fields: {
       payment: false,
     },
     formOverrides: {
+      admin: { group: 'Utilities' },
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
           if ('name' in field && field.name === 'confirmationMessage') {
@@ -80,17 +87,19 @@ export const plugins: Plugin[] = [
         })
       },
     },
+    formSubmissionOverrides: {
+      admin: { group: 'Utilities' },
+    },
   }),
   searchPlugin({
     collections: ['posts'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
+      admin: { group: 'Utilities' },
+
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
       },
     },
   }),
-
-  // custom plugins
-  texCraECommercePlugin({}),
 ]

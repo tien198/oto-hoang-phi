@@ -12,7 +12,7 @@ export const VehicleMakes: CollectionConfig = {
     delete: adminOnly,
   },
   admin: {
-    group: '<Texcra> E-Commerce',
+    group: 'E-Commerce',
     defaultColumns: ['name', 'updatedAt'],
     useAsTitle: 'name',
   },

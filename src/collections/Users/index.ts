@@ -20,7 +20,7 @@ export const Users: CollectionConfig = {
     update: adminOrSelf,
   },
   admin: {
-    group: 'Users',
+    // group: 'Users',
     defaultColumns: ['name', 'email', 'roles'],
     useAsTitle: 'name',
   },

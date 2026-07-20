@@ -12,7 +12,7 @@ export const VehicleModels: CollectionConfig = {
     delete: adminOnly,
   },
   admin: {
-    group: '<Texcra> E-Commerce',
+    group: 'E-Commerce',
     defaultColumns: ['name', 'model-year', 'updatedAt'],
     useAsTitle: 'vehicle-specification',
   },

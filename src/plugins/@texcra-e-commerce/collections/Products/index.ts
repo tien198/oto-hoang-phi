@@ -30,7 +30,7 @@ export const Products: CollectionConfig = {
     delete: adminOnly,
   },
   admin: {
-    group: '<Texcra> E-Commerce',
+    group: 'E-Commerce',
     defaultColumns: ['name', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>

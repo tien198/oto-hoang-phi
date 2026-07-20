@@ -10,6 +10,7 @@ type PluginOptions = {
 
 export const texCraECommercePlugin = definePlugin<PluginOptions>({
   slug: 'texcra-e-commerce',
+  order: 0,
   plugin: ({ config }) => {
     return {
       ...config,

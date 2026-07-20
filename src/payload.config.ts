@@ -64,7 +64,7 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  // globals: [Header, Footer],
   plugins,
   secret: process.env.PAYLOAD_SECRET,
   // sharp,
