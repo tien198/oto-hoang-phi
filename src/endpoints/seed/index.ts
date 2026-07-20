@@ -20,7 +20,7 @@ const collections: CollectionSlug[] = [
   'search',
 ]
 
-const globals: GlobalSlug[] = ['header', 'footer']
+// const globals: GlobalSlug[] = ['header', 'footer']
 
 const categories = ['Technology', 'News', 'Finance', 'Design', 'Software', 'Engineering']
 
@@ -44,20 +44,20 @@ export const seed = async ({
   payload.logger.info(`— Clearing collections and globals...`)
 
   // clear the database
-  await Promise.all(
-    globals.map((global) =>
-      payload.updateGlobal({
-        slug: global,
-        data: {
-          navItems: [],
-        },
-        depth: 0,
-        context: {
-          disableRevalidate: true,
-        },
-      }),
-    ),
-  )
+  // await Promise.all(
+  //   globals.map((global) =>
+  //     payload.updateGlobal({
+  //       slug: global,
+  //       data: {
+  //         navItems: [],
+  //       },
+  //       depth: 0,
+  //       context: {
+  //         disableRevalidate: true,
+  //       },
+  //     }),
+  //   ),
+  // )
 
   await Promise.all(
     collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })),
@@ -217,62 +217,62 @@ export const seed = async ({
 
   payload.logger.info(`— Seeding globals...`)
 
-  await Promise.all([
-    payload.updateGlobal({
-      slug: 'header',
-      data: {
-        navItems: [
-          {
-            link: {
-              type: 'custom',
-              label: 'Posts',
-              url: '/posts',
-            },
-          },
-          {
-            link: {
-              type: 'reference',
-              label: 'Contact',
-              reference: {
-                relationTo: 'pages',
-                value: contactPage.id,
-              },
-            },
-          },
-        ],
-      },
-    }),
-    payload.updateGlobal({
-      slug: 'footer',
-      data: {
-        navItems: [
-          {
-            link: {
-              type: 'custom',
-              label: 'Admin',
-              url: '/admin',
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Source Code',
-              newTab: true,
-              url: 'https://github.com/payloadcms/payload/tree/3.x/templates/website',
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Payload',
-              newTab: true,
-              url: 'https://payloadcms.com/',
-            },
-          },
-        ],
-      },
-    }),
-  ])
+  // await Promise.all([
+  //   payload.updateGlobal({
+  //     slug: 'header',
+  //     data: {
+  //       navItems: [
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Posts',
+  //             url: '/posts',
+  //           },
+  //         },
+  //         {
+  //           link: {
+  //             type: 'reference',
+  //             label: 'Contact',
+  //             reference: {
+  //               relationTo: 'pages',
+  //               value: contactPage.id,
+  //             },
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   }),
+  //   payload.updateGlobal({
+  //     slug: 'footer',
+  //     data: {
+  //       navItems: [
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Admin',
+  //             url: '/admin',
+  //           },
+  //         },
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Source Code',
+  //             newTab: true,
+  //             url: 'https://github.com/payloadcms/payload/tree/3.x/templates/website',
+  //           },
+  //         },
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Payload',
+  //             newTab: true,
+  //             url: 'https://payloadcms.com/',
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   }),
+  // ])
 
   payload.logger.info('Seeded database successfully!')
 }
