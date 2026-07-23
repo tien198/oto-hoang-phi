@@ -11,6 +11,16 @@ export const VehicleMakes: CollectionConfig = {
     read: anyone,
     delete: adminOnly,
   },
+  labels: {
+    plural: {
+      en: 'Vehicle Makes',
+      vi: 'Hãng xe',
+    },
+    singular: {
+      en: 'Vehicle Make',
+      vi: 'Hãng xe',
+    },
+  },
   admin: {
     group: 'E-Commerce',
     defaultColumns: ['name', 'updatedAt'],
@@ -27,6 +37,14 @@ export const VehicleMakes: CollectionConfig = {
         beforeChange: [generateUUID7],
       },
     },
-    { name: 'name', type: 'text', required: true },
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+      label: {
+        en: 'Name',
+        vi: 'Tên hãng xe',
+      },
+    },
   ],
 }

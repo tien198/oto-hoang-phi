@@ -11,6 +11,16 @@ export const VehicleModels: CollectionConfig = {
     read: anyone,
     delete: adminOnly,
   },
+  labels: {
+    plural: {
+      en: 'Vehicle Models',
+      vi: 'Dòng xe',
+    },
+    singular: {
+      en: 'Vehicle Model',
+      vi: 'Dòng xe',
+    },
+  },
   admin: {
     group: 'E-Commerce',
     defaultColumns: ['name', 'model-year', 'updatedAt'],
@@ -27,17 +37,33 @@ export const VehicleModels: CollectionConfig = {
         beforeChange: [generateUUID7],
       },
     },
-    { name: 'name', type: 'text', required: true },
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+      label: {
+        en: 'Name',
+        vi: 'Tên dòng xe',
+      },
+    },
     {
       name: 'make',
       type: 'relationship',
       relationTo: 'vehicle-makes',
       required: true,
+      label: {
+        en: 'Make',
+        vi: 'Hãng xe',
+      },
     },
     {
       name: 'model-year',
       type: 'number',
       required: true,
+      label: {
+        en: 'Model Year',
+        vi: 'Năm sản xuất',
+      },
     },
     {
       name: 'vehicle-specification',

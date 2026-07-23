@@ -29,6 +29,16 @@ export const Products: CollectionConfig = {
     read: anyone,
     delete: adminOnly,
   },
+  labels: {
+    plural: {
+      en: 'Products',
+      vi: 'Sản phẩm',
+    },
+    singular: {
+      en: 'Product',
+      vi: 'Sản phẩm',
+    },
+  },
   admin: {
     group: 'E-Commerce',
     defaultColumns: ['name', 'slug', 'updatedAt'],
@@ -60,21 +70,40 @@ export const Products: CollectionConfig = {
         beforeChange: [generateUUID7],
       },
     },
-    { name: 'name', type: 'text', required: true },
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+      label: {
+        en: 'Name',
+        vi: 'Tên sản phẩm',
+      },
+    },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Details',
+          label: {
+            en: 'Details',
+            vi: 'Chi tiết',
+          },
           fields: [
             {
               name: 'price',
               type: 'number',
               required: true,
+              label: {
+                en: 'Price',
+                vi: 'Giá',
+              },
             },
             {
               name: 'description',
               type: 'richText',
+              label: {
+                en: 'Description',
+                vi: 'Mô tả',
+              },
               // label: false,
               editor: lexicalEditor({
                 features: ({ rootFeatures }) => [
@@ -90,25 +119,40 @@ export const Products: CollectionConfig = {
               name: 'gallery',
               type: 'array',
               minRows: 1,
+              label: {
+                en: 'Gallery',
+                vi: 'Ảnh sản phẩm',
+              },
               fields: [
                 {
                   name: 'image',
                   type: 'upload',
                   relationTo: 'media',
                   required: true,
+                  label: {
+                    en: 'Image',
+                    vi: 'Hình ảnh',
+                  },
                 },
               ],
             },
             {
               name: 'layouts',
               type: 'blocks',
+              label: {
+                en: 'Layouts',
+                vi: 'Giao diện',
+              },
               blocks: [MediaBlock, Content, CallToAction],
             },
           ],
         },
         {
           name: 'meta',
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            vi: 'SEO',
+          },
           fields: [
             OverviewField({
               titlePath: 'meta.title',
@@ -139,6 +183,10 @@ export const Products: CollectionConfig = {
       name: 'vehicle-models',
       type: 'relationship',
       relationTo: 'vehicle-models',
+      label: {
+        en: 'Vehicle Models',
+        vi: 'Dòng xe',
+      },
       admin: {
         position: 'sidebar',
       },
@@ -148,6 +196,10 @@ export const Products: CollectionConfig = {
       type: 'relationship',
       relationTo: 'vehicle-models',
       hasMany: true,
+      label: {
+        en: 'Model Fitments',
+        vi: 'Dòng xe phù hợp',
+      },
       admin: {
         position: 'sidebar',
       },

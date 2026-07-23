@@ -14,6 +14,8 @@ import { Users } from './collections/Users'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { vi } from '@payloadcms/translations/languages/vi'
+import { en } from '@payloadcms/translations/languages/en'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -88,5 +90,8 @@ export default buildConfig({
       },
     },
     tasks: [],
+  },
+  i18n: {
+    supportedLanguages: { vi, en },
   },
 })
