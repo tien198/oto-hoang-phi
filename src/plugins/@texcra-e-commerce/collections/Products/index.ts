@@ -40,7 +40,7 @@ export const Products: CollectionConfig = {
     },
   },
   admin: {
-    group: 'E-Commerce',
+    group: { en: 'E-Commerce', vi: 'Quản lý Sản Phẩm' },
     defaultColumns: ['name', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
