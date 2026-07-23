@@ -3,7 +3,7 @@ import BrandSidebar from './comps/BrandSidebar'
 import ProductList from './comps/ProductList'
 import clsx from 'clsx'
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
-import { getProducts } from './get-products'
+import { getProducts } from './actions/get-products'
 
 type Props = {
   searchParams: Promise<{
@@ -18,7 +18,7 @@ export default async function ProductsPage({ searchParams }: Props) {
     queryKey: ['products', page],
     queryFn: async () => await getProducts(page),
   })
-  console.log('QUERY STATE:', queryClient.getQueryState(['products', page]))
+
   return (
     <div className="min-h-screen bg-background flex flex-col items-center w-full pb-20 font-sans">
       <div className="w-full max-w-[1440px]">

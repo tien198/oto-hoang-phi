@@ -11,9 +11,9 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 import { PaginationResult } from '@/types/pagination-result'
-import { Media, Product } from '@/payload-types'
 import { useSearchParams } from 'next/navigation'
-import { ProductResult } from '../get-products'
+import { ProductResult } from '../actions/get-products'
+import { getProductsApi } from '../fetch-api/get-products-list'
 
 const products = [
   {
@@ -43,12 +43,7 @@ export default function ProductList() {
   const page = Number(searchParams.get('page')) || 1
   const { data } = useQuery<PaginationResult<ProductResult>>({
     queryKey: ['products', page],
-    queryFn: () =>
-      (async function () {
-        const res = await fetch('')
-        return (await res.json()) as PaginationResult<ProductResult>
-      })(),
-    enabled: false,
+    queryFn: () => getProductsApi(page),
   })
   const products = data?.docs
   return (

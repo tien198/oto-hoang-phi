@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react'
+import { getVehicleMakes } from '../actions/get-vehicle-makes'
 
 const brands = [
   'Phụ Tùng TOYOTA',
@@ -12,7 +13,9 @@ const brands = [
   'Phụ Tùng SUZUKI',
 ]
 
-export default function BrandSidebar() {
+export default async function BrandSidebar() {
+  const makes = await getVehicleMakes()
+
   return (
     <div className={'w-full lg:w-[300px] flex flex-col gap-6 flex-shrink-0'}>
       <div className="flex flex-col border border-[#e5e5e5] rounded-sm bg-[#fafafa] overflow-hidden">
@@ -20,12 +23,12 @@ export default function BrandSidebar() {
           <h3 className="text-[#fef2f2] font-semibold text-base">PHỤ TÙNG CHÍNH HÃNG</h3>
         </div>
         <div className="flex flex-col">
-          {brands.map((brand, idx) => (
+          {makes.map((make, idx) => (
             <div
               key={idx}
               className={`flex items-center justify-between p-4 cursor-pointer hover:bg-muted hover:text-primary transition-colors ${idx % 2 === 0 ? '' : 'bg-secondary'}`}
             >
-              <span className="text-[15px]">{brand}</span>
+              <span className="text-[15px]">{make.name}</span>
               <ChevronRight className="w-4 h-4 text-[#737373]" />
             </div>
           ))}
