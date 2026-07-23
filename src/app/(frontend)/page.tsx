@@ -1,3 +1,5 @@
+'use server'
+
 import type { Metadata } from 'next'
 import React, { cache } from 'react'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -12,7 +14,7 @@ import { ProductsSection } from '@/sections/ProductsSection'
 import { ContactSection } from '@/sections/ContactSection'
 import { Footer } from '@/sections/Footer'
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <main className="w-full min-h-screen flex flex-col bg-[#fafafa]">
       <Banner />

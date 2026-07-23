@@ -789,6 +789,7 @@ export interface Form {
 export interface Product {
   id: string;
   name: string;
+  price: number;
   description?: {
     root: {
       type: string;
@@ -1449,6 +1450,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   id?: T;
   name?: T;
+  price?: T;
   description?: T;
   gallery?:
     | T

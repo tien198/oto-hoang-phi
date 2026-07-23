@@ -2,8 +2,23 @@ import SearchBar from './comps/SearchBar'
 import BrandSidebar from './comps/BrandSidebar'
 import ProductList from './comps/ProductList'
 import clsx from 'clsx'
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
+import { getProducts } from './get-products'
 
-export default function ProductsPage() {
+type Props = {
+  searchParams: Promise<{
+    [key: string]: string | string[] | undefined
+  }>
+}
+export default async function ProductsPage({ searchParams }: Props) {
+  const page = Number((await searchParams).page) || 1
+
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery({
+    queryKey: ['products', page],
+    queryFn: async () => await getProducts(page),
+  })
+  console.log('QUERY STATE:', queryClient.getQueryState(['products', page]))
   return (
     <div className="min-h-screen bg-background flex flex-col items-center w-full pb-20 font-sans">
       <div className="w-full max-w-[1440px]">
@@ -11,7 +26,9 @@ export default function ProductsPage() {
 
         <div className={clsx('flex flex-col lg:flex-row gap-8 px-4 md:px-6 lg:px-8 w-full mt-8')}>
           <BrandSidebar />
-          <ProductList />
+          <HydrationBoundary state={dehydrate(queryClient)}>
+            <ProductList />
+          </HydrationBoundary>
         </div>
       </div>
     </div>

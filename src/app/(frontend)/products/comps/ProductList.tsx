@@ -1,3 +1,6 @@
+'use client'
+
+import { useQuery } from '@tanstack/react-query'
 import ProductCard from './ProductCard'
 import {
   Pagination,
@@ -7,6 +10,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
+import { PaginationResult } from '@/types/pagination-result'
+import { Media, Product } from '@/payload-types'
+import { useSearchParams } from 'next/navigation'
+import { ProductResult } from '../get-products'
 
 const products = [
   {
@@ -32,21 +39,33 @@ const products = [
 ]
 
 export default function ProductList() {
+  const searchParams = useSearchParams()
+  const page = Number(searchParams.get('page')) || 1
+  const { data } = useQuery<PaginationResult<ProductResult>>({
+    queryKey: ['products', page],
+    queryFn: () =>
+      (async function () {
+        const res = await fetch('')
+        return (await res.json()) as PaginationResult<ProductResult>
+      })(),
+    enabled: false,
+  })
+  const products = data?.docs
   return (
     <div className="flex flex-col gap-6 w-full flex-1">
       <div className="flex flex-col gap-2">
         <h2 className="text-[#08210e] text-[22px] font-semibold uppercase">KẾT QUẢ TÌM KIẾM</h2>
-        <div className="h-[3px] bg-[#9f0712] w-[120px]"></div>
+        <div className="h-[3px] bg-primary w-[120px]"></div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {products.map((product, idx) => (
+        {products?.map((item, idx) => (
           <ProductCard
             key={idx}
-            title={product.title}
-            sku={product.sku}
-            imageUrl={product.imageUrl}
-            price={product.price}
+            title={item.product.name}
+            // sku={item.product.gallery}
+            imageUrl={item.media ?? ''}
+            price={item.product.price}
           />
         ))}
       </div>

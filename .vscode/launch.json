@@ -18,7 +18,8 @@
         "uriFormat": "%s",
         "webRoot": "${workspaceFolder}"
       },
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "console": "externalTerminal"
     }
   ]
 }

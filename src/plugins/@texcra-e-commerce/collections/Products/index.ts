@@ -68,9 +68,14 @@ export const Products: CollectionConfig = {
           label: 'Details',
           fields: [
             {
+              name: 'price',
+              type: 'number',
+              required: true,
+            },
+            {
               name: 'description',
               type: 'richText',
-              label: false,
+              // label: false,
               editor: lexicalEditor({
                 features: ({ rootFeatures }) => [
                   ...rootFeatures,

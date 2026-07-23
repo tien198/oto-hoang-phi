@@ -2,9 +2,9 @@ import { Button } from '@/components/ui/button'
 
 interface ProductCardProps {
   title: string
-  sku: string
-  imageUrl: string
-  price: number
+  sku?: string
+  imageUrl?: string
+  price?: number
 }
 
 export default function ProductCard({ title, sku, imageUrl, price }: ProductCardProps) {
@@ -21,11 +21,11 @@ export default function ProductCard({ title, sku, imageUrl, price }: ProductCard
       </div>
       <div className="p-6 flex flex-col gap-2 flex-1">
         <h3 className="text-[#0a0a0a] text-xl font-medium line-clamp-2 leading-tight">{title}</h3>
-        <p className="text-[#737373] text-base">{sku}</p>
+        <p className="text-[#737373] text-base">{sku ?? ''}</p>
       </div>
       <div className="px-6 pb-6 flex items-center justify-between">
         <div className="bg-[#171717] text-white text-xs px-3 py-1 rounded-full font-medium">
-          {price.toLocaleString('vn-vi')}
+          {price?.toLocaleString('vn-vi')}
         </div>
         <Button
           variant="outline"

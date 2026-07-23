@@ -16,6 +16,7 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import { Header } from '@/sections/Header'
 import { Footer } from '@/sections/Footer'
+import { TanstackProvider } from '@/tanstack-provider'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -46,9 +47,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
 
         <Header />
-        {children}
+        <TanstackProvider>{children}</TanstackProvider>
         <Footer />
-        {/* </Providers> */}
       </body>
     </html>
   )
