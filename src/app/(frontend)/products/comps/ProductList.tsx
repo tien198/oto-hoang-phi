@@ -2,18 +2,10 @@
 
 import { useQuery } from '@tanstack/react-query'
 import ProductCard from './ProductCard'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
-import { PaginationResult } from '@/types/pagination-result'
 import { useSearchParams } from 'next/navigation'
-import { ProductResult } from '../actions/get-products'
+import { ProductsPaginationResult } from '../actions/get-products'
 import { getProductsApi } from '../fetch-api/get-products-list'
+import { ProductsPagination } from './ProductList.Pagination'
 
 const products = [
   {
@@ -41,9 +33,17 @@ const products = [
 export default function ProductList() {
   const searchParams = useSearchParams()
   const page = Number(searchParams.get('page')) || 1
-  const { data } = useQuery<PaginationResult<ProductResult>>({
+  const vehicleMakeName = searchParams.get('vehicle-make')
+  const vehicleModelName = searchParams.get('vehicle-model')
+
+  const { data } = useQuery<ProductsPaginationResult>({
     queryKey: ['products', page],
-    queryFn: () => getProductsApi(page),
+    queryFn: () =>
+      getProductsApi({
+        page,
+        vehicleMakeName,
+        vehicleModelName,
+      }),
   })
   const products = data?.docs
   return (
@@ -57,57 +57,14 @@ export default function ProductList() {
         {products?.map((item, idx) => (
           <ProductCard
             key={idx}
-            title={item.product.name}
+            title={item.product.name ?? ''}
             // sku={item.product.gallery}
             imageUrl={item.media ?? ''}
-            price={item.product.price}
+            price={item.product.price ?? NaN}
           />
         ))}
       </div>
-
-      <div className="flex justify-center mt-8">
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                href="#"
-                className="border border-transparent hover:bg-gray-100 text-[#737373]"
-              />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink
-                href="#"
-                isActive
-                className="border-[#e5e5e5] bg-[#fafafa] text-[#0a0a0a] font-semibold"
-              >
-                1
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink
-                href="#"
-                className="border-transparent hover:bg-gray-100 text-[#0a0a0a]"
-              >
-                2
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink
-                href="#"
-                className="border-transparent hover:bg-gray-100 text-[#0a0a0a]"
-              >
-                3
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext
-                href="#"
-                className="border border-transparent hover:bg-gray-100 text-[#0a0a0a]"
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div>
+      {data?.pagination && <ProductsPagination {...data.pagination} />}
     </div>
   )
 }
