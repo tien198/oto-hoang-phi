@@ -1,5 +1,4 @@
-export type PaginationResult<T> = {
-  docs: T[]
+export type Pagination = {
   totalDocs: number
   limit: number
   totalPages: number

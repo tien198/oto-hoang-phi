@@ -1,8 +1,14 @@
-import { PaginationResult } from '@/types/pagination-result'
-import { ProductResult } from '../actions/get-products'
+import { GetProductsSearchParams, ProductsPaginationResult } from '../actions/get-products'
 
-export async function getProductsApi(page: number = 1) {
-  const res = await fetch('/api/products?page=' + page)
-  const pagiRes = (await res.json()) as PaginationResult<ProductResult>
+export async function getProductsApi({
+  page,
+  vehicleMakeName,
+  vehicleModelName,
+}: GetProductsSearchParams) {
+  const makeParam = vehicleMakeName ? '&vehicle-make=' + encodeURI(vehicleMakeName) : ''
+  const modelParam = vehicleModelName ? '&vehicle-model=' + encodeURI(vehicleModelName) : ''
+
+  const res = await fetch(`/api/products?page=${page}${makeParam}${modelParam}`)
+  const pagiRes = (await res.json()) as ProductsPaginationResult
   return pagiRes
 }
