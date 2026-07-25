@@ -18,7 +18,7 @@ export default async function ProductsPage({ searchParams }: Props) {
 
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery({
-    queryKey: ['products', page],
+    queryKey: ['products', vehicleMake, vehicleModel, page],
     queryFn: async () =>
       await getProductsPagination({
         page: Number(page),

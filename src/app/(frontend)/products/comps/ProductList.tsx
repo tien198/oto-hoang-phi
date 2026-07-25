@@ -37,7 +37,7 @@ export default function ProductList() {
   const vehicleModelName = searchParams.get('vehicle-model')
 
   const { data } = useQuery<ProductsPaginationResult>({
-    queryKey: ['products', page],
+    queryKey: ['products', vehicleMakeName, vehicleModelName, page],
     queryFn: () =>
       getProductsApi({
         page,
@@ -64,7 +64,14 @@ export default function ProductList() {
           />
         ))}
       </div>
-      {data?.pagination && <ProductsPagination {...data.pagination} />}
+      {data?.pagination && (
+        <ProductsPagination
+          pagination={data.pagination}
+          page={page}
+          vehicleMakeName={vehicleMakeName}
+          vehicleModelName={vehicleModelName}
+        />
+      )}
     </div>
   )
 }

@@ -62,7 +62,23 @@ export async function getProductsPagination({
     .limit(limit)
     .offset(offset)
 
-  const paginationQuery = drizzle.select({ totalDocs: count() }).from(products)
+  const paginationQuery = drizzle
+    .select({ totalDocs: count() })
+    .from(products)
+    .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
+    .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
+    .where(
+      and(
+        eq(products._status, 'published'),
+        vehicleMakeName
+          ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
+          : undefined,
+        vehicleModelName
+          ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
+          : undefined,
+      ),
+    )
+
   const [productRes, [{ totalDocs }]] = await Promise.all([productsQuery, paginationQuery])
 
   const totalPages = Math.ceil(totalDocs / limit)

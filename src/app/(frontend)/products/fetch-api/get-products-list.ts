@@ -5,10 +5,18 @@ export async function getProductsApi({
   vehicleMakeName,
   vehicleModelName,
 }: GetProductsSearchParams) {
-  const makeParam = vehicleMakeName ? '&vehicle-make=' + encodeURI(vehicleMakeName) : ''
-  const modelParam = vehicleModelName ? '&vehicle-model=' + encodeURI(vehicleModelName) : ''
-
-  const res = await fetch(`/api/products?page=${page}${makeParam}${modelParam}`)
+  const params = genProductParams(page, vehicleMakeName, vehicleModelName)
+  const res = await fetch(encodeURI(`/api/products${params}`))
   const pagiRes = (await res.json()) as ProductsPaginationResult
   return pagiRes
+}
+
+export function genProductParams(
+  page?: number | null,
+  vehicleMakeName?: string | null,
+  vehicleModelName?: string | null,
+) {
+  const makeParam = vehicleMakeName ? '&vehicle-make=' + vehicleMakeName : ''
+  const modelParam = vehicleModelName ? '&vehicle-model=' + vehicleModelName : ''
+  return `?page=${page}${makeParam}${modelParam}`
 }

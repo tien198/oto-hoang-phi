@@ -1,0 +1,9 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { generateMakes } from './gen-makes'
+import { generateModels } from './gen-models'
+
+export async function GET(req: NextRequest) {
+  await generateMakes()
+  await generateModels()
+  return NextResponse.json({ success: true })
+}

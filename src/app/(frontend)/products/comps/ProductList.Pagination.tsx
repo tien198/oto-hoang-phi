@@ -8,17 +8,18 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 import { Pagination as PaginationResult } from '@/types/pagination-result'
+import { genProductParams } from '../fetch-api/get-products-list'
 
-export function ProductsPagination({
-  limit,
-  totalPages,
-  page,
-  pagingCounter,
-  hasPrevPage,
-  hasNextPage,
-  prevPage,
-  nextPage,
-}: PaginationResult) {
+type Props = {
+  pagination: PaginationResult
+  page: number
+  vehicleMakeName: string | null
+  vehicleModelName: string | null
+}
+
+export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleModelName }: Props) {
+  const { totalPages, hasPrevPage, hasNextPage, prevPage, nextPage } = pagination
+
   // if (!totalPages || totalPages <= 1) return null
   if (!totalPages || totalPages < 1) return null
 
@@ -44,7 +45,9 @@ export function ProductsPagination({
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              href={hasPrevPage ? `?page=${prevPage}` : '#'}
+              href={
+                hasPrevPage ? genProductParams(prevPage, vehicleMakeName, vehicleModelName) : '#'
+              }
               className={`border border-transparent text-[#737373] ${
                 !hasPrevPage ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'
               }`}
@@ -57,7 +60,7 @@ export function ProductsPagination({
                 <PaginationEllipsis />
               ) : (
                 <PaginationLink
-                  href={`?page=${p}`}
+                  href={genProductParams(Number(p), vehicleMakeName, vehicleModelName)}
                   isActive={p === page}
                   className={
                     p === page
@@ -73,7 +76,9 @@ export function ProductsPagination({
 
           <PaginationItem>
             <PaginationNext
-              href={hasNextPage ? `?page=${nextPage}` : '#'}
+              href={
+                hasNextPage ? genProductParams(nextPage, vehicleMakeName, vehicleModelName) : '#'
+              }
               className={`border border-transparent text-[#0a0a0a] ${
                 !hasNextPage ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'
               }`}
