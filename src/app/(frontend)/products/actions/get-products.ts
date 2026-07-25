@@ -50,6 +50,7 @@ export async function getProductsPagination({
     // .orderBy(products.id, asc(media.id))
     .where(
       and(
+        eq(products._status, 'published'),
         vehicleMakeName
           ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
           : undefined,

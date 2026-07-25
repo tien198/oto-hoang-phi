@@ -31,7 +31,11 @@ export function ProductsPagination({
         pages.push('...')
       }
     }
-    return pages.filter((p, index, arr) => arr.indexOf(p) === index)
+    /*
+    when we need ellipses on both sides of the active window (e.g. [1, '...', 4, 5, 6, '...', 10]), the filter function checks if the current index is equal to the first index where the string '...' is found using indexOf('...').
+    -- return pages.filter((p, index, arr) => arr.indexOf(p) === index)
+    */
+    return pages
   }
 
   return (
