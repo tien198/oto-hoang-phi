@@ -42,8 +42,13 @@ export async function getProductsPagination({
   const productsQuery = drizzle
     .selectDistinctOn([products.id], {
       product: products,
-      vehicleModel: vehicle_models,
-      vehicleMake: vehicle_makes,
+      vehicleModel: {
+        name: vehicle_models.name,
+        modelYear: vehicle_models['model-year'],
+      },
+      vehicleMake: {
+        name: vehicle_makes.name,
+      },
       media: media.url,
     })
     .from(products)

@@ -6,7 +6,6 @@ import { useSearchParams } from 'next/navigation'
 import { ProductsPaginationResult } from '../actions/get-products'
 import { getProductsApi } from '../fetch-api/get-products-list'
 import { ProductsPagination } from './ProductList.Pagination'
-import { VehicleModel } from '@/payload-types'
 
 export default function ProductList() {
   const searchParams = useSearchParams()
@@ -35,16 +34,16 @@ export default function ProductList() {
 
       <div className="flex flex-col">
         {/* Table Header */}
-        <div className="flex flex-row bg-primary py-4">
-          <div className="w-[260px] shrink-0 flex justify-center items-center">
-            <span className="text-base font-semibold text-primary-foreground">HÌNH ẢNH</span>
+        <div className={'grid grid-cols-[320px_1fr_260px] bg-primary'}>
+          <div className="px-6 h-full border border-accent">
+            <span className="text-base font-semibold text-primary-foreground"></span>
           </div>
-          <div className="flex-1 flex justify-center items-center">
+          <div className="px-6 h-full border border-accent py-4">
             <span className="text-base font-semibold text-primary-foreground">
               THÔNG SỐ KỸ THUẬT
             </span>
           </div>
-          <div className="w-[320px] shrink-0 flex justify-center items-center">
+          <div className="px-6 h-full border border-accent py-4">
             <span className="text-base font-semibold text-primary-foreground">TƯƠNG THÍCH</span>
           </div>
         </div>
