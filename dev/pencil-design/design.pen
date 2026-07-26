@@ -1,5 +1,5 @@
 {
-  "version": "2.13",
+  "version": "2.14",
   "children": [
     {
       "type": "frame",
@@ -1067,7 +1067,7 @@
                 {
                   "type": "text",
                   "id": "ShevM",
-                  "fill": "$--destructive",
+                  "fill": "$--primary",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "Nhập tên phụ tùng...",
@@ -1104,7 +1104,7 @@
                 {
                   "type": "text",
                   "id": "W2lk9",
-                  "fill": "$--destructive",
+                  "fill": "$--primary",
                   "content": "TOYOTA",
                   "fontFamily": "Montserrat",
                   "fontSize": 14,
@@ -1117,7 +1117,7 @@
                   "height": 16,
                   "icon": "chevron-down",
                   "library": "lucide",
-                  "fill": "$--destructive"
+                  "fill": "$--primary"
                 }
               ]
             },
@@ -1139,7 +1139,7 @@
                 {
                   "type": "text",
                   "id": "E4q3V",
-                  "fill": "$--destructive",
+                  "fill": "$--primary",
                   "content": "INNOVA",
                   "fontFamily": "Montserrat",
                   "fontSize": 14,
@@ -1152,7 +1152,7 @@
                   "height": 16,
                   "icon": "chevron-down",
                   "library": "lucide",
-                  "fill": "$--destructive"
+                  "fill": "$--primary"
                 }
               ]
             },
@@ -1174,7 +1174,7 @@
                 {
                   "type": "text",
                   "id": "hBKSq",
-                  "fill": "$--destructive",
+                  "fill": "$--primary",
                   "content": "2000",
                   "fontFamily": "Montserrat",
                   "fontSize": 14,
@@ -1187,7 +1187,7 @@
                   "height": 16,
                   "icon": "chevron-down",
                   "library": "lucide",
-                  "fill": "$--destructive"
+                  "fill": "$--primary"
                 }
               ]
             },
@@ -1596,7 +1596,7 @@
                   "type": "frame",
                   "id": "wtAyi",
                   "width": "fill_container",
-                  "fill": "$D:--muted-foreground",
+                  "fill": "$--primary",
                   "padding": [
                     16,
                     24
@@ -1608,7 +1608,7 @@
                       "type": "text",
                       "id": "vaUFV",
                       "rotation": -0.0024313136116751186,
-                      "fill": "$--primary",
+                      "fill": "$D:--accent",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "PHỤ TÙNG OEM",
@@ -1682,7 +1682,7 @@
       },
       "clip": true,
       "width": 1440,
-      "height": 1228,
+      "height": 1622,
       "fill": "$--background",
       "layout": "vertical",
       "children": [
@@ -1705,7 +1705,7 @@
           "id": "v0Fl9",
           "name": "Content Area",
           "width": "fill_container",
-          "height": 1070,
+          "height": 1453,
           "gap": 32,
           "padding": [
             32,
@@ -1761,167 +1761,1270 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "hqZ8y",
+                      "id": "LE3z4",
+                      "name": "Product Table",
                       "width": "fill_container",
-                      "gap": 24,
+                      "stroke": "$--primary",
+                      "strokeWidth": 1,
+                      "layout": "vertical",
                       "children": [
                         {
-                          "id": "u9ZWy4",
-                          "type": "ref",
-                          "ref": "D:JENPq",
+                          "type": "frame",
+                          "id": "uLlXp",
+                          "name": "Table Header",
                           "width": "fill_container",
-                          "x": 0,
-                          "y": 0,
-                          "descendants": {
-                            "D:Jbgz8": {
-                              "fill": {
-                                "type": "image",
-                                "enabled": true,
-                                "url": "images/generated-1783491561656.png",
-                                "mode": "fill"
-                              }
+                          "fill": "$--primary",
+                          "padding": [
+                            16,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "kV8ny",
+                              "name": "H1",
+                              "width": 260,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "JfDWK",
+                                  "name": "T1",
+                                  "fill": "#ffffff",
+                                  "content": "HÌNH ẢNH",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
                             },
-                            "D:FFlaK": {
-                              "content": "Bơm nước làm mát"
+                            {
+                              "type": "frame",
+                              "id": "R5Gx4q",
+                              "name": "H2",
+                              "width": "fill_container",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "yhn0E",
+                                  "name": "T2",
+                                  "fill": "#ffffff",
+                                  "content": "THÔNG SỐ KỸ THUẬT",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
                             },
-                            "D:4MqKz": {
-                              "content": "SKU: BN-2004"
-                            },
-                            "D:Jt3oM/D:zHpCv": {
-                              "content": "1,200,000đ"
-                            },
-                            "D:FNWmv/D:poRwU": {
-                              "content": "Thêm vào giỏ"
+                            {
+                              "type": "frame",
+                              "id": "Qsvak",
+                              "name": "H3",
+                              "width": 320,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Sof7s",
+                                  "name": "T3",
+                                  "fill": "#ffffff",
+                                  "content": "ỨNG DỤNG",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
                             }
-                          }
-                        },
-                        {
-                          "id": "Z5Ujzs",
-                          "type": "ref",
-                          "ref": "D:JENPq",
-                          "width": "fill_container",
-                          "descendants": {
-                            "D:Jbgz8": {
-                              "fill": {
-                                "type": "image",
-                                "enabled": true,
-                                "url": "images/generated-1783491561213.png",
-                                "mode": "fill"
-                              }
-                            },
-                            "D:FFlaK": {
-                              "content": "Lọc dầu động cơ"
-                            },
-                            "D:4MqKz": {
-                              "content": "SKU: LD-2001"
-                            },
-                            "D:Jt3oM/D:zHpCv": {
-                              "content": "150,000đ"
-                            },
-                            "D:FNWmv/D:poRwU": {
-                              "content": "Thêm vào giỏ"
-                            }
-                          }
-                        },
-                        {
-                          "id": "zh019",
-                          "type": "ref",
-                          "ref": "D:JENPq",
-                          "width": "fill_container",
-                          "descendants": {
-                            "D:Jbgz8": {
-                              "fill": {
-                                "type": "image",
-                                "enabled": true,
-                                "url": "images/generated-1783491561249.png",
-                                "mode": "fill"
-                              }
-                            },
-                            "D:FFlaK": {
-                              "content": "Má phanh trước"
-                            },
-                            "D:4MqKz": {
-                              "content": "SKU: MP-2002"
-                            },
-                            "D:Jt3oM/D:zHpCv": {
-                              "content": "850,000đ"
-                            },
-                            "D:FNWmv/D:poRwU": {
-                              "content": "Thêm vào giỏ"
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "LXKmi",
-                      "width": "fill_container",
-                      "gap": 24,
-                      "children": [
-                        {
-                          "id": "WuyEW",
-                          "type": "ref",
-                          "ref": "D:JENPq",
-                          "width": "fill_container",
-                          "descendants": {
-                            "D:Jbgz8": {
-                              "fill": {
-                                "type": "image",
-                                "enabled": true,
-                                "url": "images/generated-1783491561565.png",
-                                "mode": "fill"
-                              }
-                            },
-                            "D:FFlaK": {
-                              "content": "Curoa cam"
-                            },
-                            "D:4MqKz": {
-                              "content": "SKU: CR-2003"
-                            },
-                            "D:Jt3oM/D:zHpCv": {
-                              "content": "450,000đ"
-                            },
-                            "D:FNWmv/D:poRwU": {
-                              "content": "Thêm vào giỏ"
-                            }
-                          }
-                        },
-                        {
-                          "id": "z2sUX",
-                          "type": "ref",
-                          "ref": "D:JENPq",
-                          "width": "fill_container",
-                          "x": 361.3333333333333,
-                          "y": 0,
-                          "descendants": {
-                            "D:Jbgz8": {
-                              "fill": {
-                                "type": "image",
-                                "enabled": true,
-                                "url": "images/generated-1783491206653.png",
-                                "mode": "fill"
-                              }
-                            },
-                            "D:FFlaK": {
-                              "content": "Bugi Toyota Innova"
-                            },
-                            "D:4MqKz": {
-                              "content": "SKU: BG-2000"
-                            },
-                            "D:Jt3oM/D:zHpCv": {
-                              "content": "250,000đ"
-                            },
-                            "D:FNWmv/D:poRwU": {
-                              "content": "Thêm vào giỏ"
-                            }
-                          }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "KjTgY",
+                          "id": "VpfbR",
+                          "name": "Table Row",
                           "width": "fill_container",
-                          "height": "fit_content(0)"
+                          "stroke": "$--primary",
+                          "strokeWidth": {
+                            "bottom": 1
+                          },
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "ccBYa",
+                              "name": "Pic Col",
+                              "width": 260,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 24,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "k5NT5N",
+                                  "name": "Product Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/generated-1783491561656.png",
+                                    "mode": "fit"
+                                  },
+                                  "width": 180,
+                                  "height": 180
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "MdzVb",
+                              "name": "Spec Col",
+                              "width": "fill_container",
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 24,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "vPvdu",
+                                  "name": "Product Name",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Mô-bin Đánh Lửa 22448-6CA1A Cho NISSAN",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 20,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "q89yb3",
+                                  "name": "Price Badge",
+                                  "fill": "$--primary",
+                                  "cornerRadius": 999,
+                                  "padding": [
+                                    4,
+                                    12
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "Y1A4t",
+                                      "name": "Price Text",
+                                      "fill": "$--primary-foreground",
+                                      "content": "300.000 ₫",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "XQMk7",
+                                  "name": "Spec Grid",
+                                  "width": "fill_container",
+                                  "gap": 32,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "CcaVU",
+                                      "name": "Spec Left",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "WYj7k",
+                                          "name": "OE Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "BgMzP",
+                                              "name": "OE Text",
+                                              "fill": "$--foreground",
+                                              "content": "Mã OE: 22448-6CA1A",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "xWVrB",
+                                          "name": "Size Text",
+                                          "fill": "$--foreground",
+                                          "content": "Kích thước: 90x60x180mm",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "w62eJE",
+                                      "name": "Spec Right",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "ynDlL",
+                                          "name": "Weight Text",
+                                          "fill": "$--foreground",
+                                          "content": "Trọng lượng: 0.35 KG",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "eGtg3",
+                                          "name": "Warranty Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "iZq6D",
+                                              "name": "Warranty Text",
+                                              "fill": "$--foreground",
+                                              "content": "Bảo hành: 12 tháng",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "djmNe",
+                              "name": "App Col",
+                              "width": 320,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Ttezl",
+                                  "name": "App Box",
+                                  "width": "fill_container",
+                                  "padding": 12,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "wwoVx",
+                                      "name": "App Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": "fill_container",
+                                      "content": "NISSAN ALTIMA (L33, L34)\nNISSAN ROGUE (T33)",
+                                      "lineHeight": 1.5,
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "LoLxv",
+                                  "name": "View More Text",
+                                  "fill": "$--foreground",
+                                  "content": "Xem Thêm",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "w6S1Y",
+                          "name": "Table Row",
+                          "width": "fill_container",
+                          "stroke": "$--primary",
+                          "strokeWidth": {
+                            "bottom": 1
+                          },
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "XSvy5",
+                              "name": "Pic Col",
+                              "width": 260,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 24,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "vg5Xi",
+                                  "name": "Product Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/generated-1783491561213.png",
+                                    "mode": "fit"
+                                  },
+                                  "width": 180,
+                                  "height": 180
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "o6dKf",
+                              "name": "Spec Col",
+                              "width": "fill_container",
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 24,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "yfA1C",
+                                  "name": "Product Name",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Mô-bin Đánh Lửa 22448-5TT0A Cho NISSAN",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 20,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "giUYp",
+                                  "name": "Price Badge",
+                                  "fill": "$--primary",
+                                  "cornerRadius": 999,
+                                  "padding": [
+                                    4,
+                                    12
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "m0OYrd",
+                                      "name": "Price Text",
+                                      "fill": "$--primary-foreground",
+                                      "content": "360.000 ₫",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "aNZQC",
+                                  "name": "Spec Grid",
+                                  "width": "fill_container",
+                                  "gap": 32,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "v8ESE",
+                                      "name": "Spec Left",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "JOQ99",
+                                          "name": "OE Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "vHvod",
+                                              "name": "OE Text",
+                                              "fill": "$--foreground",
+                                              "content": "Mã OE: 22448-5TT0A",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "P0tqmP",
+                                          "name": "Size Text",
+                                          "fill": "$--foreground",
+                                          "content": "Kích thước: 95x62x185mm",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "Ut8bE",
+                                      "name": "Spec Right",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "mt5qv",
+                                          "name": "Weight Text",
+                                          "fill": "$--foreground",
+                                          "content": "Trọng lượng: 0.38 KG",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "fd3qi",
+                                          "name": "Warranty Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "VC12C",
+                                              "name": "Warranty Text",
+                                              "fill": "$--foreground",
+                                              "content": "Bảo hành: 24 tháng",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "C6o0R",
+                              "name": "App Col",
+                              "width": 320,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "rThHp",
+                                  "name": "App Box",
+                                  "width": "fill_container",
+                                  "padding": 12,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "Sdz9t",
+                                      "name": "App Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": "fill_container",
+                                      "content": "NISSAN SERENA C27, GC27,\nGFC27, GNC27",
+                                      "lineHeight": 1.5,
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "l6gsH",
+                                  "name": "View More Text",
+                                  "fill": "$--foreground",
+                                  "content": "Xem Thêm",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "WM49I",
+                          "name": "Table Row",
+                          "width": "fill_container",
+                          "stroke": "$--primary",
+                          "strokeWidth": {
+                            "bottom": 1
+                          },
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "O6dCXi",
+                              "name": "Pic Col",
+                              "width": 260,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 24,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "BdveM",
+                                  "name": "Product Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/generated-1783491561249.png",
+                                    "mode": "fit"
+                                  },
+                                  "width": 180,
+                                  "height": 180
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "xcHcT",
+                              "name": "Spec Col",
+                              "width": "fill_container",
+                              "height": 227,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 24,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "xIpkU",
+                                  "name": "Product Name",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Bugi 22401-ED815 Cho NISSAN",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 20,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "pRqOI",
+                                  "name": "Price Badge",
+                                  "fill": "$--primary",
+                                  "cornerRadius": 999,
+                                  "padding": [
+                                    4,
+                                    12
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "xglSn",
+                                      "name": "Price Text",
+                                      "fill": "$--primary-foreground",
+                                      "content": "125.000 ₫",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "HpZ6U",
+                                  "name": "Spec Grid",
+                                  "width": "fill_container",
+                                  "gap": 32,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "bwmO2",
+                                      "name": "Spec Left",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "innle",
+                                          "name": "OE Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "mDi3F",
+                                              "name": "OE Text",
+                                              "fill": "$--foreground",
+                                              "content": "Mã OE: 22401-ED815",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "hTWIA",
+                                          "name": "Size Text",
+                                          "fill": "$--foreground",
+                                          "content": "Kích thước: 20x20x80mm",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "T9wla",
+                                      "name": "Spec Right",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "xs63Y",
+                                          "name": "Weight Text",
+                                          "fill": "$--foreground",
+                                          "content": "Trọng lượng: 0.05 KG",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "C6KrWv",
+                                          "name": "Warranty Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "G5Nad",
+                                              "name": "Warranty Text",
+                                              "fill": "$--foreground",
+                                              "content": "Bảo hành: 6 tháng",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "H36GfY",
+                              "name": "App Col",
+                              "width": 320,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "bnWyL",
+                                  "name": "App Box",
+                                  "width": "fill_container",
+                                  "padding": 12,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "K9bzxI",
+                                      "name": "App Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": "fill_container",
+                                      "content": "NISSAN TIIDA\nNISSAN VERSA\nNISSAN LATIO",
+                                      "lineHeight": 1.5,
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "V3BkDC",
+                                  "name": "View More Text",
+                                  "fill": "$--foreground",
+                                  "content": "Xem Thêm",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "TYX8x",
+                          "name": "Table Row",
+                          "width": "fill_container",
+                          "stroke": "$--primary",
+                          "strokeWidth": {
+                            "bottom": 1
+                          },
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "KlpaG",
+                              "name": "Pic Col",
+                              "width": 260,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 24,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "paRVC",
+                                  "name": "Product Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/generated-1783491561565.png",
+                                    "mode": "fit"
+                                  },
+                                  "width": 180,
+                                  "height": 180
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "YMvS1",
+                              "name": "Spec Col",
+                              "width": "fill_container",
+                              "height": 228,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 24,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "zUZAS",
+                                  "name": "Product Name",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Lọc Gió 16546-JD20B Cho NISSAN",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 20,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "T1B2S5",
+                                  "name": "Price Badge",
+                                  "fill": "$--primary",
+                                  "cornerRadius": 999,
+                                  "padding": [
+                                    4,
+                                    12
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "xrxae",
+                                      "name": "Price Text",
+                                      "fill": "$--primary-foreground",
+                                      "content": "204.000 ₫",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "jd56s",
+                                  "name": "Spec Grid",
+                                  "width": "fill_container",
+                                  "gap": 32,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "bbmMa",
+                                      "name": "Spec Left",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "uJyEG",
+                                          "name": "OE Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "gEMzm",
+                                              "name": "OE Text",
+                                              "fill": "$--foreground",
+                                              "content": "Mã OE: 16546-JD20B",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "cFVEQ",
+                                          "name": "Size Text",
+                                          "fill": "$--foreground",
+                                          "content": "Kích thước: 250x150x40mm",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "yWGJp",
+                                      "name": "Spec Right",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "Jhj5f",
+                                          "name": "Weight Text",
+                                          "fill": "$--foreground",
+                                          "content": "Trọng lượng: 0.20 KG",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "oCSo6",
+                                          "name": "Warranty Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "f8Jii",
+                                              "name": "Warranty Text",
+                                              "fill": "$--foreground",
+                                              "content": "Bảo hành: 6 tháng",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "T8flIz",
+                              "name": "App Col",
+                              "width": 320,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "rsEKO",
+                                  "name": "App Box",
+                                  "width": "fill_container",
+                                  "padding": 12,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "bEzru",
+                                      "name": "App Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": "fill_container",
+                                      "content": "NISSAN QASHQAI\nNISSAN X-TRAIL",
+                                      "lineHeight": 1.5,
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "q6Rr4",
+                                  "name": "View More Text",
+                                  "fill": "$--foreground",
+                                  "content": "Xem Thêm",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "rXbe4",
+                          "name": "Table Row",
+                          "width": "fill_container",
+                          "stroke": "$--primary",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "xaqpo",
+                              "name": "Pic Col",
+                              "width": 260,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 24,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "Zi6Gt",
+                                  "name": "Product Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/generated-1783491206653.png",
+                                    "mode": "fit"
+                                  },
+                                  "width": 180,
+                                  "height": 180
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "inf61",
+                              "name": "Spec Col",
+                              "width": "fill_container",
+                              "height": 228,
+                              "stroke": "$--primary",
+                              "strokeWidth": {
+                                "right": 1
+                              },
+                              "layout": "vertical",
+                              "gap": 24,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "zYjB9",
+                                  "name": "Product Name",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Lọc Nhớt 15208-65F0A Cho NISSAN",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 20,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Yq6YF",
+                                  "name": "Price Badge",
+                                  "fill": "$--primary",
+                                  "cornerRadius": 999,
+                                  "padding": [
+                                    4,
+                                    12
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "bn7i3",
+                                      "name": "Price Text",
+                                      "fill": "$--primary-foreground",
+                                      "content": "144.000 ₫",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "d5qjo",
+                                  "name": "Spec Grid",
+                                  "width": "fill_container",
+                                  "gap": 32,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "iIWfO",
+                                      "name": "Spec Left",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "D27Fsh",
+                                          "name": "OE Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "h8t1TG",
+                                              "name": "OE Text",
+                                              "fill": "$--foreground",
+                                              "content": "Mã OE: 15208-65F0A",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "Y4zUOI",
+                                          "name": "Size Text",
+                                          "fill": "$--foreground",
+                                          "content": "Kích thước: 80x80x100mm",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "P1ndD",
+                                      "name": "Spec Right",
+                                      "width": "fill_container",
+                                      "layout": "vertical",
+                                      "gap": 16,
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "c3oCpJ",
+                                          "name": "Weight Text",
+                                          "fill": "$--foreground",
+                                          "content": "Trọng lượng: 0.25 KG",
+                                          "fontFamily": "Inter",
+                                          "fontSize": 14,
+                                          "fontWeight": "normal"
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "atDKP",
+                                          "name": "Warranty Box",
+                                          "stroke": "$--primary",
+                                          "strokeWidth": 1,
+                                          "padding": [
+                                            6,
+                                            12
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "B3Kos1",
+                                              "name": "Warranty Text",
+                                              "fill": "$--foreground",
+                                              "content": "Bảo hành: 12 tháng",
+                                              "fontFamily": "Inter",
+                                              "fontSize": 14,
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "nsoiY",
+                              "name": "App Col",
+                              "width": 320,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": [
+                                24,
+                                32
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "iJGgQ",
+                                  "name": "App Box",
+                                  "width": "fill_container",
+                                  "padding": 12,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "H1cKV",
+                                      "name": "App Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": "fill_container",
+                                      "content": "NISSAN SENTRA\nNISSAN ALTIMA",
+                                      "lineHeight": 1.5,
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "vOeBx",
+                                  "name": "View More Text",
+                                  "fill": "$--foreground",
+                                  "content": "Xem Thêm",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2420,7 +3523,7 @@
       },
       "clip": true,
       "width": 1440,
-      "height": 1228,
+      "height": 1622,
       "fill": "$--background",
       "layout": "vertical",
       "children": [
@@ -2443,7 +3546,7 @@
           "id": "oCxEg",
           "name": "Content Area",
           "width": "fill_container",
-          "height": 1070,
+          "height": 1453,
           "gap": 32,
           "padding": [
             32,
@@ -2459,7 +3562,33 @@
             {
               "id": "vuK5b",
               "type": "ref",
-              "ref": "ghv16"
+              "ref": "ghv16",
+              "descendants": {
+                "xcHcT": {
+                  "width": "fill_container",
+                  "height": 229,
+                  "flipX": false,
+                  "flipY": false,
+                  "x": 260,
+                  "y": 0
+                },
+                "YMvS1": {
+                  "width": "fill_container",
+                  "height": 227,
+                  "flipX": false,
+                  "flipY": false,
+                  "x": 260,
+                  "y": 0
+                },
+                "inf61": {
+                  "width": "fill_container",
+                  "height": 229,
+                  "flipX": false,
+                  "flipY": false,
+                  "x": 260,
+                  "y": 0
+                }
+              }
             }
           ]
         }
@@ -2753,13 +3882,13 @@
       "type": "color",
       "value": [
         {
-          "value": "#9f0712",
+          "value": "#a2792d",
           "theme": {
             "Mode": "Dark"
           }
         },
         {
-          "value": "#9f0712",
+          "value": "#a2792d",
           "theme": {
             "Mode": "Light"
           }
@@ -2929,5 +4058,6 @@
   },
   "imports": {
     "D": "pencil:shadcn.lib.pen"
-  }
+  },
+  "fileToken": "70c8c0a0-5953-476f-aedb-b448bb5eaaef"
 }

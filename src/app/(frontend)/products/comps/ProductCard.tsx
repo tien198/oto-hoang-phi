@@ -1,38 +1,94 @@
-import { Button } from '@/components/ui/button'
+import { products, vehicle_models } from '@/payload-generated-schema'
+import Link from 'next/link'
 
+type Product = typeof products.$inferSelect
+type VehicleModel = typeof vehicle_models.$inferSelect
 interface ProductCardProps {
-  title: string
-  sku?: string
-  imageUrl?: string
-  price?: number
+  product: Product
+  vehicleModel: VehicleModel | null
+  imgUrl: string
 }
 
-export default function ProductCard({ title, sku, imageUrl, price }: ProductCardProps) {
+export default function ProductCard({ product, vehicleModel, imgUrl }: ProductCardProps) {
+  const { name, slug, price, OEno, weight, warranty, size_x, size_y, size_z } = product
+  const sizeStr = `${size_x ?? 0}x${size_y ?? 0}x${size_z ?? 0}`
+
+  const vehicleModels: string[] = []
+  if (vehicleModel?.name) {
+    vehicleModels.push(vehicleModel.name)
+  }
+  if (product['model-fitments']) {
+    for (const fitment of product['model-fitments']) {
+      const model = fitment as VehicleModel
+      if (model?.name && !vehicleModels.includes(model.name)) {
+        vehicleModels.push(model.name)
+      }
+    }
+  }
+
+  const displayModels = vehicleModels?.slice(0, 3) ?? []
+  const hasMoreModels = (vehicleModels?.length ?? 0) > 3
+
   return (
-    <div className="flex flex-col border border-[#e5e5e5] rounded-lg bg-[#fafafa] shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-      <div className="p-6 flex justify-center border-b border-[#e5e5e5] bg-white">
-        <div className="w-full h-[160px] bg-gray-50 rounded flex items-center justify-center overflow-hidden">
-          {imageUrl ? (
-            <img src={imageUrl} alt={title} className="w-full h-full object-contain" />
+    <div className="flex flex-row w-full border-b border-primary last:border-b-0">
+      {/* Image Column */}
+      <div className="w-[260px] shrink-0 flex flex-col items-center justify-center p-6 border-r border-primary">
+        <div className="w-[180px] h-[180px] flex items-center justify-center overflow-hidden">
+          {imgUrl ? (
+            <img src={imgUrl} alt={name ?? ''} className="w-full h-full object-contain" />
           ) : (
-            <div className="text-gray-300">No Image</div>
+            <div className="text-muted-foreground text-sm">No Image</div>
           )}
         </div>
       </div>
-      <div className="p-6 flex flex-col gap-2 flex-1">
-        <h3 className="text-[#0a0a0a] text-xl font-medium line-clamp-2 leading-tight">{title}</h3>
-        <p className="text-[#737373] text-base">{sku ?? ''}</p>
-      </div>
-      <div className="px-6 pb-6 flex items-center justify-between">
-        <div className="bg-[#171717] text-white text-xs px-3 py-1 rounded-full font-medium">
-          {price?.toLocaleString('vn-vi')}
+
+      {/* Specs Column */}
+      <div className="flex-1 flex flex-col gap-6 px-8 py-6 border-r border-primary">
+        <div className="flex flex-1 flex-col gap-2">
+          <h3 className="text-xl font-semibold text-foreground leading-normal">{name ?? ''}</h3>
+
+          <div className="w-fit px-6 py-1 bg-primary border border-primary rounded-2xl">
+            <span className="text-base font-semibold text-white whitespace-nowrap ">
+              {price ? price.toLocaleString('vi-VN') : NaN} ₫
+            </span>
+          </div>
         </div>
-        <Button
-          variant="outline"
-          className="border-[#e5e5e5] bg-[#fafafa] shadow-sm hover:bg-accent hover:border hover:border-accent-foreground"
-        >
-          Chi tiết
-        </Button>
+
+        <div className="flex flex-row gap-8">
+          {/* Spec Left */}
+          <div className="flex-1 flex flex-col gap-4">
+            <span className="text-sm text-foreground">Mã OE: {OEno ?? ''}</span>
+            <span className="text-sm text-foreground">Kích thước: {sizeStr ?? ''} mm</span>
+          </div>
+          {/* Spec Right */}
+          <div className="flex-1 flex flex-col gap-4">
+            <span className="text-sm text-foreground">Trọng lượng: {weight ?? NaN} KG</span>
+
+            <span className="text-sm text-foreground">Bảo hành: {warranty ?? NaN} tháng</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Application Column */}
+      <div className="w-[320px] shrink-0 flex flex-col gap-4 px-8 py-6">
+        <div className="p-3">
+          <p className="text-sm leading-[21px] text-foreground">
+            {displayModels.map((model, idx) => (
+              <span key={idx}>
+                {model}
+                {idx < displayModels.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+        </div>
+        {/* {(hasMoreModels || slug) && (
+          <Link
+            href={slug ? `/products/${slug}` : '#'}
+            className="text-sm font-bold text-foreground hover:text-primary transition-colors"
+          >
+            Xem Thêm
+          </Link>
+        )} */}
       </div>
     </div>
   )

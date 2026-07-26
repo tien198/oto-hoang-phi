@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { ProductsPaginationResult } from '../actions/get-products'
 import { getProductsApi } from '../fetch-api/get-products-list'
 import { ProductsPagination } from './ProductList.Pagination'
+import { VehicleModel } from '@/payload-types'
 
 export default function ProductList() {
   const searchParams = useSearchParams()
@@ -22,24 +23,43 @@ export default function ProductList() {
         vehicleModelName,
       }),
   })
+
   const products = data?.docs
+
   return (
     <div className="flex flex-col gap-6 w-full flex-1">
       <div className="flex flex-col gap-2">
-        <h2 className="text-[#08210e] text-[22px] font-semibold uppercase">KẾT QUẢ TÌM KIẾM</h2>
+        <h2 className="text-foreground text-[22px] font-semibold uppercase">KẾT QUẢ TÌM KIẾM</h2>
         <div className="h-[3px] bg-primary w-[120px]"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {products?.map((item, idx) => (
-          <ProductCard
-            key={idx}
-            title={item.product.name ?? ''}
-            // sku={item.product.gallery}
-            imageUrl={item.media ?? ''}
-            price={item.product.price ?? NaN}
-          />
-        ))}
+      <div className="flex flex-col border border-primary">
+        {/* Table Header */}
+        <div className="flex flex-row bg-primary py-4">
+          <div className="w-[260px] shrink-0 flex justify-center items-center">
+            <span className="text-base font-semibold text-primary-foreground">HÌNH ẢNH</span>
+          </div>
+          <div className="flex-1 flex justify-center items-center">
+            <span className="text-base font-semibold text-primary-foreground">
+              THÔNG SỐ KỸ THUẬT
+            </span>
+          </div>
+          <div className="w-[320px] shrink-0 flex justify-center items-center">
+            <span className="text-base font-semibold text-primary-foreground">TƯƠNG THÍCH</span>
+          </div>
+        </div>
+
+        {/* Table Rows */}
+        {products?.map((item, idx) => {
+          return (
+            <ProductCard
+              key={idx}
+              product={item.product}
+              vehicleModel={item.vehicleModel ?? null}
+              imgUrl={item.media ?? ''}
+            />
+          )
+        })}
       </div>
       {data?.pagination && (
         <ProductsPagination
