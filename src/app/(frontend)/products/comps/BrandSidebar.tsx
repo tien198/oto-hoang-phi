@@ -35,7 +35,7 @@ export default async function BrandSidebar() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between p-4 text-accent bg-primary cursor-pointer hover:opacity-80 transition-opacity">
+      <div className="flex items-center justify-between p-4 text-accent-foreground bg-primary cursor-pointer hover:opacity-80 transition-opacity">
         <span className="font-semibold text-base mr-2">PHỤ TÙNG OEM</span>
         <ChevronRight className="w-4 h-4" />
       </div>

@@ -7,7 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import { Pagination as PaginationResult } from '@/types/pagination-result'
+import { Pagination as PaginationResult } from '@/types/pagination'
 import { genProductParams } from '../fetch-api/get-products-list'
 import Link from 'next/link'
 

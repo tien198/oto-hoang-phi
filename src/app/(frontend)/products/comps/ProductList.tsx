@@ -33,7 +33,7 @@ export default function ProductList() {
         <div className="h-[3px] bg-primary w-[120px]"></div>
       </div>
 
-      <div className="flex flex-col border border-primary">
+      <div className="flex flex-col">
         {/* Table Header */}
         <div className="flex flex-row bg-primary py-4">
           <div className="w-[260px] shrink-0 flex justify-center items-center">

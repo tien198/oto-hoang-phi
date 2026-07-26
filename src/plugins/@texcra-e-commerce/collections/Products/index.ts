@@ -280,7 +280,7 @@ export const Products: CollectionConfig = {
       hasMany: true,
       label: {
         en: 'Model Fitments',
-        vi: 'Dòng xe phù hợp',
+        vi: 'Dòng xe tương thích',
       },
       admin: {
         position: 'sidebar',

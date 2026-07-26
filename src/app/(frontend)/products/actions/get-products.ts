@@ -10,7 +10,7 @@ import {
   vehicle_makes,
   vehicle_models,
 } from '@/payload-generated-schema'
-import { Pagination } from '@/types/pagination-result'
+import { Pagination } from '@/types/pagination'
 
 export type ProductResult = {
   product: Product

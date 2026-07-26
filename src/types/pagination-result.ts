@@ -1,11 +1,5 @@
-export type Pagination = {
-  totalDocs: number
-  limit: number
-  totalPages: number
-  page: number
-  pagingCounter: number
-  hasPrevPage: boolean
-  hasNextPage: boolean
-  prevPage?: number | null
-  nextPage?: number | null
-}
+import { Pagination } from './pagination'
+
+export type PaginationResult<T> = {
+  docs: T[]
+} & Pagination
