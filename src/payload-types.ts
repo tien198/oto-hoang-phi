@@ -812,6 +812,14 @@ export interface Product {
       }[]
     | null;
   layouts?: (MediaBlock | ContentBlock | CallToActionBlock)[] | null;
+  OEno?: string | null;
+  weight?: number | null;
+  warranty?: number | null;
+  size?: {
+    x?: number | null;
+    y?: number | null;
+    z?: number | null;
+  };
   meta?: {
     title?: string | null;
     /**
@@ -1464,6 +1472,16 @@ export interface ProductsSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
+      };
+  OEno?: T;
+  weight?: T;
+  warranty?: T;
+  size?:
+    | T
+    | {
+        x?: T;
+        y?: T;
+        z?: T;
       };
   meta?:
     | T

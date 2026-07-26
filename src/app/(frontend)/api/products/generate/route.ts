@@ -9,7 +9,10 @@ export async function GET() {
   const innovaModel = (
     await db.drizzle.select().from(vehicle_models).where(eq(vehicle_models.name, 'Innova')).limit(1)
   )[0]
-
+  function getRandomFloat(min: number, max: number) {
+    const random = Math.random() * (max - min) + min
+    return Math.round(random * 100) / 100
+  }
   for (let i = 12; i < 150; i++) {
     await create({
       collection: 'products',
@@ -17,7 +20,7 @@ export async function GET() {
       data: {
         name: `product-${i}`,
         slug: `product-${i}`,
-        // _status: 'published',
+        _status: 'published',
         description: {
           root: {
             type: 'root',
@@ -49,8 +52,25 @@ export async function GET() {
             direction: null,
           },
         },
-        price: 1000000,
+        price: getRandomFloat(1000, 100000),
         'vehicle-models': innovaModel.id,
+        gallery: [
+          {
+            image: {
+              id: 1,
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
+            },
+          },
+        ],
+        OEno: 'OEno-' + i,
+        weight: getRandomFloat(0.35, 5),
+        warranty: 12,
+        size: {
+          x: Math.round(Math.random() * 100 * 100) / 100,
+          y: Math.round(Math.random() * 100 * 100) / 100,
+          z: Math.round(Math.random() * 100 * 100) / 100,
+        },
       },
     })
   }

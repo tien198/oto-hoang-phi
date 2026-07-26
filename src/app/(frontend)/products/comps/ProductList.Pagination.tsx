@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/pagination'
 import { Pagination as PaginationResult } from '@/types/pagination-result'
 import { genProductParams } from '../fetch-api/get-products-list'
+import Link from 'next/link'
 
 type Props = {
   pagination: PaginationResult
@@ -44,14 +45,17 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious
+            <Link
               href={
                 hasPrevPage ? genProductParams(prevPage, vehicleMakeName, vehicleModelName) : '#'
               }
-              className={`border border-transparent text-[#737373] ${
-                !hasPrevPage ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'
-              }`}
-            />
+            >
+              <PaginationPrevious
+                className={`border border-transparent text-[#737373] ${
+                  !hasPrevPage ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'
+                }`}
+              />
+            </Link>
           </PaginationItem>
 
           {getPageNumbers().map((p, i) => (
@@ -59,30 +63,34 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
               {p === '...' ? (
                 <PaginationEllipsis />
               ) : (
-                <PaginationLink
-                  href={genProductParams(Number(p), vehicleMakeName, vehicleModelName)}
-                  isActive={p === page}
-                  className={
-                    p === page
-                      ? 'border-[#e5e5e5] bg-[#fafafa] text-[#0a0a0a] font-semibold'
-                      : 'border-transparent hover:bg-gray-100 text-[#0a0a0a]'
-                  }
-                >
-                  {p}
-                </PaginationLink>
+                <Link href={genProductParams(Number(p), vehicleMakeName, vehicleModelName)}>
+                  <PaginationLink
+                    isActive={p === page}
+                    className={
+                      p === page
+                        ? 'border-[#e5e5e5] bg-[#fafafa] text-[#0a0a0a] font-semibold'
+                        : 'border-transparent hover:bg-gray-100 text-[#0a0a0a]'
+                    }
+                  >
+                    {p}
+                  </PaginationLink>
+                </Link>
               )}
             </PaginationItem>
           ))}
 
           <PaginationItem>
-            <PaginationNext
+            <Link
               href={
                 hasNextPage ? genProductParams(nextPage, vehicleMakeName, vehicleModelName) : '#'
               }
-              className={`border border-transparent text-[#0a0a0a] ${
-                !hasNextPage ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'
-              }`}
-            />
+            >
+              <PaginationNext
+                className={`border border-transparent text-[#0a0a0a] ${
+                  !hasNextPage ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'
+                }`}
+              />
+            </Link>
           </PaginationItem>
         </PaginationContent>
       </Pagination>

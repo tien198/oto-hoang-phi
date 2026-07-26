@@ -41,7 +41,7 @@ export const Products: CollectionConfig = {
   },
   admin: {
     group: { en: 'E-Commerce', vi: 'Quản lý Sản Phẩm' },
-    defaultColumns: ['name', 'slug', 'updatedAt'],
+    defaultColumns: ['name', 'slug', 'updatedAt', '_status'],
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -144,6 +144,88 @@ export const Products: CollectionConfig = {
                 vi: 'Giao diện',
               },
               blocks: [MediaBlock, Content, CallToAction],
+            },
+          ],
+        },
+        {
+          label: {
+            en: 'Specification',
+            vi: 'Thông số kỹ thuật',
+          },
+          fields: [
+            {
+              name: 'OEno',
+              type: 'text',
+              unique: true,
+              label: {
+                en: 'OE No',
+                vi: 'Mã OE',
+              },
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'weight',
+                  type: 'number',
+                  defaultValue: 0.35,
+                  label: {
+                    en: 'Weight (kg)',
+                    vi: 'Trọng lượng (kg)',
+                  },
+                },
+                {
+                  name: 'warranty',
+                  type: 'number',
+                  defaultValue: 12,
+                  label: {
+                    en: 'Warranty (months)',
+                    vi: 'Bảo hành (tháng)',
+                  },
+                },
+              ],
+            },
+            {
+              name: 'size',
+              type: 'group',
+              label: {
+                en: 'Size (mm)',
+                vi: 'Kích thước (mm)',
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'x',
+                      type: 'number',
+                      defaultValue: 90,
+                      label: {
+                        en: 'X',
+                        vi: 'X',
+                      },
+                    },
+                    {
+                      name: 'y',
+                      type: 'number',
+                      defaultValue: 60,
+                      label: {
+                        en: 'Y',
+                        vi: 'Y',
+                      },
+                    },
+                    {
+                      name: 'z',
+                      type: 'number',
+                      defaultValue: 180,
+                      label: {
+                        en: 'Z',
+                        vi: 'Z',
+                      },
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },

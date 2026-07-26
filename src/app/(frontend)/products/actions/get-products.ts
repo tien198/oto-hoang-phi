@@ -1,10 +1,11 @@
 import payloadConfig from '@payload-config'
 import { getPayload } from 'payload'
-import { and, count, eq, sql } from 'drizzle-orm'
+import { aliasedTable, and, count, eq, or, sql } from 'drizzle-orm'
 import { Product, VehicleModel, VehicleMake, Media } from '@/payload-types'
 import {
   products,
   products_gallery,
+  products_rels,
   media,
   vehicle_makes,
   vehicle_models,
@@ -24,6 +25,9 @@ export type GetProductsSearchParams = {
   vehicleMakeName?: string | null
   vehicleModelName?: string | null
 }
+
+const vehicle_models_alias = aliasedTable(vehicle_models, 'vehicle_models_fitmentsalias')
+
 export async function getProductsPagination({
   page = 1,
   limit = 9,
@@ -45,6 +49,11 @@ export async function getProductsPagination({
     .from(products)
     .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
     .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
+    .leftJoin(
+      products_rels,
+      and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
+    )
+    .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
     .leftJoin(products_gallery, eq(products.id, products_gallery._parentID))
     .leftJoin(media, eq(media.id, products_gallery.image))
     // .orderBy(products.id, asc(media.id))
@@ -54,9 +63,14 @@ export async function getProductsPagination({
         vehicleMakeName
           ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
           : undefined,
-        vehicleModelName
-          ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
-          : undefined,
+        or(
+          vehicleModelName
+            ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
+            : undefined,
+          vehicleModelName
+            ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
+            : undefined,
+        ),
       ),
     )
     .limit(limit)
@@ -67,15 +81,25 @@ export async function getProductsPagination({
     .from(products)
     .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
     .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
+    .leftJoin(
+      products_rels,
+      and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
+    )
+    .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
     .where(
       and(
         eq(products._status, 'published'),
         vehicleMakeName
           ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
           : undefined,
-        vehicleModelName
-          ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
-          : undefined,
+        or(
+          vehicleModelName
+            ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
+            : undefined,
+          vehicleModelName
+            ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
+            : undefined,
+        ),
       ),
     )
 

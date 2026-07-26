@@ -1327,6 +1327,12 @@ export const products = pgTable(
     name: varchar('name'),
     price: numeric('price', { mode: 'number' }),
     description: jsonb('description'),
+    OEno: varchar('o_eno'),
+    weight: numeric('weight', { mode: 'number' }).default(0.35),
+    warranty: numeric('warranty', { mode: 'number' }).default(12),
+    size_x: numeric('size_x', { mode: 'number' }).default(90),
+    size_y: numeric('size_y', { mode: 'number' }).default(60),
+    size_z: numeric('size_z', { mode: 'number' }).default(180),
     meta_title: varchar('meta_title'),
     meta_image: integer('meta_image_id').references(() => media.id, {
       onDelete: 'set null',
@@ -1346,6 +1352,7 @@ export const products = pgTable(
     _status: enum_products_status('_status').default('draft'),
   },
   (columns) => [
+    uniqueIndex('products_o_eno_idx').on(columns.OEno),
     index('products_meta_meta_image_idx').on(columns.meta_image),
     index('products_vehicle_models_idx').on(columns['vehicle-models']),
     uniqueIndex('products_slug_idx').on(columns.slug),
@@ -1553,6 +1560,12 @@ export const _products_v = pgTable(
     version_name: varchar('version_name'),
     version_price: numeric('version_price', { mode: 'number' }),
     version_description: jsonb('version_description'),
+    version_OEno: varchar('version_o_eno'),
+    version_weight: numeric('version_weight', { mode: 'number' }).default(0.35),
+    version_warranty: numeric('version_warranty', { mode: 'number' }).default(12),
+    version_size_x: numeric('version_size_x', { mode: 'number' }).default(90),
+    version_size_y: numeric('version_size_y', { mode: 'number' }).default(60),
+    version_size_z: numeric('version_size_z', { mode: 'number' }).default(180),
     version_meta_title: varchar('version_meta_title'),
     version_meta_image: integer('version_meta_image_id').references(() => media.id, {
       onDelete: 'set null',
@@ -1587,6 +1600,7 @@ export const _products_v = pgTable(
   },
   (columns) => [
     index('_products_v_parent_idx').on(columns.parent),
+    index('_products_v_version_version_o_eno_idx').on(columns.version_OEno),
     index('_products_v_version_meta_version_meta_image_idx').on(columns.version_meta_image),
     index('_products_v_version_version_vehicle_models_idx').on(columns['version_vehicle-models']),
     index('_products_v_version_version_slug_idx').on(columns.version_slug),

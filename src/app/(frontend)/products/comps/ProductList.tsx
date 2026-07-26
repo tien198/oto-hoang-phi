@@ -7,29 +7,6 @@ import { ProductsPaginationResult } from '../actions/get-products'
 import { getProductsApi } from '../fetch-api/get-products-list'
 import { ProductsPagination } from './ProductList.Pagination'
 
-const products = [
-  {
-    title: 'Bơm nước làm mát',
-    sku: 'SKU: BN-2004',
-    imageUrl: '/generated-1783491561656.png',
-    price: 1000000,
-  },
-  {
-    title: 'Lọc dầu động cơ',
-    sku: 'SKU: LD-2001',
-    imageUrl: '/generated-1783491561213.png',
-    price: 1000000,
-  },
-  {
-    title: 'Má phanh trước',
-    sku: 'SKU: MP-2002',
-    imageUrl: 'generated-1783491561249.png',
-    price: 1000000,
-  },
-  { title: 'Curoa cam', sku: 'SKU: CR-2003', imageUrl: '', price: 1000000 },
-  { title: 'Bugi Toyota Innova', sku: 'SKU: BG-2000', imageUrl: '', price: 1000000 },
-]
-
 export default function ProductList() {
   const searchParams = useSearchParams()
   const page = Number(searchParams.get('page')) || 1

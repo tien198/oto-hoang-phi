@@ -10,6 +10,9 @@ import {
 } from '@/components/ui/select'
 import clsx from 'clsx'
 
+import { MakeSelection } from './SearchBar.MakeSelection'
+import { ModelSelection } from './SearchBar.ModelSelection'
+
 export default function SearchBar() {
   return (
     <div
@@ -32,22 +35,8 @@ export default function SearchBar() {
         <Search className="w-4 h-4 text-[#737373]" />
       </div>
       <div className="flex items-center gap-4 flex-wrap">
-        <Select defaultValue="toyota">
-          <SelectTrigger className="w-[180px] bg-card border-accent-foreground text-primary">
-            <SelectValue placeholder="Brand" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="toyota">TOYOTA</SelectItem>
-          </SelectContent>
-        </Select>
-        <Select defaultValue="innova">
-          <SelectTrigger className="w-[180px] bg-card border-accent-foreground text-primary">
-            <SelectValue placeholder="Model" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="innova">INNOVA</SelectItem>
-          </SelectContent>
-        </Select>
+        <MakeSelection />
+        <ModelSelection />
         <Select defaultValue="2000">
           <SelectTrigger className="w-[180px] bg-card border-accent-foreground text-primary">
             <SelectValue placeholder="Year" />
