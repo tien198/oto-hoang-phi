@@ -58,7 +58,7 @@ export default function ProductList() {
             <ProductCard
               key={idx}
               product={item.product}
-              modelFitments={item.fitmentModels ?? null}
+              modelFitments={(item.fitments as any) ?? null}
               imgUrl={item.media ?? ''}
             />
           )

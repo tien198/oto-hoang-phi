@@ -5,7 +5,7 @@ type Product = typeof products.$inferSelect
 type VehicleModel = typeof vehicle_models.$inferSelect
 interface ProductCardProps {
   product: Product
-  modelFitments: string[] | null
+  modelFitments: { vehicle_specification: string }[] | null
   imgUrl: string
 }
 
@@ -80,7 +80,7 @@ export default function ProductCard({ product, modelFitments, imgUrl }: ProductC
           <p className="text-sm leading-[21px] text-foreground">
             {modelFitments?.map((model, idx) => (
               <span key={idx}>
-                {model}
+                {model.vehicle_specification}
                 {idx < modelFitments.length - 1 && <br />}
               </span>
             ))}
