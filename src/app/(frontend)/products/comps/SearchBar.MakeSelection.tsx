@@ -5,8 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import type { VehicleMakeResult } from '@/app/(frontend)/api/vehicle-makes-generation/route'
-import { PaginationResult } from '@/types/pagination-result'
+import type { PaginationResult } from '@/types/pagination-result'
+import type { VehicleMake } from '@/payload-types'
 
 export async function MakeSelection() {
   const res = await fetch(
@@ -16,7 +16,7 @@ export async function MakeSelection() {
     },
   )
 
-  const { docs: makes } = (await res.json()) as PaginationResult<VehicleMakeResult>
+  const { docs: makes } = (await res.json()) as PaginationResult<VehicleMake>
 
   return (
     <Select defaultValue={makes[0]?.name?.toLowerCase() || ''}>

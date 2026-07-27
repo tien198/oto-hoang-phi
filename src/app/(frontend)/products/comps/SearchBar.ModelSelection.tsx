@@ -5,8 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import type { VehicleModelResult } from '@/app/(frontend)/api/vehicle-models-generation/route'
-import { PaginationResult } from '@/types/pagination-result'
+import type { VehicleModel } from '@/payload-types'
+import type { PaginationResult } from '@/types/pagination-result'
 
 export async function ModelSelection() {
   const res = await fetch(
@@ -16,7 +16,7 @@ export async function ModelSelection() {
     },
   )
 
-  const { docs: models } = (await res.json()) as PaginationResult<VehicleModelResult>
+  const { docs: models } = (await res.json()) as PaginationResult<VehicleModel>
 
   return (
     <Select defaultValue={models[0]?.name?.toLowerCase() || ''}>
