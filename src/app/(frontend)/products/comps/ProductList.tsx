@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { ProductsPaginationResult } from '../actions/get-products'
 import { getProductsApi } from '../fetch-api/get-products-list'
 import { ProductsPagination } from './ProductList.Pagination'
+import clsx from 'clsx'
 
 export default function ProductList() {
   const searchParams = useSearchParams()
@@ -34,17 +35,20 @@ export default function ProductList() {
 
       <div className="flex flex-col">
         {/* Table Header */}
-        <div className={'grid grid-cols-[320px_1fr_260px] bg-primary'}>
-          <div className="px-6 h-full border border-accent">
-            <span className="text-base font-semibold text-primary-foreground"></span>
+        <div
+          className={clsx(
+            'grid grid-cols-[320px_1fr_260px] bg-primary',
+            'text-base font-semibold text-primary-foreground',
+          )}
+        >
+          <div className="px-6 h-full border border-accent py-4">
+            <span>#</span>
           </div>
           <div className="px-6 h-full border border-accent py-4">
-            <span className="text-base font-semibold text-primary-foreground">
-              THÔNG SỐ KỸ THUẬT
-            </span>
+            <span>THÔNG SỐ KỸ THUẬT</span>
           </div>
           <div className="px-6 h-full border border-accent py-4">
-            <span className="text-base font-semibold text-primary-foreground">TƯƠNG THÍCH</span>
+            <span>TƯƠNG THÍCH</span>
           </div>
         </div>
 
@@ -54,7 +58,7 @@ export default function ProductList() {
             <ProductCard
               key={idx}
               product={item.product}
-              vehicleModel={item.vehicleModel ?? null}
+              modelFitments={item.fitmentModels ?? null}
               imgUrl={item.media ?? ''}
             />
           )

@@ -5,11 +5,11 @@ type Product = typeof products.$inferSelect
 type VehicleModel = typeof vehicle_models.$inferSelect
 interface ProductCardProps {
   product: Product
-  vehicleModel: { name: string; modelYear: number } | null
+  modelFitments: string[] | null
   imgUrl: string
 }
 
-export default function ProductCard({ product, vehicleModel, imgUrl }: ProductCardProps) {
+export default function ProductCard({ product, modelFitments, imgUrl }: ProductCardProps) {
   const { name, slug, price, OEno, weight, warranty, size_x, size_y, size_z } = product
 
   // const vehicleModels: string[] = []
@@ -78,12 +78,12 @@ export default function ProductCard({ product, vehicleModel, imgUrl }: ProductCa
       <div className="flex flex-col gap-4 px-8 py-10">
         <div className="p-3">
           <p className="text-sm leading-[21px] text-foreground">
-            {/* {displayModels.map((model, idx) => (
+            {modelFitments?.map((model, idx) => (
               <span key={idx}>
                 {model}
-                {idx < displayModels.length - 1 && <br />}
+                {idx < modelFitments.length - 1 && <br />}
               </span>
-            ))} */}
+            ))}
           </p>
         </div>
         {/* {(hasMoreModels || slug) && (
