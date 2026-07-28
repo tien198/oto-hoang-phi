@@ -12,22 +12,6 @@ interface ProductCardProps {
 export default function ProductCard({ product, modelFitments, imgUrl }: ProductCardProps) {
   const { name, slug, price, OEno, weight, warranty, size_x, size_y, size_z } = product
 
-  // const vehicleModels: string[] = []
-  // if (vehicleModel?.name) {
-  //   vehicleModels.push(vehicleModel.name)
-  // }
-  // if (product['model-fitments']) {
-  //   for (const fitment of product['model-fitments']) {
-  //     const model = fitment as VehicleModel
-  //     if (model?.name && !vehicleModels.includes(model.name)) {
-  //       vehicleModels.push(model.name)
-  //     }
-  //   }
-  // }
-
-  // const displayModels = vehicleModels?.slice(0, 3) ?? []
-  // const hasMoreModels = (vehicleModels?.length ?? 0) > 3
-
   return (
     <div className="grid grid-cols-[320px_1fr_260px] w-full border-b border-primary last:border-b-0">
       {/* Image Column */}
@@ -53,24 +37,24 @@ export default function ProductCard({ product, modelFitments, imgUrl }: ProductC
           </div>
         </div>
 
-        <div className="flex flex-row gap-8">
+        <div className="grid grid-cols-2 gap-8">
           {/* Spec Left */}
-          <div className="flex-1 flex flex-col gap-4">
-            <span className="text-sm text-foreground">Mã OE: {OEno ?? ''}</span>
+          <span className="text-sm text-foreground">Mã OE: {OEno ?? ''}</span>
+          {(size_x || size_y || size_z) && (
             <span className="text-sm text-foreground">
               Kích thước: <i>{size_x ?? 0}</i> x <i>{size_y ?? 0}</i> x <i>{size_z ?? 0}</i> mm
             </span>
-          </div>
+          )}
           {/* Spec Right */}
-          <div className="flex-1 flex flex-col gap-4">
+          {weight && (
             <span className="text-sm text-foreground">
               Trọng lượng: <i>{weight ?? NaN}</i> KG
             </span>
+          )}
 
-            <span className="text-sm text-foreground">
-              Bảo hành: <i>{warranty ?? NaN}</i> tháng
-            </span>
-          </div>
+          <span className="text-sm text-foreground">
+            Bảo hành: <i>{warranty ?? NaN}</i> tháng
+          </span>
         </div>
       </div>
 

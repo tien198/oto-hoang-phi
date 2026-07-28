@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Select,
   SelectContent,
@@ -6,24 +8,24 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import type { VehicleModel } from '@/payload-types'
-import type { PaginationResult } from '@/types/pagination-result'
 
-export async function ModelSelection() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/api/vehicle-models`,
-    {
-      next: { tags: ['vehicle-models'] },
-    },
-  )
+import { useModelName, useSetModelName } from './store'
+import { useEffect } from 'react'
 
-  const { docs: models } = (await res.json()) as PaginationResult<VehicleModel>
+export function ModelSelection({ models }: { models: VehicleModel[] }) {
+  const modelName = useModelName()
+  const setModelName = useSetModelName()
 
   return (
-    <Select defaultValue={models[0]?.name?.toLowerCase() || ''}>
-      <SelectTrigger className="w-[180px] bg-card border-accent-foreground text-primary">
+    <Select
+      value={modelName ?? '__all__'}
+      onValueChange={(val) => setModelName(val === '__all__' ? null : val)}
+    >
+      <SelectTrigger className="w-44 bg-card border-accent-foreground text-primary">
         <SelectValue placeholder="Model" />
       </SelectTrigger>
       <SelectContent>
+        <SelectItem value="__all__">Tất cả</SelectItem>
         {models.map((model) => {
           if (!model.name) return null
           return (

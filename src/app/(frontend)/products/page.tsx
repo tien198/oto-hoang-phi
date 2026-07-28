@@ -15,6 +15,7 @@ export default async function ProductsPage({ searchParams }: Props) {
   const page = Number(params.page) ?? 1
   const vehicleMake = params['vehicle-make'] as string | undefined
   const vehicleModel = params['vehicle-model'] as string | undefined
+  const modelYear = params['model-year'] as string | undefined
 
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery({
@@ -24,6 +25,7 @@ export default async function ProductsPage({ searchParams }: Props) {
         page: Number(page),
         vehicleMakeName: vehicleMake,
         vehicleModelName: vehicleModel,
+        modelYear: modelYear,
       }),
   })
 

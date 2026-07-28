@@ -47,7 +47,9 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
           <PaginationItem>
             <Link
               href={
-                hasPrevPage ? genProductParams(prevPage, vehicleMakeName, vehicleModelName) : '#'
+                hasPrevPage
+                  ? '?' + genProductParams(prevPage, vehicleMakeName, vehicleModelName)
+                  : '#'
               }
             >
               <PaginationPrevious
@@ -63,7 +65,7 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
               {p === '...' ? (
                 <PaginationEllipsis />
               ) : (
-                <Link href={genProductParams(Number(p), vehicleMakeName, vehicleModelName)}>
+                <Link href={'?' + genProductParams(Number(p), vehicleMakeName, vehicleModelName)}>
                   <PaginationLink
                     isActive={p === page}
                     className={
@@ -82,7 +84,9 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
           <PaginationItem>
             <Link
               href={
-                hasNextPage ? genProductParams(nextPage, vehicleMakeName, vehicleModelName) : '#'
+                hasNextPage
+                  ? '?' + genProductParams(nextPage, vehicleMakeName, vehicleModelName)
+                  : '#'
               }
             >
               <PaginationNext

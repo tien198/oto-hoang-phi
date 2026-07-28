@@ -24,6 +24,7 @@ export type GetProductsSearchParams = {
   limit?: number
   vehicleMakeName?: string | null
   vehicleModelName?: string | null
+  modelYear?: string | null
 }
 
 const vehicle_models_alias = aliasedTable(vehicle_models, 'vehicle_models_fitmentsalias')
@@ -40,46 +41,6 @@ export async function getProductsPagination({
   } = await getPayload({ config: payloadConfig })
 
   const productsQuery = drizzle
-    /*
-    .selectDistinctOn([products.id], {
-      product: products,
-      vehicleModel: {
-        name: vehicle_models.name,
-        modelYear: vehicle_models['model-year'],
-      },
-      vehicleMake: {
-        name: vehicle_makes.name,
-      },
-      media: media.url,
-    })
-    .from(products)
-    .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
-    .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
-    .leftJoin(
-      products_rels,
-      and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
-    )
-    .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
-    .leftJoin(products_gallery, eq(products.id, products_gallery._parentID))
-    .leftJoin(media, eq(media.id, products_gallery.image))
-    // .orderBy(products.id, asc(media.id))
-    .where(
-      and(
-        eq(products._status, 'published'),
-        vehicleMakeName
-          ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
-          : undefined,
-        or(
-          vehicleModelName
-            ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
-            : undefined,
-          vehicleModelName
-            ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
-            : undefined,
-        ),
-      ),
-    )
-      */
     .selectDistinctOn([products.id], {
       product: products,
       vehicleModel: {
@@ -116,10 +77,16 @@ export async function getProductsPagination({
     .where(
       and(
         eq(products._status, 'published'),
-        eq(sql`LOWER(${vehicle_makes.name})`, 'toyota'),
+        vehicleMakeName
+          ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
+          : undefined,
         or(
-          eq(sql`LOWER(${vehicle_models.name})`, 'innova'),
-          eq(sql`LOWER(${vehicle_models_alias.name})`, ''),
+          vehicleModelName
+            ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
+            : undefined,
+          vehicleModelName
+            ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
+            : undefined,
         ),
       ),
     )
