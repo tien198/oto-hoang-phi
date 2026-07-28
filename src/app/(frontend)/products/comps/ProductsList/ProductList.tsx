@@ -3,8 +3,8 @@
 import { useQuery } from '@tanstack/react-query'
 import ProductCard from './ProductCard'
 import { useSearchParams } from 'next/navigation'
-import { ProductsPaginationResult } from '../actions/get-products'
-import { getProductsApi } from '../fetch-api/get-products-list'
+import { ProductsPaginationResult } from '../../actions/get-products'
+import { getProductsApi } from '../../fetch-api/get-products-list'
 import { ProductsPagination } from './ProductList.Pagination'
 import clsx from 'clsx'
 
@@ -13,14 +13,16 @@ export default function ProductList() {
   const page = Number(searchParams.get('page')) || 1
   const vehicleMakeName = searchParams.get('vehicle-make')
   const vehicleModelName = searchParams.get('vehicle-model')
+  const modelYear = searchParams.get('model-year')
 
   const { data } = useQuery<ProductsPaginationResult>({
-    queryKey: ['products', vehicleMakeName, vehicleModelName, page],
+    queryKey: ['products', page, vehicleMakeName, vehicleModelName, modelYear],
     queryFn: () =>
       getProductsApi({
         page,
         vehicleMakeName,
         vehicleModelName,
+        modelYear,
       }),
   })
 

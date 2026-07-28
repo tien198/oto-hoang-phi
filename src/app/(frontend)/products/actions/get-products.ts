@@ -34,6 +34,7 @@ export async function getProductsPagination({
   limit = 9,
   vehicleMakeName,
   vehicleModelName,
+  modelYear,
 }: GetProductsSearchParams) {
   const offset = (page - 1) * limit
   const {
@@ -59,7 +60,8 @@ export async function getProductsPagination({
             ) 
             ORDER BY ${vehicle_models_alias}.model_year ASC
           ) 
-          FILTER (WHERE ${vehicle_models_alias}.id IS NOT NULL
+          FILTER (
+            WHERE ${vehicle_models_alias}.id IS NOT NULL
           ) 
         , '[]'::jsonb
         )::json`,
@@ -77,6 +79,7 @@ export async function getProductsPagination({
     .where(
       and(
         eq(products._status, 'published'),
+
         vehicleMakeName
           ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
           : undefined,
@@ -87,6 +90,10 @@ export async function getProductsPagination({
           vehicleModelName
             ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
             : undefined,
+        ),
+        or(
+          modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
+          modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
         ),
       ),
     )
@@ -120,6 +127,10 @@ export async function getProductsPagination({
           vehicleModelName
             ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
             : undefined,
+        ),
+        or(
+          modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
+          modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
         ),
       ),
     )

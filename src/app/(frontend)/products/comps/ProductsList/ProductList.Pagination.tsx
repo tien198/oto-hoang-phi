@@ -8,7 +8,7 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 import { Pagination as PaginationResult } from '@/types/pagination'
-import { genProductParams } from '../fetch-api/get-products-list'
+import { genProductParams } from '../../fetch-api/get-products-list'
 import Link from 'next/link'
 
 type Props = {
