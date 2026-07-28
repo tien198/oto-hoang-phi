@@ -1,5 +1,4 @@
-import { Search, ChevronsRight } from 'lucide-react'
-import { Input } from '@/components/ui/input'
+import { ChevronsRight } from 'lucide-react'
 import clsx from 'clsx'
 import type { PaginationResult } from '@/types/pagination-result'
 import type { VehicleMake, VehicleModel } from '@/payload-types'
@@ -7,6 +6,7 @@ import type { VehicleMake, VehicleModel } from '@/payload-types'
 import { MakeSelection } from './MakeSelection'
 import { ModelSelection } from './ModelSelection'
 import { ModelYearSelection } from './ModelYearSelection'
+import { ProductNameSearch } from './ProductNameInput'
 import { SearchBtn } from './SearchBtn'
 
 export default async function SearchBar() {
@@ -35,16 +35,7 @@ export default async function SearchBar() {
       <div className="flex items-center gap-2">
         <ChevronsRight className="w-6 h-6 text-primary" />
       </div>
-      <div className="flex items-center gap-2 flex-1 min-w-[200px] border border-accent-foreground rounded-md px-4 bg-card h-10">
-        <Input
-          className={clsx(
-            'border-none shadow-none outline-0 bg-transparent px-0 text-primary placeholder:text-primary',
-            'focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0',
-          )}
-          placeholder="Nhập tên phụ tùng..."
-        />
-        <Search className="w-4 h-4 text-[#737373]" />
-      </div>
+      <ProductNameSearch />
       <div className="flex items-center gap-4 flex-wrap">
         <MakeSelection makes={makes} />
         <ModelSelection models={models} />
