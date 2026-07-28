@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Pagination,
   PaginationContent,
@@ -8,21 +10,29 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 import { Pagination as PaginationResult } from '@/types/pagination'
-import { genProductParams } from '../../fetch-api/get-products-list'
 import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 type Props = {
   pagination: PaginationResult
   page: number
-  vehicleMakeName: string | null
-  vehicleModelName: string | null
+  vehicleMakeName?: string | null
+  vehicleModelName?: string | null
 }
 
-export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleModelName }: Props) {
+export function ProductsPagination({ pagination, page }: Props) {
   const { totalPages, hasPrevPage, hasNextPage, prevPage, nextPage } = pagination
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   // if (!totalPages || totalPages <= 1) return null
   if (!totalPages || totalPages < 1) return null
+
+  const createPageURL = (pageNumber: number) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('page', pageNumber.toString())
+    return `${pathname}?${params.toString()}`
+  }
 
   const getPageNumbers = () => {
     const pages = []
@@ -33,10 +43,6 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
         pages.push('...')
       }
     }
-    /*
-    when we need ellipses on both sides of the active window (e.g. [1, '...', 4, 5, 6, '...', 10]), the filter function checks if the current index is equal to the first index where the string '...' is found using indexOf('...').
-    -- return pages.filter((p, index, arr) => arr.indexOf(p) === index)
-    */
     return pages
   }
 
@@ -46,11 +52,7 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
         <PaginationContent>
           <PaginationItem>
             <Link
-              href={
-                hasPrevPage
-                  ? '?' + genProductParams(prevPage, vehicleMakeName, vehicleModelName)
-                  : '#'
-              }
+              href={hasPrevPage && prevPage ? createPageURL(prevPage) : '#'}
             >
               <PaginationPrevious
                 className={`border border-transparent text-[#737373] ${
@@ -65,7 +67,7 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
               {p === '...' ? (
                 <PaginationEllipsis />
               ) : (
-                <Link href={'?' + genProductParams(Number(p), vehicleMakeName, vehicleModelName)}>
+                <Link href={createPageURL(Number(p))}>
                   <PaginationLink
                     isActive={p === page}
                     className={
@@ -83,11 +85,7 @@ export function ProductsPagination({ pagination, page, vehicleMakeName, vehicleM
 
           <PaginationItem>
             <Link
-              href={
-                hasNextPage
-                  ? '?' + genProductParams(nextPage, vehicleMakeName, vehicleModelName)
-                  : '#'
-              }
+              href={hasNextPage && nextPage ? createPageURL(nextPage) : '#'}
             >
               <PaginationNext
                 className={`border border-transparent text-[#0a0a0a] ${
