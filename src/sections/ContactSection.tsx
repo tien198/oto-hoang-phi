@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { MapPin, Phone, Mail } from 'lucide-react'
+import { ContactForm } from './ContactForm'
 
 export const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null)
@@ -47,63 +48,33 @@ export const ContactSection = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <MapPin className="text-primary w-5 h-5 shrink-0" />
-            <span className="text-accent-foreground text-base">
-              123 Đường Công Nghiệp, Quận 1, TP. HCM, Việt Nam
-            </span>
+          <div className="flex items-end gap-3 mt-3">
+            <MapPin className="w-5 h-6 shrink-0 text-primary" />
+            <span>Ngõ 2, xóm Bảng, Cổ Điển A, Thanh Trì, Hà Nội, Việt Nam</span>
           </div>
-          <div className="flex items-center gap-3">
-            <Phone className="text-primary w-5 h-5 shrink-0" />
-            <span className="text-accent-foreground text-base">+84 123 456 789</span>
+          <div className="flex items-end gap-3 mt-3">
+            <Phone className="w-5 h-6 shrink-0 text-primary" />
+            <a href="tel:+84974414843" className="hover:text-primary transition-colors">
+              +84 974 414 843
+            </a>
+            //
+            <a href="tel:+84964832268" className="hover:text-primary transition-colors">
+              +84 964 832 268
+            </a>
           </div>
-          <div className="flex items-center gap-3">
-            <Mail className="text-primary w-5 h-5 shrink-0" />
-            <span className="text-accent-foreground text-base">contact@hoangphi-autoparts.vn</span>
+          <div className="flex items-end gap-3 mt-3">
+            <Mail className="w-5 h-6 shrink-0 text-primary" />
+            <a
+              href="mailto:phutungotohoangphi@gmail.com"
+              className="hover:text-primary transition-colors"
+            >
+              phutungotohoangphi@gmail.com
+            </a>
           </div>
         </div>
       </div>
 
-      <div
-        className={`flex-1 w-full max-w-xl bg-white border border-[#e5e5e5] rounded-xl p-8 md:p-10 flex flex-col gap-6 shadow-sm duration-300 ${showSecond ? 'animate-fade-in' : 'opacity-0'}`}
-      >
-        <div className="flex flex-col gap-2">
-          <label className="text-accent-foreground text-sm font-medium">Họ và tên</label>
-          <input
-            type="text"
-            placeholder="Nhập họ và tên..."
-            className="w-full h-12 px-4 rounded-md border border-[#e5e5e5] bg-[#fafafa] text-[#737373] text-sm outline-none focus:border-primary transition-colors"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-accent-foreground text-sm font-medium">Email</label>
-          <input
-            type="email"
-            placeholder="Nhập email..."
-            className="w-full h-12 px-4 rounded-md border border-[#e5e5e5] bg-[#fafafa] text-[#737373] text-sm outline-none focus:border-primary transition-colors"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-accent-foreground text-sm font-medium">Số điện thoại</label>
-          <input
-            type="tel"
-            placeholder="Nhập số điện thoại..."
-            className="w-full h-12 px-4 rounded-md border border-[#e5e5e5] bg-[#fafafa] text-[#737373] text-sm outline-none focus:border-primary transition-colors"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-accent-foreground text-sm font-medium">
-            Quy khách đang cần những gì ?
-          </label>
-          <textarea
-            placeholder="Nhập nội dung tin nhắn..."
-            className="w-full h-[120px] p-4 rounded-md border border-[#e5e5e5] bg-[#fafafa] text-[#737373] text-sm outline-none focus:border-primary transition-colors resize-none"
-          ></textarea>
-        </div>
-        <button className="w-full h-12 bg-primary text-[#fef2f2] font-semibold text-base rounded-md hover:bg-red-800 transition-colors mt-2">
-          Gửi Tin Nhắn
-        </button>
-      </div>
+      <ContactForm className={`${showSecond ? 'animate-fade-in' : 'opacity-0'}`} />
     </section>
   )
 }

@@ -20,7 +20,7 @@ export function ProductNameSearch() {
         value={productName || ''}
         onChange={(e) => setProductName(e.target.value || null)}
       />
-      <Search className="w-4 h-4 text-[#737373]" />
+      <Search className="w-4 h-4 text-muted" />
     </div>
   )
 }

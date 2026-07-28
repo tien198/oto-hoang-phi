@@ -15,22 +15,28 @@ export const Footer = () => {
             {/* <img src="/images/brand/logo.png" alt="Logo" className="w-full h-full object-contain" /> */}
           </div>
           <div className="flex items-start gap-3">
-            <Building2 className="w-4 h-4 mt-[3px] shrink-0 text-muted" />
+            <Building2 className="w-4 h-4 shrink-0 text-muted" />
             <span>Công ty TNHH Đầu tư thương mại Hoàng Phi</span>
           </div>
           <div className="flex items-start gap-3">
-            <MapPin className="w-4 h-4 mt-[3px] shrink-0 text-muted" />
+            <MapPin className="w-4 h-4 shrink-0 text-muted" />
             <span>Ngõ 2, xóm Bảng, Cổ Điển A, Thanh Trì, Hà Nội, Việt Nam</span>
           </div>
           <div className="flex items-start gap-3">
-            <Phone className="w-4 h-4 mt-[3px] shrink-0 text-muted" />
-            <span>+84 974 414 843 // +84 964 832 268</span>
+            <Phone className="w-5 h-6 shrink-0 text-muted" />
+            <a href="tel:+84974414843" className="hover:text-primary transition-colors">
+              +84 974 414 843
+            </a>
+            //
+            <a href="tel:+84964832268" className="hover:text-primary transition-colors">
+              +84 964 832 268
+            </a>
           </div>
           <div className="flex items-start gap-3">
-            <Mail className="w-4 h-4 mt-[3px] shrink-0 text-muted" />
+            <Mail className="w-4 h-4 shrink-0 text-muted" />
             <a
               href="mailto:phutungotohoangphi@gmail.com"
-              className="hover:text-white transition-colors"
+              className="hover:text-primary transition-colors"
             >
               phutungotohoangphi@gmail.com
             </a>
