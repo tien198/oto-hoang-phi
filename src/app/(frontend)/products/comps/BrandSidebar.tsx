@@ -1,18 +1,6 @@
 import { ChevronRight } from 'lucide-react'
 import { getVehicleMakes } from '../actions/get-vehicle-makes'
 
-const brands = [
-  'Phụ Tùng TOYOTA',
-  'Phụ Tùng HYUNDAI',
-  'Phụ Tùng KIA',
-  'Phụ Tùng FORD',
-  'Phụ Tùng MAZDA',
-  'Phụ Tùng HONDA',
-  'Phụ Tùng MITSUBISHI',
-  'Phụ Tùng NISSAN',
-  'Phụ Tùng SUZUKI',
-]
-
 export default async function BrandSidebar() {
   const makes = await getVehicleMakes()
 

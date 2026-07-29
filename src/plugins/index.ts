@@ -13,6 +13,7 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 import { texCraECommercePlugin } from './@texcra-e-commerce'
+import { s3Storage } from '@payloadcms/storage-s3'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
@@ -27,7 +28,29 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 export const plugins: Plugin[] = [
   // custom plugins
   texCraECommercePlugin({}),
-
+  s3Storage({
+    enabled: Boolean(process.env.R2_BUCKET),
+    collections: {
+      media: {
+        disablePayloadAccessControl: true,
+        generateFileURL: ({ filename, prefix }) => {
+          const key = prefix ? `${prefix}/${filename}` : filename
+          return `${process.env.R2_PUBLIC_URL}/${key}`
+        },
+      },
+    },
+    bucket: process.env.R2_BUCKET || '',
+    config: {
+      credentials: {
+        accessKeyId: process.env.R2_ACCESS_KEY_ID || '',
+        secretAccessKey: process.env.R2_SECRET_ACCESS_KEY || '',
+      },
+      region: 'auto',
+      // R2 S3 API endpoint — for uploads only, not for serving files
+      endpoint: process.env.R2_ENDPOINT,
+      forcePathStyle: true,
+    },
+  }),
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {
