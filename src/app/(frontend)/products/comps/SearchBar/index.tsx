@@ -1,7 +1,8 @@
 import { ChevronsRight } from 'lucide-react'
 import clsx from 'clsx'
-import type { PaginationResult } from '@/types/pagination-result'
 import type { VehicleMake, VehicleModel } from '@/payload-types'
+import { getPayload } from 'payload'
+import payloadConfig from '@payload-config'
 
 import { MakeSelection } from './MakeSelection'
 import { ModelSelection } from './ModelSelection'
@@ -9,21 +10,30 @@ import { ModelYearSelection } from './ModelYearSelection'
 import { ProductNameSearch } from './ProductNameInput'
 import { SearchBtn } from './SearchBtn'
 
-export default async function SearchBar() {
-  const [makesRes, modelsRes] = await Promise.all([
-    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/api/vehicle-makes`, {
-      next: { tags: ['vehicle-makes'] },
-    }),
-    fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/api/vehicle-models?limit=1000`,
-      {
-        next: { tags: ['vehicle-models'] },
-      },
-    ),
-  ])
+import { unstable_cache } from 'next/cache'
 
-  const { docs: makes } = (await makesRes.json()) as PaginationResult<VehicleMake>
-  const { docs: models } = (await modelsRes.json()) as PaginationResult<VehicleModel>
+const getMakes = unstable_cache(
+  async () => {
+    const payload = await getPayload({ config: payloadConfig })
+    const res = await payload.find({ collection: 'vehicle-makes', limit: 1000 })
+    return res.docs as VehicleMake[]
+  },
+  ['vehicle-makes'],
+  { tags: ['vehicle-makes'] }
+)
+
+const getModels = unstable_cache(
+  async () => {
+    const payload = await getPayload({ config: payloadConfig })
+    const res = await payload.find({ collection: 'vehicle-models', limit: 1000 })
+    return res.docs as VehicleModel[]
+  },
+  ['vehicle-models'],
+  { tags: ['vehicle-models'] }
+)
+
+export default async function SearchBar() {
+  const [makes, models] = await Promise.all([getMakes(), getModels()])
 
   return (
     <div

@@ -1,3 +1,5 @@
+'use server'
+
 import payloadConfig from '@payload-config'
 import { getPayload } from 'payload'
 import { aliasedTable, and, count, eq, or, sql } from 'drizzle-orm'

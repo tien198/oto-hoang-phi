@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload'
 import { adminOnly } from '@/access/adminOnly'
 import { anyone } from '@/access/anyone'
 import { generateUUID7 } from '@/hooks/generateUUID7'
+import { revalidateTag } from 'next/cache'
 
 export const VehicleMakes: CollectionConfig = {
   slug: 'vehicle-makes',
@@ -10,6 +11,20 @@ export const VehicleMakes: CollectionConfig = {
     update: adminOnly,
     read: anyone,
     delete: adminOnly,
+  },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidateTag('vehicle-makes', 'max')
+        return doc
+      },
+    ],
+    afterDelete: [
+      ({ doc }) => {
+        revalidateTag('vehicle-makes', 'max')
+        return doc
+      },
+    ],
   },
   labels: {
     plural: {
