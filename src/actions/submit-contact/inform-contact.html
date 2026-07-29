@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Hỗ trợ IE/Outlook tốt hơn -->
+    <title>Thông báo có khách</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #252525;
+      margin: 0;
+      padding: 20px;
+    "
+  >
+    <div
+      style="
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #ebebeb;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <div
+        style="
+          text-align: center;
+          border-bottom: 2px solid #ebebeb;
+          padding-bottom: 20px;
+          margin-bottom: 20px;
+        "
+      >
+        <h2 style="color: #c57321; margin: 0; font-size: 24px">Thông Báo Liên Hệ Mới</h2>
+      </div>
+
+      <p style="font-size: 16px; line-height: 1.5; margin-top: 0">Thưa Sếp.s</p>
+      <p style="font-size: 16px; line-height: 1.5; margin-bottom: 20px">
+        Có một liên hệ mới vừa được gửi từ website. Dưới đây là thông tin chi tiết:
+      </p>
+
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px">
+        <tr>
+          <th
+            style="
+              padding: 12px 15px;
+              border: 1px solid #ebebeb;
+              text-align: left;
+              background-color: #fafafa;
+              width: 35%;
+              color: #252525;
+              font-weight: bold;
+            "
+          >
+            Họ và tên
+          </th>
+          <td
+            style="padding: 12px 15px; border: 1px solid #ebebeb; text-align: left; color: #444444"
+          >
+            ${name}
+          </td>
+        </tr>
+        <tr>
+          <th
+            style="
+              padding: 12px 15px;
+              border: 1px solid #ebebeb;
+              text-align: left;
+              background-color: #fafafa;
+              color: #252525;
+              font-weight: bold;
+            "
+          >
+            Email
+          </th>
+          <td style="padding: 12px 15px; border: 1px solid #ebebeb; text-align: left">
+            <a href="mailto:${email}" style="color: #c57321; text-decoration: none">${email}</a>
+          </td>
+        </tr>
+        <tr>
+          <th
+            style="
+              padding: 12px 15px;
+              border: 1px solid #ebebeb;
+              text-align: left;
+              background-color: #fafafa;
+              color: #252525;
+              font-weight: bold;
+            "
+          >
+            Số điện thoại
+          </th>
+          <td
+            style="padding: 12px 15px; border: 1px solid #ebebeb; text-align: left; color: #444444"
+          >
+            <a href="tel:${phone}" style="color: #c57321; text-decoration: none">${phone}</a>
+          </td>
+        </tr>
+        <tr>
+          <th
+            style="
+              padding: 12px 15px;
+              border: 1px solid #ebebeb;
+              text-align: left;
+              background-color: #fafafa;
+              color: #252525;
+              font-weight: bold;
+            "
+          >
+            Nội dung
+          </th>
+          <td
+            style="padding: 12px 15px; border: 1px solid #ebebeb; text-align: left; color: #444444"
+          >
+            ${message}
+          </td>
+        </tr>
+      </table>
+
+      <div
+        style="
+          font-size: 14px;
+          color: #888888;
+          text-align: center;
+          border-top: 1px solid #ebebeb;
+          padding-top: 20px;
+          margin-bottom: 0;
+        "
+      >
+        <p>Email này được gửi tự động từ hệ thống website Oto Hoàng Phi.</p>
+        <p>Vui lòng không trả lời trực tiếp email này.</p>
+      </div>
+    </div>
+  </body>
+</html>

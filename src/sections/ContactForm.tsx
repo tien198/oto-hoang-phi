@@ -3,10 +3,10 @@ import { AutoResizeTextarea } from '@/components/texcra-ui/auto-resize-textarea'
 import { cn } from '@/lib/utils'
 import clsx from 'clsx'
 import { useActionState } from 'react'
-import { submitContactForm } from '@/actions/contact'
+import { submitContactAction } from '@/actions/submit-contact/contact'
 
 export function ContactForm({ className }: { className?: string }) {
-  const [state, action, isPending] = useActionState(submitContactForm, null)
+  const [state, action, pending] = useActionState(submitContactAction, null)
 
   return (
     <form
@@ -64,13 +64,13 @@ export function ContactForm({ className }: { className?: string }) {
       )}
 
       <button
-        disabled={isPending}
+        disabled={pending}
         className={clsx(
           'w-full h-12 bg-primary text-accent font-semibold text-base rounded-md mt-2 disabled:opacity-50 disabled:cursor-not-allowed',
           'hover:italic hover:bg-accent hover:text-primary hover:border hover:border-primary transition-color',
         )}
       >
-        {isPending ? 'Đang gửi...' : 'Gửi'}
+        {pending ? 'Đang gửi...' : 'Gửi'}
       </button>
     </form>
   )

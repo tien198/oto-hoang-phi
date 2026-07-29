@@ -1,0 +1,54 @@
+'use server'
+
+import { getPayload } from 'payload'
+import payloadConfig from '@payload-config'
+import fs from 'fs/promises'
+import path from 'path'
+
+export async function submitContactAction(prevState: any, formData: FormData) {
+  const { sendEmail } = await getPayload({ config: payloadConfig })
+
+  const APP_SCRIPT = process.env.APP_SCRIPT ?? ''
+  const name = (formData.get('name') as string) || ''
+  const email = (formData.get('email') as string) || ''
+  const phone = (formData.get('phone') as string) || ''
+  const message = (formData.get('message') as string) || ''
+
+  const data = { name, email, phone, message }
+  try {
+    if (APP_SCRIPT) {
+      await fetch(APP_SCRIPT, {
+        method: 'POST',
+        body: JSON.stringify(data),
+      })
+    }
+
+    // Read the HTML template
+    const templatePath = path.resolve(
+      process.cwd(),
+      'src',
+      'actions',
+      'submit-contact',
+      'inform-contact.html',
+    )
+    let htmlContent = await fs.readFile(templatePath, 'utf8')
+
+    // Replace placeholders with actual data
+    htmlContent = htmlContent
+      .replace(/\$\{name\}/g, name)
+      .replace(/\$\{email\}/g, email)
+      .replace(/\$\{phone\}/g, phone)
+      .replace(/\$\{message\}/g, message)
+
+    await sendEmail({
+      to: process.env.RECEIVE_INFORM_ADDRESS ?? '',
+      subject: 'Thông Báo Liên Hệ Mới',
+      html: htmlContent,
+    })
+
+    return { success: true }
+  } catch (error) {
+    console.error('Error submitting contact form:', error)
+    return { error: 'Đã có lỗi xảy ra. Vui lòng thử lại sau.' }
+  }
+}

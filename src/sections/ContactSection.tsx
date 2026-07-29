@@ -18,7 +18,7 @@ export const ContactSection = () => {
           observer.disconnect()
         }
       },
-      { threshold: 0.5 },
+      { threshold: 0.3 },
     )
 
     if (sectionRef.current) {
