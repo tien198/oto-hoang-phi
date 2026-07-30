@@ -2,7 +2,7 @@
 
 import payloadConfig from '@payload-config'
 import { getPayload } from 'payload'
-import { aliasedTable, and, count, eq, or, sql } from 'drizzle-orm'
+import { aliasedTable, and, asc, count, eq, or, sql } from 'drizzle-orm'
 import { Product, VehicleModel, VehicleMake, Media } from '@/payload-types'
 import {
   products,
@@ -43,97 +43,82 @@ export async function getProductsPagination({
     db: { drizzle },
   } = await getPayload({ config: payloadConfig })
 
+  const products_fitments_CTE = drizzle.$with('fitments_cte').as(
+    drizzle
+      .select({
+        prod: products,
+        models: sql`COALESCE(
+         jsonb_agg(DISTINCT to_jsonb(${vehicle_models})-'{id, make_id, updated_at, created_at}'::text[]),
+         '[]'::jsonb
+        )::jsonb`.as('models'),
+        makes: sql`COALESCE(
+         jsonb_agg(DISTINCT to_jsonb(${vehicle_makes})-'{id, updated_at, created_at}'::text[]),
+         '[]'::jsonb
+        )::jsonb`.as('makes'),
+      })
+      .from(products)
+      .leftJoin(
+        products_rels,
+        and(eq(products_rels.path, 'model-fitments'), eq(products_rels.parent, products.id)),
+      )
+      .leftJoin(vehicle_models, eq(products_rels['vehicle-modelsID'], vehicle_models.id))
+      .leftJoin(vehicle_makes, eq(vehicle_models.make, vehicle_makes.id))
+      .where(
+        and(
+          eq(products._status, 'published'),
+          or(
+            vehicleMakeName ? eq(vehicle_makes.name, vehicleMakeName.toLowerCase()) : undefined,
+            vehicleModelName ? eq(vehicle_models.name, vehicleModelName.toLowerCase()) : undefined,
+          ),
+        ),
+      )
+      .groupBy(products.id)
+      .orderBy(asc(products.id))
+      .limit(limit)
+      .offset(offset),
+  )
+
+  const img_CTE = drizzle.$with('image_cte').as(
+    drizzle
+      .selectDistinctOn([products_fitments_CTE.prod.id], {
+        prod_id: products_fitments_CTE.prod.id,
+        img_url: media.url,
+      })
+      .from(products_fitments_CTE)
+      .leftJoin(products_gallery, eq(products_fitments_CTE.prod.id, products_gallery._parentID))
+      .leftJoin(media, eq(media.id, products_gallery.image))
+      .orderBy(products_fitments_CTE.prod.id, asc(media.id)),
+  )
+
   const productsQuery = drizzle
-    .selectDistinctOn([products.id], {
-      product: products,
-      vehicleModel: {
-        name: vehicle_models.name,
-        // modelYear: vehicle_models['model-year'],
-      },
-      vehicleMake: {
-        name: vehicle_makes.name,
-      },
-      media: media.url,
-      // fitments: sql`COALESCE(jsonb_agg(DISTINCT to_jsonb(${vehicle_models_alias})) FILTER (WHERE ${vehicle_models_alias}.id IS NOT NULL), '[]'::jsonb)::json`,
-      // fitments: sql`COALESCE(
-      //     jsonb_agg(
-      //       jsonb_build_object(
-      //         'vehicle_specification', ${vehicle_models_alias}.vehicle_specification
-      //       )
-      //       ORDER BY ${vehicle_models_alias}.model_year ASC
-      //     )
-      //     FILTER (
-      //       WHERE ${vehicle_models_alias}.id IS NOT NULL
-      //     )
-      //   , '[]'::jsonb
-      //   )::json`,
+    .with(products_fitments_CTE, img_CTE)
+    .select({
+      prod: products,
+      img: img_CTE.img_url,
+      models: products_fitments_CTE.models,
+      makes: products_fitments_CTE.makes,
     })
-    .from(products)
-    .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
-    .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
-    // .leftJoin(
-    //   products_rels,
-    //   and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
-    // )
-    // .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
-    .leftJoin(products_gallery, eq(products.id, products_gallery._parentID))
-    .leftJoin(media, eq(media.id, products_gallery.image))
-    .where(
-      and(
-        eq(products._status, 'published'),
+    .from(products_fitments_CTE)
+    .innerJoin(products, eq(products.id, products_fitments_CTE.prod.id))
+    .leftJoin(img_CTE, eq(img_CTE.prod_id, products_fitments_CTE.prod.id))
 
-        vehicleMakeName
-          ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
-          : undefined,
-        or(
-          vehicleModelName
-            ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
-            : undefined,
-          vehicleModelName
-            ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
-            : undefined,
-        ),
-        // or(
-        //   modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
-        //   modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
-        // ),
-      ),
-    )
-    // GROUP BY chạy trước DISTINCT ON, jsonb_agg sẽ gom nhóm,
-    // sau đó DISTINCT ON sẽ lọc lại 1 dòng duy nhất cho mỗi products.id
-    .groupBy(products.id, vehicle_models.id, vehicle_makes.id)
-
-    .limit(limit)
-    .offset(offset)
-
+  // count total pagination with filter
   const paginationQuery = drizzle
-    .select({ totalDocs: count() })
+    .select({ totalDocs: count(sql`DISTINCT ${products.id}`) })
     .from(products)
-    .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
-    .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
-    // .leftJoin(
-    //   products_rels,
-    //   and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
-    // )
-    // .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
+    .leftJoin(
+      products_rels,
+      and(eq(products_rels.path, 'model-fitments'), eq(products_rels.parent, products.id)),
+    )
+    .leftJoin(vehicle_models, eq(products_rels['vehicle-modelsID'], vehicle_models.id))
+    .leftJoin(vehicle_makes, eq(vehicle_models.make, vehicle_makes.id))
     .where(
       and(
         eq(products._status, 'published'),
-        vehicleMakeName
-          ? eq(sql`LOWER(${vehicle_makes.name})`, vehicleMakeName.toLowerCase())
-          : undefined,
         or(
-          vehicleModelName
-            ? eq(sql`LOWER(${vehicle_models.name})`, vehicleModelName.toLowerCase())
-            : undefined,
-          vehicleModelName
-            ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
-            : undefined,
+          vehicleMakeName ? eq(vehicle_makes.name, vehicleMakeName.toLowerCase()) : undefined,
+          vehicleModelName ? eq(vehicle_models.name, vehicleModelName.toLowerCase()) : undefined,
         ),
-        // or(
-        //   modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
-        //   modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
-        // ),
       ),
     )
 

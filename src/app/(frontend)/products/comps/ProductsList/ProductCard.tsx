@@ -1,12 +1,10 @@
 import RichText from '@/components/RichText'
-import { products, vehicle_models } from '@/payload-generated-schema'
+import type { Product } from '@/payload-types'
+// import { products, vehicle_models } from '@/payload-generated-schema'
 import Link from 'next/link'
 
-type Product = typeof products.$inferSelect
-type VehicleModel = typeof vehicle_models.$inferSelect
 interface ProductCardProps {
   product: Product
-  // modelFitments: { vehicle_specification: string }[] | null
   imgUrl: string
 }
 
@@ -48,18 +46,10 @@ export default function ProductCard({ product, imgUrl }: ProductCardProps) {
       </div>
 
       {/* Application Column */}
-      <div className="flex flex-col gap-4 px-8 py-10">
-        <div className="p-3">
-          <p className="text-sm leading-[21px] text-foreground"></p>
-        </div>
-        {/* {(hasMoreModels || slug) && (
-          <Link
-            href={slug ? `/products/${slug}` : '#'}
-            className="text-sm font-bold text-foreground hover:text-primary transition-colors"
-          >
-            Xem Thêm
-          </Link>
-        )} */}
+      <div className="flex flex-col gap-1 py-6">
+        {product['compatible-description'] && (
+          <RichText data={product['compatible-description']} className="px-2 text-base" />
+        )}
       </div>
     </div>
   )

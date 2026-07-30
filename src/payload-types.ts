@@ -825,7 +825,6 @@ export interface Product {
     description?: string | null;
   };
   manufacturers?: (string | null) | Manufacturer;
-  'vehicle-models'?: (string | null) | VehicleModel;
   'model-fitments'?: (string | VehicleModel)[] | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -1492,7 +1491,6 @@ export interface ProductsSelect<T extends boolean = true> {
         description?: T;
       };
   manufacturers?: T;
-  'vehicle-models'?: T;
   'model-fitments'?: T;
   generateSlug?: T;
   slug?: T;

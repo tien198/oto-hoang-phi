@@ -1337,9 +1337,6 @@ export const products = pgTable(
     manufacturers: varchar('manufacturers_id').references(() => manufacturers.id, {
       onDelete: 'set null',
     }),
-    'vehicle-models': varchar('vehicle_models_id').references(() => vehicle_models.id, {
-      onDelete: 'set null',
-    }),
     generateSlug: boolean('generate_slug').default(true),
     slug: varchar('slug'),
     updatedAt: timestamp('updated_at', { mode: 'string', withTimezone: true, precision: 3 })
@@ -1354,7 +1351,6 @@ export const products = pgTable(
     uniqueIndex('products_o_eno_idx').on(columns.OEno),
     index('products_meta_meta_image_idx').on(columns.meta_image),
     index('products_manufacturers_idx').on(columns.manufacturers),
-    index('products_vehicle_models_idx').on(columns['vehicle-models']),
     uniqueIndex('products_slug_idx').on(columns.slug),
     index('products_updated_at_idx').on(columns.updatedAt),
     index('products_created_at_idx').on(columns.createdAt),
@@ -1570,12 +1566,6 @@ export const _products_v = pgTable(
     version_manufacturers: varchar('version_manufacturers_id').references(() => manufacturers.id, {
       onDelete: 'set null',
     }),
-    'version_vehicle-models': varchar('version_vehicle_models_id').references(
-      () => vehicle_models.id,
-      {
-        onDelete: 'set null',
-      },
-    ),
     version_generateSlug: boolean('version_generate_slug').default(true),
     version_slug: varchar('version_slug'),
     version_updatedAt: timestamp('version_updated_at', {
@@ -1602,7 +1592,6 @@ export const _products_v = pgTable(
     index('_products_v_version_version_o_eno_idx').on(columns.version_OEno),
     index('_products_v_version_meta_version_meta_image_idx').on(columns.version_meta_image),
     index('_products_v_version_version_manufacturers_idx').on(columns.version_manufacturers),
-    index('_products_v_version_version_vehicle_models_idx').on(columns['version_vehicle-models']),
     index('_products_v_version_version_slug_idx').on(columns.version_slug),
     index('_products_v_version_version_updated_at_idx').on(columns.version_updatedAt),
     index('_products_v_version_version_created_at_idx').on(columns.version_createdAt),
@@ -3057,11 +3046,6 @@ export const relations_products = relations(products, ({ one, many }) => ({
     references: [manufacturers.id],
     relationName: 'manufacturers',
   }),
-  'vehicle-models': one(vehicle_models, {
-    fields: [products['vehicle-models']],
-    references: [vehicle_models.id],
-    relationName: 'vehicle-models',
-  }),
   _rels: many(products_rels, {
     relationName: '_rels',
   }),
@@ -3191,11 +3175,6 @@ export const relations__products_v = relations(_products_v, ({ one, many }) => (
     fields: [_products_v.version_manufacturers],
     references: [manufacturers.id],
     relationName: 'version_manufacturers',
-  }),
-  'version_vehicle-models': one(vehicle_models, {
-    fields: [_products_v['version_vehicle-models']],
-    references: [vehicle_models.id],
-    relationName: 'version_vehicle-models',
   }),
   _rels: many(_products_v_rels, {
     relationName: '_rels',

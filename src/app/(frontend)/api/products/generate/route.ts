@@ -53,7 +53,6 @@ export async function GET() {
           },
         },
         price: getRandomFloat(1000, 100000),
-        'vehicle-models': innovaModel.id,
         gallery: [
           {
             image: {

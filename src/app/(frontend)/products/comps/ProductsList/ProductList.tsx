@@ -7,6 +7,7 @@ import { ProductsPaginationResult } from '../../actions/get-products'
 import { getProductsApi } from '../../fetch-api/get-products-list'
 import { ProductsPagination } from './ProductList.Pagination'
 import clsx from 'clsx'
+import { Product } from '@/payload-types'
 
 export default function ProductList() {
   const searchParams = useSearchParams()
@@ -56,14 +57,7 @@ export default function ProductList() {
 
         {/* Table Rows */}
         {products?.map((item, idx) => {
-          return (
-            <ProductCard
-              key={idx}
-              product={item.product}
-              // modelFitments={(item.fitments as any) ?? null}
-              imgUrl={item.media ?? ''}
-            />
-          )
+          return <ProductCard key={idx} product={item.prod as Product} imgUrl={item.img ?? ''} />
         })}
       </div>
       {data?.pagination && (
