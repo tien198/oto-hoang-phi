@@ -98,11 +98,11 @@ export const Products: CollectionConfig = {
               },
             },
             {
-              name: 'description',
+              name: 'compatible-description',
               type: 'richText',
               label: {
-                en: 'Description',
-                vi: 'Mô tả',
+                en: 'Compatible Description',
+                vi: 'Mô tả tương thích',
               },
               // label: false,
               editor: lexicalEditor({
@@ -154,24 +154,15 @@ export const Products: CollectionConfig = {
           },
           fields: [
             {
-              name: 'OEno',
-              type: 'text',
-              unique: true,
-              label: {
-                en: 'OE No',
-                vi: 'Mã OE',
-              },
-            },
-            {
               type: 'row',
               fields: [
                 {
-                  name: 'weight',
-                  type: 'number',
-                  defaultValue: 0.35,
+                  name: 'OEno',
+                  type: 'text',
+                  unique: true,
                   label: {
-                    en: 'Weight (kg)',
-                    vi: 'Trọng lượng (kg)',
+                    en: 'OE No',
+                    vi: 'Mã OE',
                   },
                 },
                 {
@@ -185,48 +176,48 @@ export const Products: CollectionConfig = {
                 },
               ],
             },
-            {
-              name: 'size',
-              type: 'group',
-              label: {
-                en: 'Size (mm)',
-                vi: 'Kích thước (mm)',
-              },
-              fields: [
-                {
-                  type: 'row',
-                  fields: [
-                    {
-                      name: 'x',
-                      type: 'number',
-                      defaultValue: 90,
-                      label: {
-                        en: 'X',
-                        vi: 'X',
-                      },
-                    },
-                    {
-                      name: 'y',
-                      type: 'number',
-                      defaultValue: 60,
-                      label: {
-                        en: 'Y',
-                        vi: 'Y',
-                      },
-                    },
-                    {
-                      name: 'z',
-                      type: 'number',
-                      defaultValue: 180,
-                      label: {
-                        en: 'Z',
-                        vi: 'Z',
-                      },
-                    },
-                  ],
-                },
-              ],
-            },
+            // {
+            //   name: 'size',
+            //   type: 'group',
+            //   label: {
+            //     en: 'Size (mm)',
+            //     vi: 'Kích thước (mm)',
+            //   },
+            //   fields: [
+            //     {
+            //       type: 'row',
+            //       fields: [
+            //         {
+            //           name: 'x',
+            //           type: 'number',
+            //           defaultValue: 90,
+            //           label: {
+            //             en: 'X',
+            //             vi: 'X',
+            //           },
+            //         },
+            //         {
+            //           name: 'y',
+            //           type: 'number',
+            //           defaultValue: 60,
+            //           label: {
+            //             en: 'Y',
+            //             vi: 'Y',
+            //           },
+            //         },
+            //         {
+            //           name: 'z',
+            //           type: 'number',
+            //           defaultValue: 180,
+            //           label: {
+            //             en: 'Z',
+            //             vi: 'Z',
+            //           },
+            //         },
+            //       ],
+            //     },
+            //   ],
+            // },
           ],
         },
         {
@@ -262,12 +253,12 @@ export const Products: CollectionConfig = {
       ],
     },
     {
-      name: 'vehicle-models',
+      name: 'manufacturers',
       type: 'relationship',
-      relationTo: 'vehicle-models',
+      relationTo: 'manufacturers',
       label: {
-        en: 'Vehicle Models',
-        vi: 'Dòng xe',
+        en: 'Manufacturers',
+        vi: 'Hãng sản xuất',
       },
       admin: {
         position: 'sidebar',

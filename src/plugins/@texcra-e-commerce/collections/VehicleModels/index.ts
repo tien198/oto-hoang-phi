@@ -39,7 +39,7 @@ export const VehicleModels: CollectionConfig = {
   admin: {
     group: { en: 'E-Commerce', vi: 'Quản lý Sản Phẩm' },
     defaultColumns: ['name', 'model-year', 'updatedAt'],
-    useAsTitle: 'vehicle-specification',
+    useAsTitle: 'name',
   },
   fields: [
     {
@@ -71,29 +71,29 @@ export const VehicleModels: CollectionConfig = {
         vi: 'Hãng xe',
       },
     },
-    {
-      name: 'model-year',
-      type: 'number',
-      required: true,
-      label: {
-        en: 'Model Year',
-        vi: 'Năm sản xuất',
-      },
-    },
-    {
-      name: 'vehicle-specification',
-      type: 'text',
-      admin: {
-        hidden: true,
-      },
-      hooks: {
-        beforeChange: [
-          ({ siblingData }) => {
-            if (!siblingData) return ''
-            return `${siblingData.name} ${siblingData['model-year'] || 'NaN'}`
-          },
-        ],
-      },
-    },
+    // {
+    //   name: 'model-year',
+    //   type: 'number',
+    //   required: true,
+    //   label: {
+    //     en: 'Model Year',
+    //     vi: 'Năm sản xuất',
+    //   },
+    // },
+    // {
+    //   name: 'vehicle-specification',
+    //   type: 'text',
+    //   admin: {
+    //     hidden: true,
+    //   },
+    //   hooks: {
+    //     beforeChange: [
+    //       ({ siblingData }) => {
+    //         if (!siblingData) return ''
+    //         return `${siblingData.name} ${siblingData['model-year'] || 'NaN'}`
+    //       },
+    //     ],
+    //   },
+    // },
   ],
 }

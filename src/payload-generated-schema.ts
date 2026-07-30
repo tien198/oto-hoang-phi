@@ -1326,18 +1326,17 @@ export const products = pgTable(
     id: varchar('id').primaryKey(),
     name: varchar('name'),
     price: numeric('price', { mode: 'number' }),
-    description: jsonb('description'),
+    'compatible-description': jsonb('compatible_description'),
     OEno: varchar('o_eno'),
-    weight: numeric('weight', { mode: 'number' }).default(0.35),
     warranty: numeric('warranty', { mode: 'number' }).default(12),
-    size_x: numeric('size_x', { mode: 'number' }).default(90),
-    size_y: numeric('size_y', { mode: 'number' }).default(60),
-    size_z: numeric('size_z', { mode: 'number' }).default(180),
     meta_title: varchar('meta_title'),
     meta_image: integer('meta_image_id').references(() => media.id, {
       onDelete: 'set null',
     }),
     meta_description: varchar('meta_description'),
+    manufacturers: varchar('manufacturers_id').references(() => manufacturers.id, {
+      onDelete: 'set null',
+    }),
     'vehicle-models': varchar('vehicle_models_id').references(() => vehicle_models.id, {
       onDelete: 'set null',
     }),
@@ -1354,6 +1353,7 @@ export const products = pgTable(
   (columns) => [
     uniqueIndex('products_o_eno_idx').on(columns.OEno),
     index('products_meta_meta_image_idx').on(columns.meta_image),
+    index('products_manufacturers_idx').on(columns.manufacturers),
     index('products_vehicle_models_idx').on(columns['vehicle-models']),
     uniqueIndex('products_slug_idx').on(columns.slug),
     index('products_updated_at_idx').on(columns.updatedAt),
@@ -1559,18 +1559,17 @@ export const _products_v = pgTable(
     }),
     version_name: varchar('version_name'),
     version_price: numeric('version_price', { mode: 'number' }),
-    version_description: jsonb('version_description'),
+    'version_compatible-description': jsonb('version_compatible_description'),
     version_OEno: varchar('version_o_eno'),
-    version_weight: numeric('version_weight', { mode: 'number' }).default(0.35),
     version_warranty: numeric('version_warranty', { mode: 'number' }).default(12),
-    version_size_x: numeric('version_size_x', { mode: 'number' }).default(90),
-    version_size_y: numeric('version_size_y', { mode: 'number' }).default(60),
-    version_size_z: numeric('version_size_z', { mode: 'number' }).default(180),
     version_meta_title: varchar('version_meta_title'),
     version_meta_image: integer('version_meta_image_id').references(() => media.id, {
       onDelete: 'set null',
     }),
     version_meta_description: varchar('version_meta_description'),
+    version_manufacturers: varchar('version_manufacturers_id').references(() => manufacturers.id, {
+      onDelete: 'set null',
+    }),
     'version_vehicle-models': varchar('version_vehicle_models_id').references(
       () => vehicle_models.id,
       {
@@ -1602,6 +1601,7 @@ export const _products_v = pgTable(
     index('_products_v_parent_idx').on(columns.parent),
     index('_products_v_version_version_o_eno_idx').on(columns.version_OEno),
     index('_products_v_version_meta_version_meta_image_idx').on(columns.version_meta_image),
+    index('_products_v_version_version_manufacturers_idx').on(columns.version_manufacturers),
     index('_products_v_version_version_vehicle_models_idx').on(columns['version_vehicle-models']),
     index('_products_v_version_version_slug_idx').on(columns.version_slug),
     index('_products_v_version_version_updated_at_idx').on(columns.version_updatedAt),
@@ -1654,6 +1654,24 @@ export const _products_v_rels = pgTable(
   ],
 )
 
+export const manufacturers = pgTable(
+  'manufacturers',
+  {
+    id: varchar('id').primaryKey(),
+    name: varchar('name').notNull(),
+    updatedAt: timestamp('updated_at', { mode: 'string', withTimezone: true, precision: 3 })
+      .defaultNow()
+      .notNull(),
+    createdAt: timestamp('created_at', { mode: 'string', withTimezone: true, precision: 3 })
+      .defaultNow()
+      .notNull(),
+  },
+  (columns) => [
+    index('manufacturers_updated_at_idx').on(columns.updatedAt),
+    index('manufacturers_created_at_idx').on(columns.createdAt),
+  ],
+)
+
 export const vehicle_makes = pgTable(
   'vehicle_makes',
   {
@@ -1682,8 +1700,6 @@ export const vehicle_models = pgTable(
       .references(() => vehicle_makes.id, {
         onDelete: 'set null',
       }),
-    'model-year': numeric('model_year', { mode: 'number' }).notNull(),
-    'vehicle-specification': varchar('vehicle_specification'),
     updatedAt: timestamp('updated_at', { mode: 'string', withTimezone: true, precision: 3 })
       .defaultNow()
       .notNull(),
@@ -2317,6 +2333,7 @@ export const payload_locked_documents_rels = pgTable(
     categoriesID: integer('categories_id'),
     usersID: varchar('users_id'),
     productsID: varchar('products_id'),
+    manufacturersID: varchar('manufacturers_id'),
     'vehicle-makesID': varchar('vehicle_makes_id'),
     'vehicle-modelsID': varchar('vehicle_models_id'),
     redirectsID: integer('redirects_id'),
@@ -2335,6 +2352,7 @@ export const payload_locked_documents_rels = pgTable(
     index('payload_locked_documents_rels_categories_id_idx').on(columns.categoriesID),
     index('payload_locked_documents_rels_users_id_idx').on(columns.usersID),
     index('payload_locked_documents_rels_products_id_idx').on(columns.productsID),
+    index('payload_locked_documents_rels_manufacturers_id_idx').on(columns.manufacturersID),
     index('payload_locked_documents_rels_vehicle_makes_id_idx').on(columns['vehicle-makesID']),
     index('payload_locked_documents_rels_vehicle_models_id_idx').on(columns['vehicle-modelsID']),
     index('payload_locked_documents_rels_redirects_id_idx').on(columns.redirectsID),
@@ -2378,6 +2396,11 @@ export const payload_locked_documents_rels = pgTable(
       columns: [columns['productsID']],
       foreignColumns: [products.id],
       name: 'payload_locked_documents_rels_products_fk',
+    }).onDelete('cascade'),
+    foreignKey({
+      columns: [columns['manufacturersID']],
+      foreignColumns: [manufacturers.id],
+      name: 'payload_locked_documents_rels_manufacturers_fk',
     }).onDelete('cascade'),
     foreignKey({
       columns: [columns['vehicle-makesID']],
@@ -3029,6 +3052,11 @@ export const relations_products = relations(products, ({ one, many }) => ({
     references: [media.id],
     relationName: 'meta_image',
   }),
+  manufacturers: one(manufacturers, {
+    fields: [products.manufacturers],
+    references: [manufacturers.id],
+    relationName: 'manufacturers',
+  }),
   'vehicle-models': one(vehicle_models, {
     fields: [products['vehicle-models']],
     references: [vehicle_models.id],
@@ -3159,6 +3187,11 @@ export const relations__products_v = relations(_products_v, ({ one, many }) => (
     references: [media.id],
     relationName: 'version_meta_image',
   }),
+  version_manufacturers: one(manufacturers, {
+    fields: [_products_v.version_manufacturers],
+    references: [manufacturers.id],
+    relationName: 'version_manufacturers',
+  }),
   'version_vehicle-models': one(vehicle_models, {
     fields: [_products_v['version_vehicle-models']],
     references: [vehicle_models.id],
@@ -3168,6 +3201,7 @@ export const relations__products_v = relations(_products_v, ({ one, many }) => (
     relationName: '_rels',
   }),
 }))
+export const relations_manufacturers = relations(manufacturers, () => ({}))
 export const relations_vehicle_makes = relations(vehicle_makes, () => ({}))
 export const relations_vehicle_models = relations(vehicle_models, ({ one }) => ({
   make: one(vehicle_makes, {
@@ -3436,6 +3470,11 @@ export const relations_payload_locked_documents_rels = relations(
       references: [products.id],
       relationName: 'products',
     }),
+    manufacturersID: one(manufacturers, {
+      fields: [payload_locked_documents_rels.manufacturersID],
+      references: [manufacturers.id],
+      relationName: 'manufacturers',
+    }),
     'vehicle-makesID': one(vehicle_makes, {
       fields: [payload_locked_documents_rels['vehicle-makesID']],
       references: [vehicle_makes.id],
@@ -3595,6 +3634,7 @@ type DatabaseSchema = {
   _products_v_blocks_cta: typeof _products_v_blocks_cta
   _products_v: typeof _products_v
   _products_v_rels: typeof _products_v_rels
+  manufacturers: typeof manufacturers
   vehicle_makes: typeof vehicle_makes
   vehicle_models: typeof vehicle_models
   redirects: typeof redirects
@@ -3674,6 +3714,7 @@ type DatabaseSchema = {
   relations__products_v_blocks_cta: typeof relations__products_v_blocks_cta
   relations__products_v_rels: typeof relations__products_v_rels
   relations__products_v: typeof relations__products_v
+  relations_manufacturers: typeof relations_manufacturers
   relations_vehicle_makes: typeof relations_vehicle_makes
   relations_vehicle_models: typeof relations_vehicle_models
   relations_redirects_rels: typeof relations_redirects_rels

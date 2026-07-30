@@ -3,6 +3,7 @@ import { Products } from './collections/Products'
 import { VehicleMakes } from './collections/VehicleMakes'
 import { VehicleModels } from './collections/VehicleModels'
 import { config } from 'process'
+import { Manufacturers } from './collections/Manufacturers'
 
 type PluginOptions = {
   enable?: boolean
@@ -14,7 +15,13 @@ export const texCraECommercePlugin = definePlugin<PluginOptions>({
   plugin: ({ config }) => {
     return {
       ...config,
-      collections: [...(config.collections || []), Products, VehicleMakes, VehicleModels],
+      collections: [
+        ...(config.collections || []),
+        Products,
+        Manufacturers,
+        VehicleMakes,
+        VehicleModels,
+      ],
     }
   },
 })

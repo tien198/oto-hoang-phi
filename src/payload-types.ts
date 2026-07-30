@@ -73,6 +73,7 @@ export interface Config {
     categories: Category;
     users: User;
     products: Product;
+    manufacturers: Manufacturer;
     'vehicle-makes': VehicleMake;
     'vehicle-models': VehicleModel;
     redirects: Redirect;
@@ -98,6 +99,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
+    manufacturers: ManufacturersSelect<false> | ManufacturersSelect<true>;
     'vehicle-makes': VehicleMakesSelect<false> | VehicleMakesSelect<true>;
     'vehicle-models': VehicleModelsSelect<false> | VehicleModelsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
@@ -790,7 +792,7 @@ export interface Product {
   id: string;
   name: string;
   price: number;
-  description?: {
+  'compatible-description'?: {
     root: {
       type: string;
       children: {
@@ -813,13 +815,7 @@ export interface Product {
     | null;
   layouts?: (MediaBlock | ContentBlock | CallToActionBlock)[] | null;
   OEno?: string | null;
-  weight?: number | null;
   warranty?: number | null;
-  size?: {
-    x?: number | null;
-    y?: number | null;
-    z?: number | null;
-  };
   meta?: {
     title?: string | null;
     /**
@@ -828,6 +824,7 @@ export interface Product {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  manufacturers?: (string | null) | Manufacturer;
   'vehicle-models'?: (string | null) | VehicleModel;
   'model-fitments'?: (string | VehicleModel)[] | null;
   /**
@@ -841,14 +838,22 @@ export interface Product {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "manufacturers".
+ */
+export interface Manufacturer {
+  id: string;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "vehicle-models".
  */
 export interface VehicleModel {
   id: string;
   name: string;
   make: string | VehicleMake;
-  'model-year': number;
-  'vehicle-specification'?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1075,6 +1080,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'products';
         value: string | Product;
+      } | null)
+    | ({
+        relationTo: 'manufacturers';
+        value: string | Manufacturer;
       } | null)
     | ({
         relationTo: 'vehicle-makes';
@@ -1459,7 +1468,7 @@ export interface ProductsSelect<T extends boolean = true> {
   id?: T;
   name?: T;
   price?: T;
-  description?: T;
+  'compatible-description'?: T;
   gallery?:
     | T
     | {
@@ -1474,15 +1483,7 @@ export interface ProductsSelect<T extends boolean = true> {
         cta?: T | CallToActionBlockSelect<T>;
       };
   OEno?: T;
-  weight?: T;
   warranty?: T;
-  size?:
-    | T
-    | {
-        x?: T;
-        y?: T;
-        z?: T;
-      };
   meta?:
     | T
     | {
@@ -1490,6 +1491,7 @@ export interface ProductsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  manufacturers?: T;
   'vehicle-models'?: T;
   'model-fitments'?: T;
   generateSlug?: T;
@@ -1497,6 +1499,16 @@ export interface ProductsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "manufacturers_select".
+ */
+export interface ManufacturersSelect<T extends boolean = true> {
+  id?: T;
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1516,8 +1528,6 @@ export interface VehicleModelsSelect<T extends boolean = true> {
   id?: T;
   name?: T;
   make?: T;
-  'model-year'?: T;
-  'vehicle-specification'?: T;
   updatedAt?: T;
   createdAt?: T;
 }

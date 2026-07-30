@@ -1,3 +1,4 @@
+import RichText from '@/components/RichText'
 import { products, vehicle_models } from '@/payload-generated-schema'
 import Link from 'next/link'
 
@@ -5,12 +6,12 @@ type Product = typeof products.$inferSelect
 type VehicleModel = typeof vehicle_models.$inferSelect
 interface ProductCardProps {
   product: Product
-  modelFitments: { vehicle_specification: string }[] | null
+  // modelFitments: { vehicle_specification: string }[] | null
   imgUrl: string
 }
 
-export default function ProductCard({ product, modelFitments, imgUrl }: ProductCardProps) {
-  const { name, slug, price, OEno, weight, warranty, size_x, size_y, size_z } = product
+export default function ProductCard({ product, imgUrl }: ProductCardProps) {
+  const { name, slug, price, OEno, warranty } = product
 
   return (
     <div className="grid grid-cols-[320px_1fr_260px] w-full border-b border-primary last:border-b-0">
@@ -38,19 +39,7 @@ export default function ProductCard({ product, modelFitments, imgUrl }: ProductC
         </div>
 
         <div className="grid grid-cols-2 gap-8">
-          {/* Spec Left */}
           <span className="text-sm text-foreground">Mã OE: {OEno ?? ''}</span>
-          {(size_x || size_y || size_z) && (
-            <span className="text-sm text-foreground">
-              Kích thước: <i>{size_x ?? 0}</i> x <i>{size_y ?? 0}</i> x <i>{size_z ?? 0}</i> mm
-            </span>
-          )}
-          {/* Spec Right */}
-          {weight && (
-            <span className="text-sm text-foreground">
-              Trọng lượng: <i>{weight ?? NaN}</i> KG
-            </span>
-          )}
 
           <span className="text-sm text-foreground">
             Bảo hành: <i>{warranty ?? NaN}</i> tháng
@@ -61,14 +50,7 @@ export default function ProductCard({ product, modelFitments, imgUrl }: ProductC
       {/* Application Column */}
       <div className="flex flex-col gap-4 px-8 py-10">
         <div className="p-3">
-          <p className="text-sm leading-[21px] text-foreground">
-            {modelFitments?.map((model, idx) => (
-              <span key={idx}>
-                {model.vehicle_specification}
-                {idx < modelFitments.length - 1 && <br />}
-              </span>
-            ))}
-          </p>
+          <p className="text-sm leading-[21px] text-foreground"></p>
         </div>
         {/* {(hasMoreModels || slug) && (
           <Link

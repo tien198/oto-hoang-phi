@@ -48,34 +48,34 @@ export async function getProductsPagination({
       product: products,
       vehicleModel: {
         name: vehicle_models.name,
-        modelYear: vehicle_models['model-year'],
+        // modelYear: vehicle_models['model-year'],
       },
       vehicleMake: {
         name: vehicle_makes.name,
       },
       media: media.url,
       // fitments: sql`COALESCE(jsonb_agg(DISTINCT to_jsonb(${vehicle_models_alias})) FILTER (WHERE ${vehicle_models_alias}.id IS NOT NULL), '[]'::jsonb)::json`,
-      fitments: sql`COALESCE(
-          jsonb_agg(
-            jsonb_build_object(
-              'vehicle_specification', ${vehicle_models_alias}.vehicle_specification
-            ) 
-            ORDER BY ${vehicle_models_alias}.model_year ASC
-          ) 
-          FILTER (
-            WHERE ${vehicle_models_alias}.id IS NOT NULL
-          ) 
-        , '[]'::jsonb
-        )::json`,
+      // fitments: sql`COALESCE(
+      //     jsonb_agg(
+      //       jsonb_build_object(
+      //         'vehicle_specification', ${vehicle_models_alias}.vehicle_specification
+      //       )
+      //       ORDER BY ${vehicle_models_alias}.model_year ASC
+      //     )
+      //     FILTER (
+      //       WHERE ${vehicle_models_alias}.id IS NOT NULL
+      //     )
+      //   , '[]'::jsonb
+      //   )::json`,
     })
     .from(products)
     .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
     .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
-    .leftJoin(
-      products_rels,
-      and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
-    )
-    .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
+    // .leftJoin(
+    //   products_rels,
+    //   and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
+    // )
+    // .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
     .leftJoin(products_gallery, eq(products.id, products_gallery._parentID))
     .leftJoin(media, eq(media.id, products_gallery.image))
     .where(
@@ -93,15 +93,15 @@ export async function getProductsPagination({
             ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
             : undefined,
         ),
-        or(
-          modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
-          modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
-        ),
+        // or(
+        //   modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
+        //   modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
+        // ),
       ),
     )
     // GROUP BY chạy trước DISTINCT ON, jsonb_agg sẽ gom nhóm,
     // sau đó DISTINCT ON sẽ lọc lại 1 dòng duy nhất cho mỗi products.id
-    .groupBy(products.id, vehicle_models.id, vehicle_makes.id, media.url, media.id)
+    .groupBy(products.id, vehicle_models.id, vehicle_makes.id)
 
     .limit(limit)
     .offset(offset)
@@ -111,11 +111,11 @@ export async function getProductsPagination({
     .from(products)
     .leftJoin(vehicle_models, eq(vehicle_models.id, products['vehicle-models']))
     .leftJoin(vehicle_makes, eq(vehicle_makes.id, vehicle_models.make))
-    .leftJoin(
-      products_rels,
-      and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
-    )
-    .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
+    // .leftJoin(
+    //   products_rels,
+    //   and(eq(products.id, products_rels.parent), eq(products_rels.path, 'model-fitments')),
+    // )
+    // .leftJoin(vehicle_models_alias, eq(products_rels['vehicle-modelsID'], vehicle_models_alias.id))
     .where(
       and(
         eq(products._status, 'published'),
@@ -130,10 +130,10 @@ export async function getProductsPagination({
             ? eq(sql`LOWER(${vehicle_models_alias.name})`, vehicleModelName.toLowerCase())
             : undefined,
         ),
-        or(
-          modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
-          modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
-        ),
+        // or(
+        //   modelYear ? eq(sql`${vehicle_models['model-year']}`, Number(modelYear)) : undefined,
+        //   modelYear ? eq(sql`${vehicle_models_alias['model-year']}`, Number(modelYear)) : undefined,
+        // ),
       ),
     )
 
