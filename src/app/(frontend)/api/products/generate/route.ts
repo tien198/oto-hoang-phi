@@ -21,7 +21,7 @@ export async function GET() {
         name: `product-${i}`,
         slug: `product-${i}`,
         _status: 'published',
-        description: {
+        'compatible-description': {
           root: {
             type: 'root',
             format: '',
@@ -64,13 +64,7 @@ export async function GET() {
           },
         ],
         OEno: 'OEno-' + i,
-        weight: getRandomFloat(0.35, 5),
         warranty: 12,
-        size: {
-          x: Math.round(Math.random() * 100 * 100) / 100,
-          y: Math.round(Math.random() * 100 * 100) / 100,
-          z: Math.round(Math.random() * 100 * 100) / 100,
-        },
       },
     })
   }

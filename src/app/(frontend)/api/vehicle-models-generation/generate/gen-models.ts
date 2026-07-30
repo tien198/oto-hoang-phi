@@ -41,7 +41,6 @@ export async function generateModels() {
       data: {
         name: model,
         make: makeId,
-        'model-year': 2025,
       },
     })
   }
