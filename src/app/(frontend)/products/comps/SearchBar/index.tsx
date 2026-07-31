@@ -9,6 +9,7 @@ import { ModelSelection } from './ModelSelection'
 // import { ModelYearSelection } from './ModelYearSelection'
 import { ProductNameSearch } from './ProductNameInput'
 import { SearchBtn } from './SearchBtn'
+import { SearchForm } from './SearchForm'
 
 import { unstable_cache } from 'next/cache'
 
@@ -42,16 +43,18 @@ export default async function SearchBar() {
         'sticky top-0',
       )}
     >
-      <div className="flex items-center gap-2">
-        <ChevronsRight className="w-6 h-6 text-primary" />
-      </div>
-      <ProductNameSearch />
-      <div className="flex items-center gap-4 flex-wrap">
-        <MakeSelection makes={makes} />
-        <ModelSelection models={models} />
-        {/* <ModelYearSelection /> */}
-        <SearchBtn />
-      </div>
+      <SearchForm>
+        <div className="flex items-center gap-2">
+          <ChevronsRight className="w-6 h-6 text-primary" />
+        </div>
+        <ProductNameSearch />
+        <div className="flex items-center gap-4 flex-wrap">
+          <MakeSelection makes={makes} />
+          <ModelSelection models={models} />
+          {/* <ModelYearSelection /> */}
+          <SearchBtn />
+        </div>
+      </SearchForm>
     </div>
   )
 }
