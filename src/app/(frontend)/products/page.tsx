@@ -4,6 +4,7 @@ import ProductList from './comps/ProductsList/ProductList'
 import clsx from 'clsx'
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import { getProductsPagination } from './actions/get-products'
+import { generateProductsQueryKey } from './tanstack-ultils/generate-querry-key'
 
 type Props = {
   searchParams: Promise<{
@@ -13,19 +14,25 @@ type Props = {
 export default async function ProductsPage({ searchParams }: Props) {
   const params = await searchParams
   const page = Number(params.page) ?? 1
+  const productName = params['product-name'] as string | undefined
   const vehicleMakeName = params['vehicle-make'] as string | undefined
   const vehicleModelName = params['vehicle-model'] as string | undefined
-  const modelYear = params['model-year'] as string | undefined
 
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery({
-    queryKey: ['products', page, vehicleMakeName, vehicleModelName, modelYear],
+    queryKey: generateProductsQueryKey({
+      page,
+      productName,
+      vehicleMakeName,
+      vehicleModelName,
+    }),
+
     queryFn: async () =>
       await getProductsPagination({
         page,
+        productName,
         vehicleMakeName,
         vehicleModelName,
-        modelYear,
       }),
   })
 

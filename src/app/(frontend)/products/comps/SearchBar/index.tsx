@@ -6,7 +6,7 @@ import payloadConfig from '@payload-config'
 
 import { MakeSelection } from './MakeSelection'
 import { ModelSelection } from './ModelSelection'
-import { ModelYearSelection } from './ModelYearSelection'
+// import { ModelYearSelection } from './ModelYearSelection'
 import { ProductNameSearch } from './ProductNameInput'
 import { SearchBtn } from './SearchBtn'
 
@@ -19,7 +19,7 @@ const getMakes = unstable_cache(
     return res.docs as VehicleMake[]
   },
   ['vehicle-makes'],
-  { tags: ['vehicle-makes'] }
+  { tags: ['vehicle-makes'] },
 )
 
 const getModels = unstable_cache(
@@ -29,7 +29,7 @@ const getModels = unstable_cache(
     return res.docs as VehicleModel[]
   },
   ['vehicle-models'],
-  { tags: ['vehicle-models'] }
+  { tags: ['vehicle-models'] },
 )
 
 export default async function SearchBar() {
@@ -49,7 +49,7 @@ export default async function SearchBar() {
       <div className="flex items-center gap-4 flex-wrap">
         <MakeSelection makes={makes} />
         <ModelSelection models={models} />
-        <ModelYearSelection />
+        {/* <ModelYearSelection /> */}
         <SearchBtn />
       </div>
     </div>

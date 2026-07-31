@@ -2,11 +2,11 @@ import { GetProductsSearchParams, ProductsPaginationResult } from '../actions/ge
 
 export async function getProductsApi({
   page,
+  productName,
   vehicleMakeName,
   vehicleModelName,
-  modelYear,
 }: GetProductsSearchParams) {
-  const params = genProductParams(page, vehicleMakeName, vehicleModelName, modelYear)
+  const params = genProductParams(page, productName, vehicleMakeName, vehicleModelName)
   const res = await fetch(`/api/products?${params}`)
   const pagiRes = (await res.json()) as ProductsPaginationResult
   return pagiRes
@@ -14,12 +14,12 @@ export async function getProductsApi({
 
 export function genProductParams(
   page?: number | null,
+  productName?: string | null,
   vehicleMakeName?: string | null,
   vehicleModelName?: string | null,
-  modelYear?: string | null,
 ) {
+  const productNameParam = productName ? '&product-name=' + productName : ''
   const makeParam = vehicleMakeName ? '&vehicle-make=' + vehicleMakeName : ''
   const modelParam = vehicleModelName ? '&vehicle-model=' + vehicleModelName : ''
-  const modelYearParam = modelYear ? '&model-year=' + modelYear : ''
-  return `page=${page}${makeParam}${modelParam}${modelYearParam}`
+  return `page=${page}${productNameParam}${makeParam}${modelParam}`
 }

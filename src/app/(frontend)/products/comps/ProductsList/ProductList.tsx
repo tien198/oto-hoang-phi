@@ -8,22 +8,28 @@ import { getProductsApi } from '../../fetch-api/get-products-list'
 import { ProductsPagination } from './ProductList.Pagination'
 import clsx from 'clsx'
 import { Product } from '@/payload-types'
+import { generateProductsQueryKey } from '../../tanstack-ultils/generate-querry-key'
 
 export default function ProductList() {
   const searchParams = useSearchParams()
   const page = Number(searchParams.get('page')) || 1
+  const productName = searchParams.get('product-name')
   const vehicleMakeName = searchParams.get('vehicle-make')
   const vehicleModelName = searchParams.get('vehicle-model')
-  const modelYear = searchParams.get('model-year')
 
   const { data } = useQuery<ProductsPaginationResult>({
-    queryKey: ['products', page, vehicleMakeName, vehicleModelName, modelYear],
+    queryKey: generateProductsQueryKey({
+      page,
+      productName,
+      vehicleMakeName,
+      vehicleModelName,
+    }),
     queryFn: () =>
       getProductsApi({
         page,
+        productName,
         vehicleMakeName,
         vehicleModelName,
-        modelYear,
       }),
   })
 
@@ -45,13 +51,13 @@ export default function ProductList() {
           )}
         >
           <div className="px-6 h-full border border-accent py-4">
-            <span>#</span>
+            <span># HÌNH ẢNH</span>
           </div>
           <div className="px-6 h-full border border-accent py-4">
-            <span>THÔNG SỐ KỸ THUẬT</span>
+            <span>THÔNG TIN</span>
           </div>
           <div className="px-6 h-full border border-accent py-4">
-            <span>TƯƠNG THÍCH</span>
+            <span>MÔ TẢ TƯƠNG THÍCH</span>
           </div>
         </div>
 

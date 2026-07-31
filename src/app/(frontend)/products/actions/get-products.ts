@@ -24,19 +24,17 @@ export type ProductResult = {
 export type GetProductsSearchParams = {
   page?: number
   limit?: number
+  productName?: string | null
   vehicleMakeName?: string | null
   vehicleModelName?: string | null
-  modelYear?: string | null
 }
-
-const vehicle_models_alias = aliasedTable(vehicle_models, 'vehicle_models_fitmentsalias')
 
 export async function getProductsPagination({
   page = 1,
   limit = 9,
+  productName,
   vehicleMakeName,
   vehicleModelName,
-  modelYear,
 }: GetProductsSearchParams) {
   const offset = (page - 1) * limit
   const {
@@ -66,10 +64,12 @@ export async function getProductsPagination({
       .where(
         and(
           eq(products._status, 'published'),
-          or(
-            vehicleMakeName ? eq(vehicle_makes.name, vehicleMakeName.toLowerCase()) : undefined,
-            vehicleModelName ? eq(vehicle_models.name, vehicleModelName.toLowerCase()) : undefined,
-          ),
+
+          productName
+            ? sql`${products.name} ILIKE ${'%' + productName.toLowerCase() + '%'}`
+            : undefined,
+          vehicleMakeName ? eq(vehicle_makes.name, vehicleMakeName.toLowerCase()) : undefined,
+          vehicleModelName ? eq(vehicle_models.name, vehicleModelName.toLowerCase()) : undefined,
         ),
       )
       .groupBy(products.id)

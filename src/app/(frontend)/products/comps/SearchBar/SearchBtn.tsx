@@ -1,19 +1,42 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { useMakeName, useModelName, useModelYear, useProductName } from './store'
+import { useMakeName, useModelName, useProductName } from './store'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
+import { useQueryClient } from '@tanstack/react-query'
+import { generateProductsQueryKey } from '../../tanstack-ultils/generate-querry-key'
 
 export function SearchBtn() {
-  const makeProductName = useProductName()
-  const makeName = useMakeName()
-  const modelName = useModelName()
-  const modelYear = useModelYear()
+  const queryClient = useQueryClient()
+  const productName = useProductName()
+  const vehicleMakeName = useMakeName()
+  const vehicleModelName = useModelName()
 
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+
+  const params = new URLSearchParams(searchParams.toString())
+  if (productName) {
+    params.set('product-name', productName)
+  } else {
+    params.delete('product-name')
+  }
+  if (vehicleMakeName) {
+    params.set('vehicle-make', vehicleMakeName)
+  } else {
+    params.delete('vehicle-make')
+  }
+  if (vehicleModelName) params.set('vehicle-model', vehicleModelName)
+  else {
+    params.delete('vehicle-model')
+  }
+
+  // Reset to page 1 on new search
+  params.set('page', '1')
+
+  const redirectUrl = pathname + '?' + params.toString()
 
   return (
     <Button
@@ -23,19 +46,15 @@ export function SearchBtn() {
         'hover:bg-primary hover:text-accent',
       )}
       onClick={() => {
-        const params = new URLSearchParams(searchParams.toString())
-        if (makeProductName) params.set('productName', makeProductName)
-        else params.delete('productName')
-        if (makeName) params.set('vehicle-make', makeName)
-        else params.delete('vehicle-make')
-        if (modelName) params.set('vehicle-model', modelName)
-        else params.delete('vehicle-model')
-        if (modelYear) params.set('model-year', modelYear)
-        else params.delete('model-year')
-        // Reset to page 1 on new search
-        params.delete('page')
-
-        router.push(`${pathname}?${params.toString()}`)
+        queryClient.invalidateQueries({
+          queryKey: generateProductsQueryKey({
+            page: 1,
+            productName,
+            vehicleMakeName,
+            vehicleModelName,
+          }),
+        })
+        router.push(redirectUrl)
         router.refresh()
       }}
     >
