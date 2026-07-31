@@ -115,10 +115,12 @@ export async function getProductsPagination({
     .where(
       and(
         eq(products._status, 'published'),
-        or(
-          vehicleMakeName ? eq(vehicle_makes.name, vehicleMakeName.toLowerCase()) : undefined,
-          vehicleModelName ? eq(vehicle_models.name, vehicleModelName.toLowerCase()) : undefined,
-        ),
+
+        productName
+          ? sql`${products.name} ILIKE ${'%' + productName.toLowerCase() + '%'}`
+          : undefined,
+        vehicleMakeName ? eq(vehicle_makes.name, vehicleMakeName.toLowerCase()) : undefined,
+        vehicleModelName ? eq(vehicle_models.name, vehicleModelName.toLowerCase()) : undefined,
       ),
     )
 

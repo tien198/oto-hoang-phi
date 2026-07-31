@@ -39,7 +39,7 @@ export default function ProductList() {
     <div className="flex flex-col gap-6 w-full flex-1">
       <div className="flex flex-col gap-2">
         <h2 className="text-foreground text-[22px] font-semibold uppercase">KẾT QUẢ TÌM KIẾM</h2>
-        <div className="h-[3px] bg-primary w-[120px]"></div>
+        <div className="h-0.5 bg-primary w-30"></div>
       </div>
 
       <div className="flex flex-col">

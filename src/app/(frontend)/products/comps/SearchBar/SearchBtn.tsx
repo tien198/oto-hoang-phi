@@ -38,6 +38,19 @@ export function SearchBtn() {
 
   const redirectUrl = pathname + '?' + params.toString()
 
+  const handleSubmit = () => {
+    queryClient.invalidateQueries({
+      queryKey: generateProductsQueryKey({
+        page: 1,
+        productName,
+        vehicleMakeName,
+        vehicleModelName,
+      }),
+    })
+    router.push(redirectUrl)
+    router.refresh()
+  }
+
   return (
     <Button
       variant="outline"
@@ -45,18 +58,7 @@ export function SearchBtn() {
         'bg-card border-accent-foreground shadow-sm px-6 h-10',
         'hover:bg-primary hover:text-accent',
       )}
-      onClick={() => {
-        queryClient.invalidateQueries({
-          queryKey: generateProductsQueryKey({
-            page: 1,
-            productName,
-            vehicleMakeName,
-            vehicleModelName,
-          }),
-        })
-        router.push(redirectUrl)
-        router.refresh()
-      }}
+      onClick={handleSubmit}
     >
       Tìm kiếm
     </Button>
