@@ -40,7 +40,7 @@ export async function getProductsPagination({
   const {
     db: { drizzle },
   } = await getPayload({ config: payloadConfig })
-  await new Promise((res) => setTimeout(res, 3000))
+  // await new Promise((res) => setTimeout(res, 3000))
   const products_fitments_CTE = drizzle.$with('fitments_cte').as(
     drizzle
       .select({
