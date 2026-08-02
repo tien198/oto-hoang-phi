@@ -21,7 +21,7 @@ export default async function ProductsPage({ searchParams }: Props) {
   const vehicleModelName = params['vehicle-model'] as string | undefined
 
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery({
+  queryClient.prefetchQuery({
     queryKey: generateProductsQueryKey({
       page,
       productName,

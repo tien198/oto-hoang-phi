@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { ChevronsRight } from 'lucide-react'
 import clsx from 'clsx'
 
@@ -9,9 +10,26 @@ import { SearchBtn } from './SearchBtn'
 import { SearchForm } from './SearchForm'
 import { getMakes, getModels } from '../cache/get-cache'
 
-export default async function SearchBar() {
-  const [makes, models] = await Promise.all([getMakes(), getModels()])
+function SelectsSkeleton() {
+  return (
+    <>
+      <div className="w-44 h-10 bg-gray-200 animate-pulse rounded-md" />
+      <div className="w-44 h-10 bg-gray-200 animate-pulse rounded-md" />
+    </>
+  )
+}
 
+async function SearchSelects() {
+  const [makes, models] = await Promise.all([getMakes(), getModels()])
+  return (
+    <>
+      <MakeSelection makes={makes} />
+      <ModelSelection models={models} />
+    </>
+  )
+}
+
+export default function SearchBar() {
   return (
     <div
       className={clsx(
@@ -25,8 +43,9 @@ export default async function SearchBar() {
         </div>
         <ProductNameSearch />
         <div className="flex items-center gap-4 flex-wrap">
-          <MakeSelection makes={makes} />
-          <ModelSelection models={models} />
+          <Suspense fallback={<SelectsSkeleton />}>
+            <SearchSelects />
+          </Suspense>
           {/* <ModelYearSelection /> */}
           <SearchBtn />
         </div>
