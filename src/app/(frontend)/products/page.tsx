@@ -1,6 +1,8 @@
+import { Suspense } from 'react'
 import SearchBar from './comps/SearchBar'
 import BrandSidebar from './comps/BrandSidebar'
 import ProductList from './comps/ProductsList/ProductList'
+import ProductListSkeleton from './comps/ProductsList/ProductListSkeleton'
 import clsx from 'clsx'
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import { getProductsPagination } from './actions/get-products'
@@ -43,9 +45,11 @@ export default async function ProductsPage({ searchParams }: Props) {
 
         <div className={clsx('flex flex-col lg:flex-row gap-8 px-4 md:px-6 lg:px-4 w-full mt-8')}>
           <BrandSidebar />
-          <HydrationBoundary state={dehydrate(queryClient)}>
-            <ProductList />
-          </HydrationBoundary>
+          <Suspense fallback={<ProductListSkeleton />}>
+            <HydrationBoundary state={dehydrate(queryClient)}>
+              <ProductList />
+            </HydrationBoundary>
+          </Suspense>
         </div>
       </div>
     </div>

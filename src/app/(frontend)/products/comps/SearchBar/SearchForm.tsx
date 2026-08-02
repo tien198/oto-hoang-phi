@@ -21,16 +21,16 @@ export function SearchForm({ children }: { children: ReactNode }) {
 
     const params = new URLSearchParams(searchParams.toString())
     if (productName) {
-      params.set('product-name', productName)
+      params.set('product-name', productName.toLowerCase())
     } else {
       params.delete('product-name')
     }
     if (vehicleMakeName) {
-      params.set('vehicle-make', vehicleMakeName)
+      params.set('vehicle-make', vehicleMakeName.toLowerCase())
     } else {
       params.delete('vehicle-make')
     }
-    if (vehicleModelName) params.set('vehicle-model', vehicleModelName)
+    if (vehicleModelName) params.set('vehicle-model', vehicleModelName.toLowerCase())
     else {
       params.delete('vehicle-model')
     }
