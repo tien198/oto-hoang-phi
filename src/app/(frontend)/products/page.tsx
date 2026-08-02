@@ -45,7 +45,7 @@ export default async function ProductsPage({ searchParams }: Props) {
 
         <div className={clsx('flex flex-col lg:flex-row gap-8 px-4 md:px-6 lg:px-4 w-full mt-8')}>
           <BrandSidebar />
-          <Suspense fallback={<ProductListSkeleton />}>
+          <Suspense key={JSON.stringify(params)} fallback={<ProductListSkeleton />}>
             <HydrationBoundary state={dehydrate(queryClient)}>
               <ProductList />
             </HydrationBoundary>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import ProductCard from './ProductCard'
 import { useSearchParams } from 'next/navigation'
 import { ProductsPaginationResult } from '../../actions/get-products'
@@ -9,7 +9,6 @@ import { ProductsPagination } from './ProductList.Pagination'
 import clsx from 'clsx'
 import { Product } from '@/payload-types'
 import { generateProductsQueryKey } from '../../tanstack-ultils/generate-querry-key'
-import ProductListSkeleton from './ProductListSkeleton'
 
 export default function ProductList() {
   const searchParams = useSearchParams()
@@ -18,7 +17,7 @@ export default function ProductList() {
   const vehicleMakeName = searchParams.get('vehicle-make')
   const vehicleModelName = searchParams.get('vehicle-model')
 
-  const { data, isLoading } = useQuery<ProductsPaginationResult>({
+  const { data } = useSuspenseQuery<ProductsPaginationResult>({
     queryKey: generateProductsQueryKey({
       page,
       productName,
@@ -36,9 +35,6 @@ export default function ProductList() {
 
   const products = data?.docs
 
-  if (isLoading) {
-    return <ProductListSkeleton />
-  }
   return (
     <div className="flex flex-col gap-6 w-full flex-1">
       <div className="flex flex-col gap-2">

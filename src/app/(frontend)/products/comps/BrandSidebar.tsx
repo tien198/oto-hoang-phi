@@ -12,7 +12,7 @@ function MakesListSkeleton() {
           className={`flex items-center justify-between p-4 ${idx % 2 === 0 ? '' : 'bg-secondary'}`}
         >
           <div className="h-4 w-24 bg-gray-200 rounded" />
-          <ChevronRight className="w-4 h-4 text-muted" />
+          <ChevronRight className="w-4 h-4 text-foreground" />
         </div>
       ))}
     </div>
@@ -33,7 +33,7 @@ async function MakesList() {
           <span className="text-[15px]">
             {make.name.charAt(0).toUpperCase() + make.name.slice(1)}
           </span>
-          <ChevronRight className="w-4 h-4 text-muted" />
+          <ChevronRight className="w-4 h-4 text-foreground" />
         </Link>
       ))}
     </div>
