@@ -12,7 +12,9 @@ export default function ProductListSkeleton() {
         {/* Table Header */}
         <div
           className={clsx(
-            'grid grid-cols-[320px_1fr_260px] bg-primary',
+            'hidden',
+            // Desktop
+            'md:grid md:grid-cols-[220px_1fr_200px] xl:grid-cols-[320px_1fr_260px] bg-primary',
             'text-base font-semibold text-primary-foreground',
           )}
         >
@@ -31,17 +33,63 @@ export default function ProductListSkeleton() {
         {Array.from({ length: 5 }).map((_, idx) => (
           <div
             key={idx}
-            className="grid grid-cols-[320px_1fr_260px] border-b border-border"
+            className={clsx(
+              // Base / Mobile
+              'flex flex-col w-full border-b border-primary last:border-b-0',
+              // Desktop
+              'md:grid md:grid-cols-[220px_1fr_200px] xl:grid-cols-[320px_1fr_260px]',
+            )}
           >
-            <div className="px-6 py-4 border-x border-border">
-              <div className="h-32 w-full bg-muted rounded" />
+            {/* Image Column */}
+            <div
+              className={clsx(
+                // Base / Mobile
+                'flex flex-col items-center justify-center py-6 border-b border-primary',
+                // Desktop
+                'md:py-8 md:border-b-0 xl:py-10',
+              )}
+            >
+              <div className="h-32 w-full max-w-[200px] md:max-w-none bg-muted rounded" />
             </div>
-            <div className="px-6 py-4 border-r border-border flex flex-col gap-2">
-              <div className="h-5 w-3/4 bg-muted rounded" />
-              <div className="h-4 w-1/2 bg-muted rounded" />
-              <div className="h-4 w-2/3 bg-muted rounded" />
+
+            {/* Specs Column */}
+            <div
+              className={clsx(
+                // Base / Mobile
+                'flex flex-col gap-4 px-4 py-6 border-b border-primary',
+                // Desktop
+                'md:gap-4 md:px-6 md:py-8 md:border-r md:border-b-0 md:border-primary xl:gap-6 xl:px-8 xl:py-10',
+              )}
+            >
+              <div className="flex flex-1 flex-col gap-2">
+                <div className="h-6 w-3/4 bg-muted rounded" />
+                <div className="h-8 w-1/3 bg-muted rounded-full" />
+              </div>
+
+              <div
+                className={clsx(
+                  // Base / Mobile
+                  'grid grid-cols-1 gap-2',
+                  // Tablet
+                  'sm:grid-cols-2 sm:gap-4',
+                  // Desktop
+                  'md:gap-6 xl:gap-8',
+                )}
+              >
+                <div className="h-4 w-full bg-muted rounded" />
+                <div className="h-4 w-3/4 bg-muted rounded" />
+              </div>
             </div>
-            <div className="px-6 py-4 border-r border-border flex flex-col gap-2">
+
+            {/* Application Column */}
+            <div
+              className={clsx(
+                // Base / Mobile
+                'flex flex-col gap-2 py-6 px-4',
+                // Desktop
+                'md:px-0',
+              )}
+            >
               <div className="h-4 w-full bg-muted rounded" />
               <div className="h-4 w-4/5 bg-muted rounded" />
             </div>

@@ -46,7 +46,9 @@ export default function ProductList() {
         {/* Table Header */}
         <div
           className={clsx(
-            'grid grid-cols-[320px_1fr_260px] bg-primary',
+            'hidden',
+            // Desktop
+            'md:grid md:grid-cols-[220px_1fr_200px] xl:grid-cols-[320px_1fr_260px] bg-primary',
             'text-base font-semibold text-primary-foreground',
           )}
         >

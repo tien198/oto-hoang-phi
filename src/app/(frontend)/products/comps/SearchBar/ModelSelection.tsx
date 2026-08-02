@@ -11,6 +11,7 @@ import type { VehicleModel } from '@/payload-types'
 
 import { useModelName, useSetModelName } from './store'
 import { useEffect } from 'react'
+import clsx from 'clsx'
 
 export function ModelSelection({ models }: { models: VehicleModel[] }) {
   const modelName = useModelName()
@@ -21,7 +22,14 @@ export function ModelSelection({ models }: { models: VehicleModel[] }) {
       value={modelName ?? '__all__'}
       onValueChange={(val) => setModelName(val === '__all__' ? null : val)}
     >
-      <SelectTrigger className="w-44 bg-card border-accent-foreground text-primary">
+      <SelectTrigger
+        className={clsx(
+          // Base / Mobile
+          'bg-card border-accent-foreground text-primary',
+          // Desktop
+          'md:w-44',
+        )}
+      >
         <SelectValue placeholder="Model" />
       </SelectTrigger>
       <SelectContent>

@@ -11,6 +11,7 @@ import type { VehicleMake } from '@/payload-types'
 
 import { useMakeName, useSetMakeName } from './store'
 import { useEffect } from 'react'
+import clsx from 'clsx'
 
 export function MakeSelection({ makes }: { makes: VehicleMake[] }) {
   const makeName = useMakeName()
@@ -21,7 +22,14 @@ export function MakeSelection({ makes }: { makes: VehicleMake[] }) {
       value={makeName ?? '__all__'}
       onValueChange={(val) => setMakeName(val === '__all__' ? null : val)}
     >
-      <SelectTrigger className="w-44 bg-card border-accent-foreground text-primary">
+      <SelectTrigger
+        className={clsx(
+          // Base / Mobile
+          'bg-card border-accent-foreground text-primary',
+          // Desktop
+          'md:w-44',
+        )}
+      >
         <SelectValue placeholder="Hãng" />
       </SelectTrigger>
       <SelectContent>

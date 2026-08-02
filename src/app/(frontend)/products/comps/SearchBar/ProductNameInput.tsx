@@ -10,7 +10,14 @@ export function ProductNameSearch() {
   const setProductName = useSetProductName()
 
   return (
-    <div className="flex items-center gap-2 flex-1 min-w-48 border border-accent-foreground rounded-md px-4 bg-card h-10">
+    <div
+      className={clsx(
+        // Base / Mobile
+        'flex items-center gap-2 flex-1 w-full min-w-48 border border-accent-foreground rounded-md px-4 bg-card h-10',
+        // Desktop
+        'md:w-auto',
+      )}
+    >
       <Input
         className={clsx(
           'border-none shadow-none outline-0 bg-transparent px-0 text-primary placeholder:text-primary',

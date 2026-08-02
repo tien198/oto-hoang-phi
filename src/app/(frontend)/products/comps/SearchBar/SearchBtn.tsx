@@ -9,8 +9,11 @@ export function SearchBtn() {
       type="submit"
       variant="outline"
       className={clsx(
-        'bg-card border-accent-foreground shadow-sm px-6 h-10',
+        // Base / Mobile
+        'bg-card border-accent-foreground shadow-sm px-6 h-10 w-full',
         'hover:bg-primary hover:text-accent',
+        // Tablet
+        'sm:w-auto',
       )}
     >
       Tìm kiếm

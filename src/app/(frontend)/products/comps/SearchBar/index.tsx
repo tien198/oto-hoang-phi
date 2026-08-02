@@ -13,8 +13,8 @@ import { getMakes, getModels } from '../cache/get-cache'
 function SelectsSkeleton() {
   return (
     <>
-      <div className="w-44 h-10 bg-gray-200 animate-pulse rounded-md" />
-      <div className="w-44 h-10 bg-gray-200 animate-pulse rounded-md" />
+      <div className={clsx('w-full h-10 bg-gray-200 animate-pulse rounded-md', 'md:w-44')} />
+      <div className={clsx('w-full h-10 bg-gray-200 animate-pulse rounded-md', 'md:w-44')} />
     </>
   )
 }
@@ -33,16 +33,28 @@ export default function SearchBar() {
   return (
     <div
       className={clsx(
-        'flex items-center gap-4 p-4 md:px-6 bg-card border-b border-accent-foreground w-full flex-wrap',
-        'sticky top-0',
+        // Base / Mobile
+        'flex flex-col w-full gap-4 py-4 bg-card border-b border-accent-foreground ',
+        'sticky top-0 z-10',
+        // Desktop
+        'md:flex-row md:items-center',
       )}
     >
       <SearchForm>
-        <div className="flex items-center gap-2">
+        <div className={clsx('hidden items-center gap-2', 'lg:flex')}>
           <ChevronsRight className="w-6 h-6 text-primary" />
         </div>
         <ProductNameSearch />
-        <div className="flex items-center gap-4 flex-wrap">
+        <div
+          className={clsx(
+            // Base / Mobile
+            'flex flex-col shrink gap-4',
+            // Tablet
+            'sm:flex-row sm:items-center',
+            // Desktop
+            'md:w-auto',
+          )}
+        >
           <Suspense fallback={<SelectsSkeleton />}>
             <SearchSelects />
           </Suspense>
