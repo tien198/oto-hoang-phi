@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
 export const IntroSection = () => {
@@ -34,7 +35,12 @@ export const IntroSection = () => {
       <div
         className={`flex-1 flex flex-col gap-6 duration-300 ${showFirst ? 'animate-fade-in' : 'opacity-0'}`}
       >
-        <h2 className="text-primary text-3xl md:text-[36px] font-bold leading-[1.2]">
+        <h2
+          className={clsx(
+            'text-primary text-3xl md:text-[36px] font-semibold leading-[1.2]',
+            'lg:font-medium',
+          )}
+        >
           Đối tác đáng tin cậy trong nhập khẩu và cung cấp các sản phẩm phụ tùng ô tô
         </h2>
         <p className="text-muted-foreground text-base leading-[1.6]">

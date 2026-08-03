@@ -16,7 +16,7 @@ export const Banner = () => {
       </div>
 
       <div className="relative bottom-16 z-10 md:bottom-14 w-full max-w-[1030px] flex flex-col justify-end items-center h-full gap-2">
-        <h1 className="text- text-3xl md:text-5xl font-bold text-center max-w-[90vw]">
+        <h1 className="text- text-3xl md:text-5xl font-medium text-center max-w-[90vw]">
           SẢN PHẨM ĐA DẠNG
         </h1>
 

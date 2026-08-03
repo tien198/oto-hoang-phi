@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 export const Footer = () => {
   return (
-    <footer className="w-full bg-[#171717] pt-16 pb-6 px-5 md:px-20 flex flex-col gap-16">
-      <div className="flex flex-col md:flex-row items-end justify-between gap-12">
-        <div className="flex flex-col gap-8 max-w-[360px] text-muted-foreground text-sm">
+    <footer className="w-full bg-foreground pt-16 pb-6 px-5 lg:px-20 flex flex-col gap-16">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col w-full gap-8 max-w-[360px] text-muted-foreground text-sm">
           <div className="w-[135px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <Logo loading="eager" priority="high" />
@@ -46,10 +46,10 @@ export const Footer = () => {
         <div
           className={clsx(
             'flex flex-col items-center gap-16',
-            'md:flex-row md:gap-24 md:justify-start',
+            'lg:flex-row lg:gap-24 lg:justify-start',
           )}
         >
-          <div className="hidden md:flex flex-col gap-4 ">
+          <div className="hidden lg:flex flex-col gap-4 ">
             <h4 className="text-accent text-base font-semibold">Về Hoàng Phi</h4>
             <Link
               href="#"

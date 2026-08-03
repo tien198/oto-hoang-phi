@@ -38,7 +38,7 @@ export const ContactSection = () => {
         className={`flex-1 flex flex-col gap-8 max-w-xl duration-300 ${showFirst ? 'animate-fade-in' : 'opacity-0'}`}
       >
         <div className="flex flex-col gap-4">
-          <h2 className="text-primary text-3xl md:text-[36px] font-bold leading-[1.2]">
+          <h2 className="text-primary text-3xl md:text-[36px] font-light md:font-medium leading-[1.2]">
             Kết nối với chúng tôi
           </h2>
           <p className="text-[#737373] text-base leading-[1.6]">

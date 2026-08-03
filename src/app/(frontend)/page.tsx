@@ -10,7 +10,7 @@ import configPromise from '@payload-config'
 import { Header } from '@/sections/Header'
 import { Banner } from '@/sections/Banner'
 import { IntroSection } from '@/sections/IntroSection'
-import { ProductsSection } from '@/sections/ProductsSection'
+import { ProductsSection } from '@/sections/ProductSection'
 import { ContactSection } from '@/sections/ContactSection'
 import { Footer } from '@/sections/Footer'
 

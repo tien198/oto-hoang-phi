@@ -53,7 +53,7 @@ export const Header = () => {
             href="#"
             className="text-muted-foreground font-medium text-base hover:text-white transition-colors"
           >
-            Tài nguyên
+            Bài viết
           </Link>
           <Link href="#contact">
             <Button
