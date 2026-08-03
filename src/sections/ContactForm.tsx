@@ -1,16 +1,34 @@
 'use client'
+
 import { AutoResizeTextarea } from '@/components/texcra-ui/auto-resize-textarea'
 import { cn } from '@/lib/utils'
 import clsx from 'clsx'
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 import { submitContactAction } from '@/actions/submit-contact/contact'
+import { ContactFormState, contactSchema } from '@/actions/submit-contact/contract-validate'
 
 export function ContactForm({ className }: { className?: string }) {
   const [state, action, pending] = useActionState(submitContactAction, null)
+  const [clientErrors, setClientErrors] = useState<ContactFormState['fieldErrors']>({})
+
+  const clientAction = (formData: FormData) => {
+    const data = Object.fromEntries(formData.entries())
+    const result = contactSchema.safeParse(data)
+
+    if (!result.success) {
+      setClientErrors(result.error.flatten().fieldErrors)
+      return
+    }
+
+    setClientErrors({})
+    action(formData)
+  }
+
+  const errors = Object.keys(clientErrors || {}).length > 0 ? clientErrors : state?.fieldErrors
 
   return (
     <form
-      action={action}
+      action={clientAction}
       className={cn(
         `flex-1 w-full max-w-xl bg-white border border-accent rounded-xl p-8 md:p-10 flex flex-col gap-6 shadow-sm duration-300`,
         className,
@@ -21,30 +39,33 @@ export function ContactForm({ className }: { className?: string }) {
         <input
           type="text"
           name="name"
-          required
+          //required
           placeholder="Nhập họ và tên..."
           className="w-full h-12 px-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors"
         />
+        {errors?.name && <p className="text-error text-xs mt-1">{errors.name[0]}</p>}
       </div>
       <div className="flex flex-col gap-2">
         <label className="text-accent-foreground text-sm font-medium">Email</label>
         <input
-          type="email"
+          type="text"
           name="email"
-          required
+          // required
           placeholder="Nhập email..."
           className="w-full h-12 px-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors"
         />
+        {errors?.email && <p className="text-error text-xs mt-1">{errors.email[0]}</p>}
       </div>
       <div className="flex flex-col gap-2">
         <label className="text-accent-foreground text-sm font-medium">Số điện thoại</label>
         <input
           type="tel"
           name="phone"
-          required
+          //required
           placeholder="Nhập số điện thoại..."
           className="w-full h-12 px-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors"
         />
+        {errors?.phone && <p className="text-error text-xs mt-1">{errors.phone[0]}</p>}
       </div>
       <div className="flex flex-col gap-2">
         <label className="text-accent-foreground text-sm font-medium">
@@ -52,10 +73,11 @@ export function ContactForm({ className }: { className?: string }) {
         </label>
         <AutoResizeTextarea
           name="message"
-          required
+          //required
           placeholder="Nhập nội dung tin nhắn..."
           className="w-full min-h-32 p-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors resize-none"
         />
+        {errors?.message && <p className="text-error text-xs mt-1">{errors.message[0]}</p>}
       </div>
 
       {state?.error && <p className="text-error text-sm font-medium">{state.error}</p>}

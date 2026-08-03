@@ -4,8 +4,12 @@ import { getPayload } from 'payload'
 import payloadConfig from '@payload-config'
 import fs from 'fs/promises'
 import path from 'path'
+import { contactSchema, type ContactFormState } from './contract-validate'
 
-export async function submitContactAction(prevState: any, formData: FormData) {
+export async function submitContactAction(
+  prevState: ContactFormState | null,
+  formData: FormData,
+): Promise<ContactFormState> {
   const { sendEmail } = await getPayload({ config: payloadConfig })
 
   const APP_SCRIPT = process.env.APP_SCRIPT ?? ''
@@ -14,7 +18,16 @@ export async function submitContactAction(prevState: any, formData: FormData) {
   const phone = (formData.get('phone') as string) || ''
   const message = (formData.get('message') as string) || ''
 
-  const data = { name, email, phone, message }
+  const result = contactSchema.safeParse({ name, email, phone, message })
+
+  if (!result.success) {
+    return {
+      success: false,
+      fieldErrors: result.error.flatten().fieldErrors as ContactFormState['fieldErrors'],
+    }
+  }
+
+  const data = result.data
   try {
     if (APP_SCRIPT) {
       await fetch(APP_SCRIPT, {

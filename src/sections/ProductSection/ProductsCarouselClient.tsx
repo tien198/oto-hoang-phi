@@ -56,9 +56,9 @@ export const ProductsCarouselClient = ({ products }: { products: ProductType[] }
           {products.map((product, idx) => (
             <CarouselItem key={idx} className="basis-full lg:basis-1/3">
               <Card
-                className={`overflow-hidden hover:shadow-md border-gray-100 rounded-xl bg-white transition-all duration-300 ${visibleCards.includes(idx) ? 'animate-fade-in' : 'opacity-0'}`}
+                className={`overflow-hidden max-w-120 hover:shadow-md border-gray-100 rounded-xl bg-white transition-all duration-300 ${visibleCards.includes(idx) ? 'animate-fade-in' : 'opacity-0'}`}
               >
-                <div className="w-full h-[240px] bg-gray-50 flex items-center justify-center p-4">
+                <div className="w-full bg-gray-50 flex items-center justify-center p-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={product.image}
