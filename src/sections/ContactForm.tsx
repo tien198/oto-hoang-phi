@@ -3,17 +3,27 @@
 import { AutoResizeTextarea } from '@/components/texcra-ui/auto-resize-textarea'
 import { cn } from '@/lib/utils'
 import clsx from 'clsx'
-import { useActionState, useState } from 'react'
+import { startTransition, useActionState, useState } from 'react'
 import { submitContactAction } from '@/actions/submit-contact/contact'
 import { ContactFormState, contactSchema } from '@/actions/submit-contact/contract-validate'
 
 export function ContactForm({ className }: { className?: string }) {
   const [state, action, pending] = useActionState(submitContactAction, null)
   const [clientErrors, setClientErrors] = useState<ContactFormState['fieldErrors']>({})
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  })
 
-  const clientAction = (formData: FormData) => {
-    const data = Object.fromEntries(formData.entries())
-    const result = contactSchema.safeParse(data)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormValues((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const result = contactSchema.safeParse(formValues)
 
     if (!result.success) {
       setClientErrors(result.error.flatten().fieldErrors)
@@ -21,14 +31,17 @@ export function ContactForm({ className }: { className?: string }) {
     }
 
     setClientErrors({})
-    action(formData)
+    const formData = new FormData(e.currentTarget)
+    startTransition(() => {
+      action(formData)
+    })
   }
 
   const errors = Object.keys(clientErrors || {}).length > 0 ? clientErrors : state?.fieldErrors
 
   return (
     <form
-      action={clientAction}
+      onSubmit={handleSubmit}
       className={cn(
         `flex-1 w-full max-w-xl bg-white border border-accent rounded-xl p-8 md:p-10 flex flex-col gap-6 shadow-sm duration-300`,
         className,
@@ -39,7 +52,8 @@ export function ContactForm({ className }: { className?: string }) {
         <input
           type="text"
           name="name"
-          //required
+          value={formValues.name}
+          onChange={handleChange}
           placeholder="Nhập họ và tên..."
           className="w-full h-12 px-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors"
         />
@@ -50,7 +64,8 @@ export function ContactForm({ className }: { className?: string }) {
         <input
           type="text"
           name="email"
-          // required
+          value={formValues.email}
+          onChange={handleChange}
           placeholder="Nhập email..."
           className="w-full h-12 px-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors"
         />
@@ -61,7 +76,8 @@ export function ContactForm({ className }: { className?: string }) {
         <input
           type="tel"
           name="phone"
-          //required
+          value={formValues.phone}
+          onChange={handleChange}
           placeholder="Nhập số điện thoại..."
           className="w-full h-12 px-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors"
         />
@@ -73,7 +89,8 @@ export function ContactForm({ className }: { className?: string }) {
         </label>
         <AutoResizeTextarea
           name="message"
-          //required
+          value={formValues.message}
+          onChange={handleChange}
           placeholder="Nhập nội dung tin nhắn..."
           className="w-full min-h-32 p-4 rounded-md border border-ring bg-accent text-accent-foreground text-sm outline-none focus:border-primary transition-colors resize-none"
         />
