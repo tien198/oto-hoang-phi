@@ -1,4 +1,4 @@
-'use server'
+// 'use server'
 
 import type { Metadata } from 'next'
 import React, { cache } from 'react'
@@ -25,11 +25,38 @@ export default async function Page({ params }: { params: { slug: string } }) {
   )
 }
 
-type Args = {
-  params: Promise<{
-    slug?: string
-  }>
+// SEO
+export const metadata: Metadata = {
+  title: 'Trang chủ | Hoàng Phi - Phụ Tùng Ôtô nhập khẩu',
+  description:
+    'Chuyên cung cấp phụ tùng ô tô nhập khẩu chính hãng, đa dạng thương hiệu, tương thích nhiều dòng xe, giá cạnh tranh và giao hàng toàn quốc.',
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Phụ Tùng Ôtô Hoàng Phi',
+      },
+    ],
+  },
+  twitter: {
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Phụ Tùng Ôtô Hoàng Phi',
+      },
+    ],
+  },
 }
+
+// type Args = {
+//   params: Promise<{
+//     slug?: string
+//   }>
+// }
 
 // export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
 //   const { slug = 'home' } = await paramsPromise

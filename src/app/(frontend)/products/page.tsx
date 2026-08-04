@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import { getProductsPagination } from './actions/get-products'
 import { generateProductsQueryKey } from './tanstack-ultils/generate-querry-key'
+import { Metadata } from 'next'
 
 type Props = {
   searchParams: Promise<{
@@ -54,4 +55,31 @@ export default async function ProductsPage({ searchParams }: Props) {
       </div>
     </div>
   )
+}
+
+// SEO
+export const metadata: Metadata = {
+  title: 'Sản phẩm | Hoàng Phi - Phụ Tùng Ôtô nhập khẩu',
+  description:
+    'Chuyên cung cấp phụ tùng ô tô nhập khẩu chính hãng, đa dạng thương hiệu, tương thích nhiều dòng xe, giá cạnh tranh và giao hàng toàn quốc.',
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Phụ Tùng Ôtô Hoàng Phi',
+      },
+    ],
+  },
+  twitter: {
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Phụ Tùng Ôtô Hoàng Phi',
+      },
+    ],
+  },
 }
