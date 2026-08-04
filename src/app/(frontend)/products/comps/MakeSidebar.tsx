@@ -2,22 +2,8 @@ import { Suspense } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { getMakes } from './cache/get-cache'
 import Link from 'next/link'
-
-function MakesListSkeleton() {
-  return (
-    <div className="flex flex-col animate-pulse">
-      {Array.from({ length: 6 }).map((_, idx) => (
-        <div
-          key={idx}
-          className={`flex items-center justify-between p-4 ${idx % 2 === 0 ? '' : 'bg-secondary'}`}
-        >
-          <div className="h-4 w-24 bg-gray-200 rounded" />
-          <ChevronRight className="w-4 h-4 text-foreground" />
-        </div>
-      ))}
-    </div>
-  )
-}
+import { MakesListSkeleton } from './MakeSidebar.Skeleton'
+import clsx from 'clsx'
 
 async function MakesList() {
   const makes = await getMakes()
@@ -42,7 +28,7 @@ async function MakesList() {
 
 export default function BrandSidebar() {
   return (
-    <div className={'w-full lg:w-75 flex flex-col gap-6 shrink-0'}>
+    <div className={clsx('hidden', 'lg:flex flex-col gap-6 shrink-0 w-full', 'lg:w-75')}>
       <div className="flex flex-col border border-accent rounded-sm bg-card overflow-hidden">
         <div className="bg-primary p-4">
           <h3 className="text-accent font-semibold text-base">PHỤ TÙNG CHÍNH HÃNG</h3>
