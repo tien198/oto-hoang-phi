@@ -50,6 +50,9 @@ export function SearchForm({ children }: { children: ReactNode }) {
     })
     router.push(redirectUrl)
     router.refresh()
+
+    // Close the mobile Drawer if it is open
+    document.getElementById('mobile-drawer-close')?.click()
   }
 
   return (

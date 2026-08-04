@@ -12,6 +12,7 @@ import { getMakes, getModels } from '../cache/get-cache'
 import { Button } from '@/components/ui/button'
 import {
   Drawer,
+  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
@@ -85,6 +86,7 @@ export default function SearchBar() {
             <div className="flex flex-col gap-4 p-4">
               <SearchFormContent />
             </div>
+            <DrawerClose id="mobile-drawer-close" className="hidden" />
           </DrawerContent>
         </Drawer>
       </div>
