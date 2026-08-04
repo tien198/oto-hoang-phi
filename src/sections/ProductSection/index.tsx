@@ -4,27 +4,34 @@ import { ProductsCarouselClient, type ProductType } from './ProductsCarouselClie
 
 export const ProductsSection = async () => {
   const payload = await getPayload({ config: configPromise })
+  const db = payload.db.drizzle
 
-  const result = await payload.find({
-    collection: 'products',
+  const result = await db.query.products.findMany({
     limit: 9,
-    sort: '-createdAt',
-    depth: 1,
-    where: {
-      _status: {
-        equals: 'published',
+    orderBy: (products, { desc }) => [desc(products.createdAt)],
+    where: (products, { eq }) => eq(products._status, 'published'),
+    with: {
+      gallery: {
+        limit: 1,
+        orderBy: (gallery, { asc }) => [asc(gallery._order)],
+        with: {
+          image: {
+            columns: {
+              url: true,
+            },
+          },
+        },
       },
     },
   })
 
-  const products: ProductType[] = result.docs.map((doc) => {
+  const products: ProductType[] = result.map((doc) => {
     const gallery = doc.gallery
     const firstImage = gallery?.[0]?.image
-    const imageUrl =
-      typeof firstImage === 'object' && firstImage !== null ? (firstImage.url ?? '') : ''
+    const imageUrl = firstImage?.url ?? ''
 
     return {
-      name: doc.name,
+      name: doc.name ?? '',
       price: `${(doc.price ?? 0).toLocaleString('vi-VN')}đ`,
       sku: doc.OEno ?? '',
       image: imageUrl,
