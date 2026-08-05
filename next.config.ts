@@ -25,14 +25,16 @@ const nextConfig: NextConfig = {
     ],
     qualities: [100],
     remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
+      ...[NEXT_PUBLIC_SERVER_URL, process.env.R2_PUBLIC_URL /* 'https://example.com' */]
+        .filter(Boolean)
+        .map((item) => {
+          const url = new URL(item as string)
 
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', '') as 'http' | 'https',
-        }
-      }),
+          return {
+            hostname: url.hostname,
+            protocol: url.protocol.replace(':', '') as 'http' | 'https',
+          }
+        }),
     ],
   },
   webpack: (webpackConfig) => {

@@ -23,6 +23,7 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  serverURL: getServerSideURL(),
   admin: adminConfig,
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
