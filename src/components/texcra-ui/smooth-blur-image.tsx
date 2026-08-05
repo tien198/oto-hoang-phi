@@ -21,7 +21,7 @@ export default function SmoothBlurImage({ src, size, alt, blurDataURL, className
         src={src ?? ''}
         alt={alt ?? ''}
         fill
-        sizes={size ?? '1200'}
+        sizes={size ?? 'auto'}
         // width={220}
         // height={200}
         onLoad={() => setIsLoading(false)}
