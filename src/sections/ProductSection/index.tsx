@@ -18,6 +18,7 @@ export const ProductsSection = async () => {
           image: {
             columns: {
               url: true,
+              sizes_thumbnail_url: true,
             },
           },
         },
@@ -27,14 +28,13 @@ export const ProductsSection = async () => {
 
   const products: ProductType[] = result.map((doc) => {
     const gallery = doc.gallery
-    const firstImage = gallery?.[0]?.image
-    const imageUrl = firstImage?.url ?? ''
+    const image = gallery?.[0]?.image
 
     return {
       name: doc.name ?? '',
-      price: `${(doc.price ?? 0).toLocaleString('vi-VN')}đ`,
+      price: `${(doc.price ?? 0).toLocaleString('vi-VN')}đ0`,
       sku: doc.OEno ?? '',
-      image: imageUrl,
+      image: image,
     }
   })
 

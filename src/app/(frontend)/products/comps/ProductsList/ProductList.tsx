@@ -46,10 +46,10 @@ export default function ProductList() {
         {/* Table Header */}
         <div
           className={clsx(
-            'hidden',
+            'hidden bg-primary',
             // Desktop
-            'md:grid md:grid-cols-[220px_1fr_200px] xl:grid-cols-[320px_1fr_260px] bg-primary',
-            'text-base font-semibold text-primary-foreground',
+            'md:grid md:grid-cols-[290px_1fr_260px]',
+            'text-base font-semibold text-primary`-foreground',
           )}
         >
           <div className="px-6 h-full border border-accent py-4">
@@ -65,7 +65,7 @@ export default function ProductList() {
 
         {/* Table Rows */}
         {products?.map((item, idx) => {
-          return <ProductCard key={idx} product={item.prod as Product} imgUrl={item.img ?? ''} />
+          return <ProductCard key={idx} product={item.prod as Product} img={item.img} />
         })}
       </div>
       {data?.pagination && (

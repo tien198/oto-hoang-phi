@@ -10,12 +10,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import SmoothBlurImage from '@/components/texcra-ui/smooth-blur-image'
 
 export type ProductType = {
   name: string
   price: string
   sku: string
-  image: string
+  image: {
+    url: string | null
+    sizes_thumbnail_url: string | null
+  } | null
 }
 
 export const ProductsCarouselClient = ({ products }: { products: ProductType[] }) => {
@@ -48,7 +52,7 @@ export const ProductsCarouselClient = ({ products }: { products: ProductType[] }
     <div ref={sectionRef} className="px-4 md:px-12 w-full">
       <Carousel
         opts={{
-          align: 'start',
+          align: 'center',
         }}
         className="w-full"
       >
@@ -56,12 +60,13 @@ export const ProductsCarouselClient = ({ products }: { products: ProductType[] }
           {products.map((product, idx) => (
             <CarouselItem key={idx} className="basis-full lg:basis-1/3">
               <Card
-                className={`overflow-hidden max-w-120 hover:shadow-md border-gray-100 rounded-xl bg-white transition-all duration-300 ${visibleCards.includes(idx) ? 'animate-fade-in' : 'opacity-0'}`}
+                className={`mx-auto overflow-hidden max-w-120 hover:shadow-md border-gray-100 rounded-xl bg-white transition-all duration-300 ${visibleCards.includes(idx) ? 'animate-fade-in' : 'opacity-0'}`}
               >
-                <div className="w-full bg-gray-50 flex items-center justify-center p-4">
+                <div className="w-full h-96 bg-gray-50 flex items-center justify-center p-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={product.image}
+                  <SmoothBlurImage
+                    src={product.image?.url ?? ''}
+                    blurDataURL={product.image?.sizes_thumbnail_url}
                     alt={product.name}
                     className="max-w-full max-h-full object-contain"
                   />

@@ -3,44 +3,52 @@ import type { Product } from '@/payload-types'
 // import { products, vehicle_models } from '@/payload-generated-schema'
 import Link from 'next/link'
 import clsx from 'clsx'
+import Image from 'next/image'
+import SmoothBlurImage from '@/components/texcra-ui/smooth-blur-image'
 
 interface ProductCardProps {
   product: Product
-  imgUrl: string
+  img: {
+    img_url: string | null
+    blur_url: string | null
+  } | null
 }
 
-export default function ProductCard({ product, imgUrl }: ProductCardProps) {
+export default function ProductCard({ product, img }: ProductCardProps) {
   const { name, slug, price, OEno, warranty } = product
 
   return (
     <div
-        className={clsx(
-          // Base / Mobile
-          'flex flex-col w-full border-b border-primary last:border-b-0',
-          // Desktop
-          'md:grid md:grid-cols-[220px_1fr_200px] xl:grid-cols-[320px_1fr_260px]',
-        )}
+      className={clsx(
+        'w-full ',
+        // Base / Mobile
+        'flex flex-col border-b border-primary last:border-b-0',
+        // Desktop
+        'md:grid md:grid-cols-[290px_1fr_260px]',
+      )}
     >
       {/* Image Column */}
       <div
         className={clsx(
           // Base / Mobile
+          'w-full h-88',
           'flex flex-col items-center justify-center py-6 border-b border-primary',
           // Desktop
           'md:py-8 md:border-b-0 xl:py-10',
         )}
       >
-        <div className="flex items-center justify-center overflow-hidden">
-          {imgUrl ? (
-            <img
-              src={imgUrl}
+        <div className={clsx('flex items-center justify-center overflow-hidden', 'w-full h-full')}>
+          {img ? (
+            <SmoothBlurImage
+              src={img.img_url ?? ''}
               alt={name ?? ''}
               className={clsx(
                 // Base / Mobile
-                'w-full max-h-64 object-contain',
+                'w-full h-full max-h-64 object-contain',
                 // Desktop
                 'md:h-full md:object-cover md:max-h-none',
               )}
+              blurDataURL={img.blur_url ?? ''}
             />
           ) : (
             <div className="text-muted-foreground text-sm">No Image</div>
@@ -111,6 +119,7 @@ export default function ProductCard({ product, imgUrl }: ProductCardProps) {
       {/* Application Column */}
       <div
         className={clsx(
+          'overflow-y-auto',
           // Base / Mobile
           'flex flex-col gap-1 py-6 px-4',
           // Desktop

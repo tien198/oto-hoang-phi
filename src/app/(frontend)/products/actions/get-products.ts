@@ -82,7 +82,7 @@ export async function getProductsPagination({
     drizzle
       .selectDistinctOn([products_fitments_CTE.prod.id], {
         prod_id: products_fitments_CTE.prod.id,
-        img_url: media.url,
+        img: { img_url: media.url, blur_url: media.sizes_blur_url },
       })
       .from(products_fitments_CTE)
       .leftJoin(products_gallery, eq(products_fitments_CTE.prod.id, products_gallery._parentID))
@@ -94,7 +94,7 @@ export async function getProductsPagination({
     .with(products_fitments_CTE, img_CTE)
     .select({
       prod: products,
-      img: img_CTE.img_url,
+      img: img_CTE.img,
       models: products_fitments_CTE.models,
       makes: products_fitments_CTE.makes,
     })
