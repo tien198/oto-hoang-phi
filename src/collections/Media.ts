@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { generateBlurDataURL } from '../lib/generate-blur-data-url'
 
 import {
   FixedToolbarFeature,
@@ -37,6 +38,24 @@ export const Media: CollectionConfig = {
           return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
         },
       }),
+    },
+    {
+      name: 'blurDataURL',
+      type: 'text',
+      admin: {
+        hidden: true,
+      },
+      hooks: {
+        beforeChange: [
+          async ({ req, value }) => {
+            if (req.file?.data) {
+              const blurDataURL = await generateBlurDataURL(req.file.data)
+              return blurDataURL
+            }
+            return value
+          },
+        ],
+      },
     },
   ],
   upload: {

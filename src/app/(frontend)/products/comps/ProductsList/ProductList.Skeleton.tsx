@@ -35,7 +35,7 @@ export default function ProductListSkeleton() {
             key={idx}
             className={clsx(
               // Base / Mobile
-              'flex flex-col w-full border-b border-primary last:border-b-0',
+              'flex flex-col w-full border-b border-primary last:border-b-0 h-88',
               // Desktop
               'md:grid md:grid-cols-[220px_1fr_200px] xl:grid-cols-[320px_1fr_260px]',
             )}
