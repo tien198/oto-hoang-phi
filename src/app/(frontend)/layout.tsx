@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html
-      className={cn(montserrat.variable, montserrat.className)}
+      className={cn(montserrat.variable, montserrat.className, 'scroll-smooth')}
       lang="en"
       data-theme="light"
       suppressHydrationWarning

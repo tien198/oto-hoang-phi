@@ -43,6 +43,9 @@ export const Header = () => {
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-4 lg:gap-8 ">
+          <Link href="/products" className={cn('text-white hover:text-primary transition-colors')}>
+            Sản phẩm
+          </Link>
           <Link
             href="#"
             className="text-muted-foreground font-medium text-base hover:text-white transition-colors"
@@ -55,7 +58,8 @@ export const Header = () => {
           >
             Bài viết
           </Link>
-          <Link href="#contact">
+
+          <Link href="/#contact">
             <Button
               className={cn(
                 'bg-primary text-white px-6 py-5 rounded-full font-semibold ',
@@ -69,7 +73,7 @@ export const Header = () => {
 
         <nav className="md:hidden">
           <Link
-            href="#contract"
+            href="/#contact"
             className="text-primary font-medium text-base hover:text-white transition-colors flex items-center gap-2"
           >
             Liên Hệ <Phone className="w-4 h-4" />

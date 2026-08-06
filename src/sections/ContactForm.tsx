@@ -43,7 +43,12 @@ export function ContactForm({ className }: { className?: string }) {
     <form
       onSubmit={handleSubmit}
       className={cn(
-        `flex-1 w-full max-w-xl bg-white border border-accent rounded-xl p-8 md:p-10 flex flex-col gap-6 shadow-sm duration-300`,
+        clsx(
+          // Base Layout & Styling
+          'flex-1 w-full max-w-xl flex flex-col gap-6 bg-white border border-accent rounded-xl shadow-sm duration-300',
+          'py-16 px-5',
+          'md:p-10',
+        ),
         className,
       )}
     >

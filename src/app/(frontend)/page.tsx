@@ -8,7 +8,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
 import { Header } from '@/sections/Header'
-import { Banner } from '@/sections/Banner'
+import { Hero } from '@/sections/Hero'
 import { IntroSection } from '@/sections/IntroSection'
 import { ProductsSection } from '@/sections/ProductSection'
 import { ContactSection } from '@/sections/ContactSection'
@@ -17,7 +17,7 @@ import { Footer } from '@/sections/Footer'
 export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <main className="w-full min-h-screen flex flex-col bg-[#fafafa]">
-      <Banner />
+      <Hero />
       <IntroSection />
       <ProductsSection />
       <ContactSection />

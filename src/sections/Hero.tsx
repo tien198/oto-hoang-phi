@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 
-export const Banner = () => {
+export const Hero = () => {
   return (
     <section className="relative w-full h-[90vh] flex items-center justify-center px-5 md:px-20">
       {/* Background Image & Gradient */}

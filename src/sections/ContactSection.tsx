@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import clsx from 'clsx'
 import { MapPin, Phone, Mail } from 'lucide-react'
 import { ContactForm } from './ContactForm'
 
@@ -32,13 +33,31 @@ export const ContactSection = () => {
     <section
       ref={sectionRef}
       id="contact"
-      className="w-full bg-[#fafafa] py-16 md:py-20 px-5 md:px-20 flex flex-col lg:flex-row gap-16 justify-center"
+      className={clsx(
+        // Base / Mobile layout & styling
+        'w-full bg-[#fafafa] flex flex-col gap-16 justify-center',
+
+        // Desktop (lg)
+        'lg:flex-row',
+      )}
     >
       <div
-        className={`flex-1 flex flex-col gap-8 max-w-xl duration-300 ${showFirst ? 'animate-fade-in' : 'opacity-0'}`}
+        className={clsx(
+          'flex-1 flex flex-col gap-8 max-w-xl duration-300',
+          'py-16 px-5',
+          'md:py-20 md:px-20',
+          showFirst ? 'animate-fade-in' : 'opacity-0',
+        )}
       >
         <div className="flex flex-col gap-4">
-          <h2 className="text-primary text-3xl md:text-[36px] font-light md:font-medium leading-[1.2]">
+          <h2
+            className={clsx(
+              // Base / Mobile
+              'text-primary text-3xl font-light leading-[1.2]',
+              // Tablet / Desktop (md)
+              'md:text-[36px] md:font-medium',
+            )}
+          >
             Kết nối với chúng tôi
           </h2>
           <p className="text-[#737373] text-base leading-[1.6]">
@@ -74,7 +93,7 @@ export const ContactSection = () => {
         </div>
       </div>
 
-      <ContactForm className={`${showSecond ? 'animate-fade-in' : 'opacity-0'}`} />
+      <ContactForm className={clsx(showSecond ? 'animate-fade-in' : 'opacity-0')} />
     </section>
   )
 }
